@@ -1,3 +1,6 @@
+a { text-decoration: none }
+h2 { font-size:110% }
 .CMolla { color: #FEF }
 .BCMolla { background-color: #FEF }
-body { text-decoration: none }
+.SubTitle { font-size: 91% }
+.TitleTag { color: rgb(81, 81, 206) }
