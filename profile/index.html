@@ -6,23 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <style>
-        h1 { font-size:x-large ; }
-        a { text-decoration-line:none; }
-        .title { font-size:larger; }
+        h1 { font-size: x-large ; }
+        a { 
+            text-decoration-line: none;
+            color: #717;
+        }
+        #indexContent a {
+            
+        }
+        #indexContent a:hover { 
+            color: #c8c;
+            font-weight: bold;
+        }
+        ol { color: #717; }
+        .title { font-size: larger; }
+        .content { <!--공사중--> }
+        .index {
+            border:3px solid #717; 
+            background-color: #FEF; 
+            font-weight: 500px; 
+            width: 100%; 
+            max-width: 170px;
+            height: max-content;
+            margin-top: 2%;
+            margin-left: 2%;
+        }
+        .mokcha {
+            margin-top: 4%;
+            margin-bottom: -8%;
+            margin-left: 5%;
+            color: #717;
+        }
     </style>
 </head>
 <body>  
-    <h1 id="index">목차</h1><ul>
-        <li><a href="#title1">Hello, world!</a></li>
-        <li><a href="#title2"></a></li>
-        <li><a href="#title3"></a></li>
-        <li><a href="#title4"></a></li>
-        <li><a href="#title5"></a></li>
-        <li><a href="#title6"></a></li>
-        <li><a href="#title7"></a></li>
-    </ul>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <h1><span id="title1" class="title"><a href="#index">1 </a></span>Hello, world!</h1>
+    <div id="index" class="index">
+        <h1 class="mokcha">목차</h1>
+        <ol class="contents" id="indexContent">
+            <li><a href="#title1">Hello, world!</a></li>
+            <li><a href="#title2">asdf</a></li>
+            <li><a href="#title3">asdf</a></li>
+            <li><a href="#title4">asdf</a></li>
+            <li><a href="#title5">asdf</a></li>
+            <li><a href="#title6">asdf</a></li>
+            <li><a href="#title7">asdf</a></li>
+        </ol>
+    </div>
+
+    <div id="title1">
+        <h1><a href="#index" class="title">1.</a></span>Hello, world!</h1>
+        <p>
+            안녕하세요!
+            <br>
+            저는 영흥고등학교에 재학중인 한 학생이에요.
+        </p>
+    </div>
+    
 
 </body>
 </html>
