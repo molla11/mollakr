@@ -1,0 +1,29 @@
+h1 { font-size: x-large ; }
+a { 
+    text-decoration-line: none;
+    color: #717;
+}
+#indexContent a { <!--공사중--> }
+#indexContent a:hover { 
+    color: #c8c;
+    font-weight: bold;
+}
+ol { color: #717; }
+.title { font-size: larger; }
+.content { <!--공사중--> }
+.index {
+    border:3px solid #717; 
+    background-color: #FEF; 
+    font-weight: 500px; 
+    width: 100%; 
+    max-width: 170px;
+    height: max-content;
+    margin-top: 0%;
+    margin-left: 0%;
+}
+.mokcha {
+    margin-top: 4%;
+    margin-bottom: -8%;
+    margin-left: 5%;
+    color: #717;
+}
