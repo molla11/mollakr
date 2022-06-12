@@ -1,0 +1,22 @@
+h1 {
+    font-size:larger;
+    color:#a5a;
+    margin-top:20px;
+}
+
+body {
+    color:#939;
+}
+
+underline {
+    text-decoration-line:underline;
+}
+
+small {
+    font-size:small;
+}
+
+h2 {
+    font-size:medium;
+    font-weight: bolder;
+}
