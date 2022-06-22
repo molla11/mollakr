@@ -1,0 +1,46 @@
+#header { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 100%;
+    border-bottom: 1px solid black;
+    background: linear-gradient(To bottom, #FFF, #FEF)
+
+}
+
+#icon {
+    float: left;
+    position: absolute;
+    left: 20px;
+    height: 100%;
+    width: 60px;
+}
+
+.icon_img {
+    height: 100%;
+    width: 100%;
+}
+
+#icon_in_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: large;
+    font-weight: bold;
+}
+
+#main_title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 40px;
+    width: 200px;
+    background: linear-gradient(To top, #FFF, #FEF);
+    text-align: center;
+    line-height: 40px;
+    font-size: larger;
+    font-weight: bold;
+}
