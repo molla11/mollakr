@@ -1,0 +1,40 @@
+#statusTable{
+    margin-top: 10px;
+    width: 200px;
+    height: 50px;
+    border: 1px solid #CCCCCC;
+    border-collapse: collapse;
+}
+
+#statusTable th, td {
+    border: 1px solid #CCCCCC;
+    text-align: right;
+}
+
+#resultTable{
+    margin-top: 10px;
+    width: 400px;
+    height: 50px;
+    border: 1px solid #CCCCCC;
+    border-collapse: collapse;
+}
+
+#resultTable th, td {
+    border: 1px solid #CCCCCC;
+}
+
+.statusTable-name {
+    width: 52px;
+}
+
+.resultTable-name {
+    width: 200px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+#credits {
+    text-align: right;
+}
