@@ -23,7 +23,7 @@ function f_printStatus(a_inputs) {
 
     function f_checkStatus(a_value) {
         if (isNaN(a_value)) {
-            return "Too large.";
+            return "Strange Num!";
         } else {
             return a_value;
         }
@@ -33,11 +33,9 @@ function f_printStatus(a_inputs) {
 function f_checkInput(a_value) {
     if(a_value === '') {
         return 0;
-    } else if (parseInt(a_value) > 9999999999) {
+    } else if (parseInt(a_value) > 9999999999 || parseInt(a_value) < 0) {
         return NaN;
-    } else if (isNaN(parseInt(a_value))) {
-        return "Too large.";
-    }else {
+    } else {
         return parseInt(a_value);
     }
 }
