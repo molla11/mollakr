@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/kkutu/calc1/image/icon.png " type="image/x-icon">
+    <link rel="shortcut icon" href="image/icon.png" type="image/x-icon">
     <title>낱장작 계산기 | 목표</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -15,9 +15,10 @@
         낱장작 계산기 | 목표
     </p>
     <div id="inputs">
-        <input type="number" placeholder="현재 경험치" id="2-input-now-exp">
-        <br><input type="number" placeholder="목표 경험치" id="2-input-target-exp">
-        <br><input type="number" placeholder="보유 낱장" id="2-input-NJ"><!--NJ:낱장-->
+        <input autofocus type="number" placeholder="현재 경험치" id="input-now-exp">
+        <br><input type="number" placeholder="목표 경험치" id="input-target-exp">
+        <button type="button" id="input-target-isLevel">레벨로 입력하기</button>
+        <br><input type="number" placeholder="보유 낱장" id="input-NJ"><!--NJ:낱장-->
     </div>
  
     <div id="tables">
@@ -27,7 +28,7 @@
             </tr>
             <tr>
                 <td class="statusTable-name">현재 경험치</td>
-                <td id="now-exp" class="text-center"> </td>
+                <td autofocus id="now-exp" class="text-center"> </td>
             </tr>
             <tr>
                 <td class="statusTable-name">목표 경험치</td>
@@ -56,16 +57,16 @@
                 <td id="NJ-per-exp" class="text-center"> </td>
             </tr>
             <tr>
-                <td class="resultTable-name">낱장 추가 획득 경험치</td>
-                <td id="NJ-2-exp" class="text-center"> </td>
+                <td class="resultTable-name">필요 경험치</td>
+                <td id="need-exp" class="text-center"> </td>
             </tr>
             <tr>
-                <td class="resultTable-name">최종 경험치</td>
-                <td id="final-exp" class="text-center"> </td>
+                <td class="resultTable-name">필요한 낱장</td>
+                <td id="need-NJ" class="text-center"> </td>
             </tr>
             <tr>
-                <td class="resultTable-name">최종 레벨</td>
-                <td id="final-level" class="text-center"> </td>
+                <td class="resultTable-name">필요한 핑</td>
+                <td id="need-ping" class="text-center"> </td>
             </tr>
         </table>
     </div>
