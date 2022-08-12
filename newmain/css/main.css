@@ -1,3 +1,9 @@
+#main {
+    position:fixed;
+    top:0;
+    left:0;
+}
+
 #header { 
     position: fixed;
     top: 0;
@@ -6,11 +12,13 @@
     width: 100%;
     border-bottom: 1px solid black;
     background: linear-gradient(To bottom, #FFF, #FEF)
+}
 
+#menu {
+    position: absolute;
 }
 
 #icon {
-    float: left;
     position: absolute;
     left: 20px;
     height: 100%;
@@ -43,4 +51,20 @@
     line-height: 40px;
     font-size: larger;
     font-weight: bold;
+}
+
+#menu {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+#container {
+    position: fixed;
+    top: 60px;
+    width: 100%;
+    height: 100%;
+    background-color:gray;
 }
