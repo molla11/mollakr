@@ -18,11 +18,15 @@ function handleBtnIsLevel() {
     if (isLevel) {
         inputTargetExp.placeholder = "목표 경험치";
         inputTargetIsLevel.innerText = "레벨로 입력하기"
+        inputTargetExp.value = "";
         isLevel = false;
+        inputTargetExp.focus();
     } else {
         inputTargetExp.placeholder = "목표 레벨";
         inputTargetIsLevel.innerText = "경험치로 입력하기"
+        inputTargetExp.value = "";
         isLevel = true;
+        inputTargetExp.focus();
     }
 }
 
@@ -32,15 +36,19 @@ function f_calculate() {
     f_printResult(f_setOutput(inputs), inputs);
 }
 
-function f_setInput() { 
+function f_setInput() {
     const inputList = {
         nowExp:f_checkInput(inputNowExp.value),
-        targetExp:isLevel?f_checkInput(exps[720-f_checkInput(inputTargetExp.value)]):f_checkInput(inputTargetExp.value),
+        targetExp:isLevel?
+            inputTargetExp.value === ""?
+                0
+                :f_checkInput(exps[720-f_checkInput(inputTargetExp.value)])
+            :f_checkInput(inputTargetExp.value),
         NJ:f_checkInput(inputNJ.value),
     }
 
     function f_checkInput(a_value) {
-        if(a_value === '') {
+        if(a_value === "") {
             return 0;
         } else if (parseInt(a_value) > 9999999999 || parseInt(a_value) < 0) {
             return NaN;
@@ -73,15 +81,15 @@ function f_printInput(a_inputs) {
 function f_setOutput(a_inputs) {
     const outputList = {
         nowLevel:f_setLevel(a_inputs.nowExp),
-        targetLevel:f_setLevel("만들어야지.."),
-        NJPerExp:Math.floor((Math.sqrt(8*a_inputs.exp+1)+1)/2),
+        targetLevel:f_setLevel(a_inputs.targetExp),
+        NJPerExp:Math.floor((Math.sqrt(a_inputs.nowExp*8+1)+1)/2),
+        needExp:a_inputs.targetExp-a_inputs.nowExp,  
     };
-    outputList.NJ2Exp = (((2*outputList.NJPerExp)+outputList.ping2NJ-1)*outputList.ping2NJ)/2;
-    outputList.finalExp = a_inputs.exp+outputList.NJ2Exp;
-    outputList.finalLevel = f_setLevel(outputList.finalExp);
-    /**
-     * iF(C5=VALUE(SUBSTITUTE(C5,"~","")),C5,VLOOKUP(VALUE(SUBSTITUTE(C5,"~",""))-1,Y1:Z720,2,FALSE));
-     */
+    outputList.needNJ = Math.ceil(((
+        1-outputList.NJPerExp*2+Math.sqrt(
+            (outputList.needExp*8)+((outputList.needExp**2)*4)-(outputList.needExp*4)+1)
+        )/2)-a_inputs.NJ);
+    outputList.needPing = outputList.needNJ*2;
 
     function f_setLevel(a_exp) {
         if(isNaN(a_exp)) { return NaN; }
