@@ -86,7 +86,7 @@ function f_setOutput(a_inputs) {
         expPerNJ:Math.floor((Math.sqrt(a_inputs.nowExp*8+1)+1)/2),
         needExp:a_inputs.targetExp-a_inputs.nowExp,  
     };
-    outputList.needNJ = Math.ceil((1-2*outputList.expPerNJ+Math.sqrt(8*outputList.needExp+4*(outputList.expPerNJ**2-outputList.expPerNJ+1)))/2)-a_inputs.NJ; 
+    outputList.needNJ = Math.ceil((1-2*outputList.expPerNJ+Math.sqrt(8*outputList.needExp+4*(outputList.expPerNJ**2-outputList.expPerNJ)+1))/2)-a_inputs.NJ; 
     outputList.needPing = outputList.needNJ*20;
 
     function f_setLevel(a_exp) {
