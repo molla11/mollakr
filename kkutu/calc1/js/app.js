@@ -47,7 +47,7 @@ function f_printStatus(a_inputs) {
 
     function f_checkStatus(a_value) {
         if (isNaN(a_value)) {
-            return "Strange Num!";
+            return "Strange number!";
         } else {
             return a_value;
         }
@@ -58,9 +58,9 @@ function f_setOutput(a_inputs) {
     const outputList = {
         level:f_setLevel(a_inputs.exp),
         ping2NJ:a_inputs.NJ+Math.floor(a_inputs.ping/20),
-        NJPerExp:Math.floor((Math.sqrt(8*a_inputs.exp+1)+1)/2),
+        expPerNJ:Math.floor((Math.sqrt(8*a_inputs.exp+1)+1)/2),
     };
-    outputList.NJ2Exp = (((2*outputList.NJPerExp)+outputList.ping2NJ-1)*outputList.ping2NJ)/2;
+    outputList.NJ2Exp = (((2*outputList.expPerNJ)+outputList.ping2NJ-1)*outputList.ping2NJ)/2;
     outputList.finalExp = a_inputs.exp+outputList.NJ2Exp;
     outputList.finalLevel = f_setLevel(outputList.finalExp);
 
@@ -81,14 +81,14 @@ function f_setOutput(a_inputs) {
 function f_printResult(a_outputs, a_inputs) {
     const prtLevel = document.getElementById("level");
     const prtPing2NJ = document.getElementById("ping-2-NJ");
-    const prtNJPerExp = document.getElementById("NJ-per-exp");
+    const prtexpPerNJ = document.getElementById("exp-per-NJ");
     const prtNJ2Exp = document.getElementById("NJ-2-exp");
     const prtFinalExp = document.getElementById("final-exp");
     const prtFinalLevel = document.getElementById("final-level");
 
     prtLevel.innerText = f_checkValueIsNaN(a_outputs.level);
     prtPing2NJ.innerText = f_checkValueIsNaN(a_outputs.ping2NJ);
-    prtNJPerExp.innerText = f_checkValueIsNaN(a_outputs.NJPerExp);
+    prtexpPerNJ.innerText = f_checkValueIsNaN(a_outputs.expPerNJ);
     prtNJ2Exp.innerText = f_checkValueIsNaN(a_outputs.NJ2Exp);
     prtFinalExp.innerText = f_checkValueIsNaN(a_outputs.finalExp);
     prtFinalLevel.innerText = f_checkValueIsNaN(a_outputs.finalLevel);
@@ -100,4 +100,11 @@ function f_printResult(a_outputs, a_inputs) {
             return a_value;
         }
     }
+}
+
+const copyResults = document.getElementById("copy-results");
+copyResults.addEventListener("click", handlecopyResults);
+
+function handlecopyResults() {
+    alert("미구현 기능입니다(추가 예정).");
 }

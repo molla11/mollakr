@@ -15,9 +15,9 @@
         낱장작 계산기 | 목표
     </p>
     <div id="inputs">
-        <input autofocus type="number" placeholder="현재 경험치" id="input-now-exp">
-        <br><input type="number" placeholder="목표 경험치" id="input-target-exp">
+        <input autofocus type="number" placeholder="목표 경험치" id="input-target-exp">
         <button type="button" id="input-target-isLevel">레벨로 입력하기</button>
+        <br><input type="number" placeholder="현재 경험치" id="input-now-exp">
         <br><input type="number" placeholder="보유 낱장" id="input-NJ"><!--NJ:낱장-->
     </div>
  
@@ -27,19 +27,18 @@
                 <td colspan="2" class="text-center">Inputs</td>
             </tr>
             <tr>
-                <td class="statusTable-name">현재 경험치</td>
-                <td autofocus id="now-exp" class="text-center"> </td>
-            </tr>
-            <tr>
                 <td class="statusTable-name">목표 경험치</td>
                 <td id="target-exp" class="text-center"> </td>
+            </tr>
+            <tr>
+                <td class="statusTable-name">현재 경험치</td>
+                <td autofocus id="now-exp" class="text-center"> </td>
             </tr>
             <tr>
                 <td class="statusTable-name">보유 낱장</td>
                 <td id="NJ" class="text-center"> </td>
             </tr>
         </table>
-
         <table id="resultTable">
             <tr>
                 <td colspan="2" class="text-center">Outputs</td>
@@ -54,7 +53,7 @@
             </tr>
             <tr>
                 <td class="resultTable-name">현재 낱장 1장당 경험치</td>
-                <td id="NJ-per-exp" class="text-center"> </td>
+                <td id="exp-per-NJ" class="text-center"> </td>
             </tr>
             <tr>
                 <td class="resultTable-name">필요 경험치</td>
@@ -69,6 +68,7 @@
                 <td id="need-ping" class="text-center"> </td>
             </tr>
         </table>
+        <button type="button" id="copy-results">결과 복사!</button>
     </div>
     <div id="credits">
         <sub>Special thanks to 사탕, 
