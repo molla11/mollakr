@@ -54,6 +54,12 @@
     width: 190px;
 }
 
+code {
+    background-color: #DDD;
+    padding: 3px;
+    border-radius: 10%;
+}
+
 #credits {
     text-align: right;
 }
