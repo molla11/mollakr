@@ -1,38 +1,57 @@
-#statusTable{
+#table1{
     margin-top: 10px;
-    width: 300px;
+    width: 423px;
     height: 50px;
     border: 1px solid #CCCCCC;
     border-collapse: collapse;
 }
 
-#statusTable th, td {
+#table2{
+    margin-top: 10px;
+    width: 423px;
+    height: 50px;
+    border: 1px solid #CCCCCC;
+    border-collapse: collapse;
+}
+
+#tables th, td {
     border: 1px solid #CCCCCC;
     text-align: right;
 }
 
-#resultTable{
-    margin-top: 10px;
-    width: 400px;
-    height: 50px;
-    border: 1px solid #CCCCCC;
-    border-collapse: collapse;
-}
-
-#resultTable th, td {
-    border: 1px solid #CCCCCC;
-}
-
-.statusTable-name {
-    width: 100px;
-}
-
-.resultTable-name {
-    width: 200px;
-}
-
-.text-center {
+.table-name {
     text-align: center;
+}
+
+.td-name {
+    width: 180px;
+}
+
+.box-checkbox {
+    position: relative;
+}
+
+.checkbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-75%, -75%);
+}
+
+.checkbox-all {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-75%, -75%);
+}
+
+.box-checkall {
+    width: 23px;
+}
+
+.output-box {
+    text-align: center;
+    width: 190px;
 }
 
 #credits {

@@ -22,58 +22,74 @@
     </div>
  
     <div id="tables">
-        <table id="statusTable">
+        <table id="table1">
             <tr>
-                <td colspan="2" class="text-center">Inputs</td>
+                <td colspan="2" class="table-name">Inputs</td>
+                <td class="imoji-clipboard">📋</td>
+                <td class="box-checkbox box-checkall"><input type="checkbox" id="check-all" class="checkbox-all"></td>
             </tr>
             <tr>
-                <td class="statusTable-name">목표 경험치</td>
-                <td id="target-exp" class="text-center"> </td>
+                <td class="td-name">목표 경험치</td>
+                <td id="target-exp" class="output-box"> </td>
+                <td class="box-checkbox"><input type="checkbox" id="target-exp-isCopy" class="checkbox"></td>
+                <td class="box-checkbox box-checkall"><input type="checkbox" id="check-all-input" class="checkbox-all"></td>
             </tr>
             <tr>
-                <td class="statusTable-name">현재 경험치</td>
-                <td autofocus id="now-exp" class="text-center"> </td>
+                <td class="td-name">현재 경험치</td>
+                <td autofocus id="now-exp" class="output-box"> </td>
+                <td class="box-checkbox"><input type="checkbox" id="now-exp-isCopy" class="checkbox"></td>
             </tr>
             <tr>
-                <td class="statusTable-name">보유 낱장</td>
-                <td id="NJ" class="text-center"> </td>
-            </tr>
-        </table>
-        <table id="resultTable">
-            <tr>
-                <td colspan="2" class="text-center">Outputs</td>
-            </tr>
-            <tr>
-                <td class="resultTable-name">현재 레벨</td>
-                <td id="now-level" class="text-center"> </td>
-            </tr>
-            <tr>
-                <td class="resultTable-name">목표 레벨</td>
-                <td id="target-level" class="text-center"> </td>
-            </tr>
-            <tr>
-                <td class="resultTable-name">현재 낱장 1장당 경험치</td>
-                <td id="exp-per-NJ" class="text-center"> </td>
-            </tr>
-            <tr>
-                <td class="resultTable-name">필요 경험치</td>
-                <td id="need-exp" class="text-center"> </td>
-            </tr>
-            <tr>
-                <td class="resultTable-name">필요한 낱장</td>
-                <td id="need-NJ" class="text-center"> </td>
-            </tr>
-            <tr>
-                <td class="resultTable-name">필요한 핑</td>
-                <td id="need-ping" class="text-center"> </td>
+                <td class="td-name">보유 낱장</td>
+                <td id="NJ" class="output-box"> </td>
+                <td class="box-checkbox"><input type="checkbox" id="NJ-isCopy" class="checkbox"></td>
             </tr>
         </table>
-        <button type="button" id="copy-results">결과 복사!(미구현)</button>
+        <table id="table2">
+            <tr>
+                <td colspan="2" class="table-name">Outputs</td>
+                <td class="imoji-clipboard">📋</td>
+            </tr>
+            <tr>
+                <td class="td-name">현재 레벨</td>
+                <td id="now-level" class="output-box"> </td>
+                <td class="box-checkbox"><input type="checkbox" checked id="now-level-isCopy" class="checkbox"></td>
+                <td class="box-checkbox box-checkall"><input type="checkbox" id="check-all-output" class="checkbox-all"></td>
+            </tr>
+            <tr>
+                <td class="td-name">목표 레벨</td>
+                <td id="target-level" class="output-box"> </td>
+                <td class="box-checkbox"><input type="checkbox" checked id="target-level-isCopy" class="checkbox"></td>
+            </tr>
+            <tr>
+                <td class="td-name">현재 낱장 1장당 경험치</td>
+                <td id="exp-per-NJ" class="output-box"> </td>
+                <td class="box-checkbox"><input type="checkbox" id="exp-per-NJ-isCopy" class="checkbox"></td>
+            </tr>
+            <tr>
+                <td class="td-name">필요 경험치</td>
+                <td id="need-exp" class="output-box"> </td>
+                <td class="box-checkbox"><input type="checkbox" checked id="need-exp-isCopy" class="checkbox"></td>
+            </tr>
+            <tr>
+                <td class="td-name">필요한 낱장</td>
+                <td id="need-NJ" class="output-box"> </td>
+                <td class="box-checkbox"><input type="checkbox" id="need-NJ-isCopy" class="checkbox"></td>
+            </tr>
+            <tr>
+                <td class="td-name">필요한 핑</td>
+                <td id="need-ping" class="output-box"> </td>
+                <td class="box-checkbox"><input type="checkbox" checked id="need-ping-isCopy" class="checkbox"></td>
+            </tr>
+        </table>
     </div>
+    결과 복사를 원하는 칸에 체크하고, 
+    <br>아무 곳에서나 <code style="background-color:#DDD">Ctrl + C</code> 키를 눌러 복사해요!
     <div id="credits">
-        <sub>Special thanks to 사탕, 
-            <a 
-                href="https://docs.google.com/spreadsheets/d/1G-y9I3VLxOy0hYTIzmZHoJM_p0Pc-Tqhk4VYDrX9eQA/" target="_blank">
+        <sub>
+            <h6>Credits</h6>
+            Special thanks to 사탕, 
+            <a target="_blank" href="https://docs.google.com/spreadsheets/d/1G-y9I3VLxOy0hYTIzmZHoJM_p0Pc-Tqhk4VYDrX9eQA/">
                 원작 <b>낱장작 계산기</b>.
             </a>
             <br>
@@ -82,4 +98,5 @@
     </span>
 </body>
 <script src="js/app.js"></script>
+<script src="js/checkall.js"></script>
 </html>

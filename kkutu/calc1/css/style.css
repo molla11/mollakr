@@ -35,6 +35,11 @@
     text-align: center;
 }
 
+.imoji-clipboard {
+    font-size: 90%;
+    text-align: center;
+}
+
 #credits {
     text-align: right;
 }

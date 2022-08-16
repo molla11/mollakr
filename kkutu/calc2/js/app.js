@@ -86,7 +86,7 @@ function f_setOutput(a_inputs) {
         expPerNJ:Math.floor((Math.sqrt(a_inputs.nowExp*8+1)+1)/2),
         needExp:a_inputs.targetExp-a_inputs.nowExp,  
     };
-    outputList.needNJ = Math.ceil((1-2*outputList.expPerNJ+Math.sqrt(8*outputList.needExp+4*(outputList.expPerNJ**2-outputList.expPerNJ)+1))/2)-a_inputs.NJ; 
+    outputList.needNJ = Math.ceil((1 - 2 * outputList.expPerNJ + Math.sqrt(8 * outputList.needExp + 4 * (outputList.expPerNJ ** 2 - outputList.expPerNJ) + 1)) / 2) - a_inputs.NJ; 
     outputList.needPing = outputList.needNJ*20;
 
     function f_setLevel(a_exp) {
@@ -120,7 +120,7 @@ function f_printResult(a_outputs, a_inputs) {
     function f_checkValueIsNaN(a_value) {
         if (isNaN(a_inputs.nowExp) || isNaN(a_inputs.targetExp) || isNaN(a_inputs.NJ)) {
             return NaN;
-        } else if(a_outputs.needExp<0) {
+        } else if(a_outputs.needExp < 0) {
             return ("Target "+(isLevel?"level":"exp")+" is too small.");
         } else {
             return a_value;
@@ -128,9 +128,39 @@ function f_printResult(a_outputs, a_inputs) {
     }
 }
 
-const copyResults = document.getElementById("copy-results");
-copyResults.addEventListener("click", handlecopyResults);
+window.addEventListener("copy", (copy) => {
+    copy.preventDefault();
+    const isCopy = {
+        targetExp:document.getElementById("target-exp-isCopy").checked,
+        nowExp:document.getElementById("now-exp-isCopy").checked,
+        NJ:document.getElementById("NJ-isCopy").checked,
+        targetLevel:document.getElementById("target-level-isCopy").checked,
+        nowLevel:document.getElementById("now-level-isCopy").checked,
+        expPerNJ:document.getElementById("exp-per-NJ-isCopy").checked,
+        needExp:document.getElementById("need-exp-isCopy").checked,
+        needNJ:document.getElementById("need-NJ-isCopy").checked,
+        needPing:document.getElementById("need-ping-isCopy").checked,
+    };
 
-function handlecopyResults() {
-    alert("미구현 기능입니다(추가 예정).");
-}
+    if (!isCopy.targetExp && !isCopy.nowExp && !isCopy.NJ && !isCopy.targetLevel && !isCopy.nowLevel && !isCopy.expPerNJ && !isCopy.needExp && !isCopy.needNJ && !isCopy.needPing) {
+        copy.clipboardData.setData("text", "https://molla.kr/kkutu/");
+        window.alert("복사할 대상이 없습니다!\n대신 이 계산기 링크를 복사했어요.");
+        return;
+    }
+
+    const inputs = f_setInput();
+    const outputs = f_setOutput(inputs);
+    
+    result = "낱장작 계산기 - https://molla.kr/kkutu/"
+    + (isCopy.targetExp?`\n목표 경험치:\t ${inputs.targetExp}`:"")
+    + (isCopy.nowExp?`\n현재 경험치:\t ${inputs.nowExp}`:"")
+    + (isCopy.NJ?`\n낱장:\t\t\t ${inputs.NJ}`:"")
+    + (isCopy.targetLevel?`\n목표 레벨:\t\t ${outputs.targetLevel}`:"")
+    + (isCopy.nowLevel?`\n현재 레벨:\t\t ${outputs.nowLevel}`:"")
+    + (isCopy.expPerNJ?`\n경험치/낱장:\t ${outputs.expPerNJ}`:"")
+    + (isCopy.needExp?`\n필요 경험치:\t ${outputs.needExp}`:"")
+    + (isCopy.needNJ?`\n필요한 낱장:\t ${outputs.needNJ}`:"")
+    + (isCopy.needPing?`\n필요한 핑:\t\t ${outputs.needPing}`:"");
+    copy.clipboardData.setData("text", result);
+    window.alert("체크한 항목 복사 완료!\n아무 곳에나 붙여 넣어보아요.");
+});
