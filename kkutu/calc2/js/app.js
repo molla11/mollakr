@@ -151,7 +151,7 @@ window.addEventListener("copy", (copy) => {
     const inputs = f_setInput();
     const outputs = f_setOutput(inputs);
     
-    result = "낱장작 계산기 - https://molla.kr/kkutu/"
+    result = "낱장작 계산기 - https://molla.kr/r/calc/"
     + (isCopy.targetExp?`\n목표 경험치:\t ${inputs.targetExp}`:"")
     + (isCopy.nowExp?`\n현재 경험치:\t ${inputs.nowExp}`:"")
     + (isCopy.NJ?`\n낱장:\t\t\t ${inputs.NJ}`:"")
