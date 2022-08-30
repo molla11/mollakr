@@ -152,15 +152,15 @@ window.addEventListener("copy", (copy) => {
     const outputs = f_setOutput(inputs);
     
     result = "낱장작 계산기 - https://molla.kr/r/calc/"
-    + (isCopy.targetExp?`\n목표 경험치:\t ${inputs.targetExp}`:"")
-    + (isCopy.nowExp?`\n현재 경험치:\t ${inputs.nowExp}`:"")
-    + (isCopy.NJ?`\n낱장:\t\t\t ${inputs.NJ}`:"")
-    + (isCopy.targetLevel?`\n목표 레벨:\t\t ${outputs.targetLevel}`:"")
-    + (isCopy.nowLevel?`\n현재 레벨:\t\t ${outputs.nowLevel}`:"")
-    + (isCopy.expPerNJ?`\n경험치/낱장:\t ${outputs.expPerNJ}`:"")
-    + (isCopy.needExp?`\n필요 경험치:\t ${outputs.needExp}`:"")
-    + (isCopy.needNJ?`\n필요한 낱장:\t ${outputs.needNJ}`:"")
-    + (isCopy.needPing?`\n필요한 핑:\t\t ${outputs.needPing}`:"");
+    + (isCopy.targetExp?    `\n목표 경험치:\t${inputs.targetExp}`:"")
+    + (isCopy.nowExp?       `\n현재 경험치:\t${inputs.nowExp}`:"")
+    + (isCopy.NJ?           `\n보유 낱장:  \t${inputs.NJ}`:"")
+    + (isCopy.targetLevel?  `\n목표 레벨:  \t${outputs.targetLevel}`:"")
+    + (isCopy.nowLevel?     `\n현재 레벨:  \t${outputs.nowLevel}`:"")
+    + (isCopy.expPerNJ?     `\n경험치/낱장:\t${outputs.expPerNJ}`:"")
+    + (isCopy.needExp?      `\n필요 경험치:\t${outputs.needExp}`:"")
+    + (isCopy.needNJ?       `\n필요한 낱장:\t${outputs.needNJ}`:"")
+    + (isCopy.needPing?     `\n필요한 핑:  \t${outputs.needPing}`:"");
     copy.clipboardData.setData("text", result);
     window.alert("체크한 항목 복사 완료!\n아무 곳에나 붙여 넣어보아요.");
 });
