@@ -162,5 +162,12 @@ window.addEventListener("copy", (copy) => {
     + (isCopy.needNJ?       `\n필요한 낱장:\t${outputs.needNJ}`:"")
     + (isCopy.needPing?     `\n필요한 핑:  \t${outputs.needPing}`:"");
     copy.clipboardData.setData("text", result);
-    window.alert("체크한 항목 복사 완료!\n아무 곳에나 붙여 넣어보아요.");
+    f_notice("복사 완료!");
 });
+
+function f_notice(msg) {
+    noticeMsg = document.getElementById("noticeMsg");
+    noticeMsg.innerText = msg;
+    noticeMsg.style.opacity = 1;
+    setTimeout(() => noticeMsg.style.opacity = 0, 1000);
+}

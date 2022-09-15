@@ -1,4 +1,4 @@
-#table1{
+#statusTable{
     margin-top: 10px;
     width: 423px;
     height: 50px;
@@ -6,7 +6,7 @@
     border-collapse: collapse;
 }
 
-#table2{
+#resultTable{
     margin-top: 10px;
     width: 423px;
     height: 50px;
@@ -62,4 +62,19 @@ code {
 
 #credits {
     text-align: right;
+}
+
+#noticeMsg {
+    opacity:0;
+    position:fixed;
+    top:70%;
+    left:50%;
+    background-color:#808;
+    color:#FCF;
+    transition:.5s;
+    transform: translateX(-50%);
+    padding:3px;
+    font-size:large;
+    font-weight:4px;
+    border-radius:5px;
 }
