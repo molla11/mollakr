@@ -106,5 +106,12 @@ const copyResults = document.getElementById("copy-results");
 copyResults.addEventListener("click", handlecopyResults);
 
 function handlecopyResults() {
-    alert("미구현 기능입니다(추가 예정).");
+    f_notice("미구현 기능입니다. (추가 예정)")
+}
+
+function f_notice(msg) {
+    noticeMsg = document.getElementById("noticeMsg");
+    noticeMsg.innerText = msg;
+    noticeMsg.style.opacity = 1;
+    setTimeout(() => noticeMsg.style.opacity = 0, 1000);
 }
