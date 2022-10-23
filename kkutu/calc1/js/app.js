@@ -57,7 +57,7 @@ function f_printStatus(a_inputs) {
 function f_setOutput(a_inputs) {
     const outputList = {
         level:f_setLevel(a_inputs.exp),
-        ping2NJ:a_inputs.NJ+Math.floor(a_inputs.ping/20),
+        ping2NJ:a_inputs.NJ+Math.floor(a_inputs.ping/10),
         expPerNJ:Math.floor((Math.sqrt(8*a_inputs.exp+1)+1)/2),
     };
     outputList.NJ2Exp = (((2*outputList.expPerNJ)+outputList.ping2NJ-1)*outputList.ping2NJ)/2;
