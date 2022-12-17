@@ -1,0 +1,175 @@
+/* use in HTML */
+body {
+    margin-top: 0;
+}
+
+#wrap {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    width: 910px;
+}
+
+#header {
+    width: 910px;
+    height: 70px;
+}
+
+#title {
+    margin-bottom: 5px;
+    width: 910px;
+    height: 40px;
+    text-align: center;
+}
+
+#title h1 {
+    margin: 0;
+}
+
+#timelapse {
+    width: 910px;
+    height: 30px;
+}
+
+table, tr, td {
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+
+
+
+#selected {
+    float: right;
+    height: 30px;
+    float: right;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+#day {
+    display: inline-block;
+    text-align: right;
+}
+
+#info-selected {
+    display: inline-block;
+    text-align: left;
+}
+
+#goto-previous-month, #goto-next-month {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 7px;
+    background-color: #ddd;
+    line-height: 20px;
+    font-weight: 1000;
+    font-size: 20px;
+    color: #888;
+    text-align: center;
+}
+
+#goto-previous-year, #goto-next-year {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 25px;
+    border-radius: 7px;
+    background-color: #ddd;
+    line-height: 20px;
+    letter-spacing: -10px;
+    font-weight: 1000;
+    font-size: 20px;
+    color: #888;
+    text-align: left;
+}
+
+#goto-today {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    width: 65px;
+    height: 25px;
+    border-radius: 7px;
+    background-color: #ddd;
+    line-height: 20px;
+    font-weight: 1000;
+    font-size: 20px;
+    color: #888;
+    text-align: center;
+}
+
+table {
+    position: relative;
+    top: 14px;
+    width: 910px;
+    height: 630px;
+    display: inline-table;
+}
+
+#calendar {
+    width: 910px;
+    height: 30px;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+td {
+    background-color: #FFF;
+}
+
+#w1 td, #w2 td, #w3 td, #w4 td, #w5 td, #w6 td {
+    width: 130px;
+    height: 90px;
+    transition: .3s;
+}
+
+#weekdays td {
+    line-height: 30px;
+    transition: .3s;
+}
+
+.day {
+    vertical-align: top;
+}
+
+.sun {
+    color: #F00;
+}
+
+.mon ,.tue ,.wed ,.thu ,.fri {
+    color: #000;
+}
+
+.sat {
+    color: #00F;
+}
+
+.day div {
+    position: relative;
+    top: 3px;
+    left: 4px;
+    width: 25px;
+    height: 23px;
+    text-align: right;
+    font-weight: bold;
+    line-height: 20px;
+    font-size: 20px;
+}
+
+#credit {
+    position: relative;
+    top: 15px;
+    float: right;
+    color: #FFF;
+    transition: .5s;
+}
+
+#credit:hover {
+    color:#000
+}

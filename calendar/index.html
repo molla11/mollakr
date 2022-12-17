@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body><div id="wrap">
+    <div id="header">
+        <div id="title">
+            <h1>Calendar</h1>
+        </div>
+        <div id="timelapse">
+            <span id="goto-previous-year">◀◀</span>
+            <span id="goto-previous-month">◀</span>
+            <input id="goto-anywhen" type="month" value="0001-01">
+            <span id="goto-next-month">▶</span>
+            <span id="goto-next-year">▶▶</span>
+            <span id="goto-today">Today</span>
+            <span id="selected">
+                <span id="info-selected">Field of timeData</span>
+            </span>
+        </div>
+    </div>
+
+    <div id="main">
+        <table id="calendar">
+            <tr id="weekdays">
+                <td class="sun">Sunday</td>
+                <td class="mon">Monday</td>
+                <td class="tue">Tuesday</td>
+                <td class="wed">Wednesday</td>
+                <td class="thu">Thursday</td>
+                <td class="fri">Friday</td>
+                <td class="sat">Saturday</td>
+            </tr>
+            <tr id="w1" class="week">
+                <td class="sun day"><div></div></td>
+                <td class="mon day"><div></div></td>
+                <td class="tue day"><div></div></td>
+                <td class="wed day"><div></div></td>
+                <td class="thu day"><div></div></td>
+                <td class="fri day"><div></div></td>
+                <td class="sat day"><div></div></td>
+            </tr>
+
+            <tr id="w2" class="week">
+                <td class="sun day"><div></div></td>
+                <td class="mon day"><div></div></td>
+                <td class="tue day"><div></div></td>
+                <td class="wed day"><div></div></td>
+                <td class="thu day"><div></div></td>
+                <td class="fri day"><div></div></td>
+                <td class="sat day"><div></div></td>
+            </tr>
+
+            <tr id="w3" class="week">
+                <td class="sun day"><div></div></td>
+                <td class="mon day"><div></div></td>
+                <td class="tue day"><div></div></td>
+                <td class="wed day"><div></div></td>
+                <td class="thu day"><div></div></td>
+                <td class="fri day"><div></div></td>
+                <td class="sat day"><div></div></td>
+            </tr>
+
+            <tr id="w4" class="week">
+                <td class="sun day"><div></div></td>
+                <td class="mon day"><div></div></td>
+                <td class="tue day"><div></div></td>
+                <td class="wed day"><div></div></td>
+                <td class="thu day"><div></div></td>
+                <td class="fri day"><div></div></td>
+                <td class="sat day"><div></div></td>
+            </tr>
+
+            <tr id="w5" class="week">
+                <td class="sun day"><div></div></td>
+                <td class="mon day"><div></div></td>
+                <td class="tue day"><div></div></td>
+                <td class="wed day"><div></div></td>
+                <td class="thu day"><div></div></td>
+                <td class="fri day"><div></div></td>
+                <td class="sat day"><div></div></td>
+            </tr>
+            
+            <tr id="w6" class="week">
+                <td class="sun day"><div></div></td>
+                <td class="mon day"><div></div></td>
+                <td class="tue day"><div></div></td>
+                <td class="wed day"><div></div></td>
+                <td class="thu day"><div></div></td>
+                <td class="fri day"><div></div></td>
+                <td class="sat day"><div></div></td>
+            </tr>
+        </table>
+    </div>
+    <span id="credit">made by molla.</span>
+</div></body>
+<script src="app.js"></script>
+</html>
