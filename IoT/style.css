@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+}
+
+@media screen and (min-width: 513px) {
+    #image {
+        position: relative;
+        width: 512px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #text {
+        position: absolute;
+        display: inline-block;
+        line-height: 25px;
+        height: 25px;
+        font-size: 70%;
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+    }
+
+    #buttons {
+        width: 512px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media screen and (max-width: 512px) {
+    #image {
+        position: relative;
+        width: 100%;
+        left: 50%;
+        margin-top: 30%;
+        transform: translateX(-50%);
+    }
+    img {
+        width: 100%;
+    }
+
+    #text {
+        position: absolute;
+        display: inline-block;
+        line-height: 25px;
+        height: 25px;
+        font-size: 60%;
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+    }
+
+    #buttons {
+        width: 100%;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+#text1 {
+    width: 512px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+img {
+    width: 100%;
+}
+
+
+
+#left, #right {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 7px;
+    background-color: #ddd;
+    line-height: 20px;
+    font-weight: 1000;
+    font-size: 20px;
+    color: #888;
+    text-align: center;
+}
+
+#left {
+    float: left;
+}
+
+#right {
+    float: right;
+}
+
