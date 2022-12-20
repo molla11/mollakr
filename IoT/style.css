@@ -2,7 +2,7 @@
     margin: 0;
 }
 
-@media screen and (min-width: 513px) {
+@media screen and (min-width: 1080px) {
     #image {
         position: relative;
         width: 512px;
@@ -30,7 +30,7 @@
     }
 }
 
-@media screen and (max-width: 512px) {
+@media screen and (max-width: 1079px) {
     #image {
         position: relative;
         width: 100%;
