@@ -2,12 +2,16 @@
     margin: 0;
 }
 
-@media screen and (min-width: 1500px) {
+@media screen and (orientation: landscape) {
     #image {
         position: relative;
         width: 512px;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+    img {
+        width: 512px;
     }
 
     #text {
@@ -30,7 +34,7 @@
     }
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (orientation: portrait) {
     #image {
         position: relative;
         width: 100%;
@@ -60,17 +64,6 @@
         left: 50%;
         transform: translateX(-50%);
     }
-}
-
-#text1 {
-    width: 512px;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-img {
-    width: 100%;
 }
 
 
