@@ -11,7 +11,4 @@ const mySwiper = new Swiper('.swiper-container', {
     el: '.swiper-scrollbar',
     draggable: true,
   },
-  autoplay: {
-    delay: 10000,
-  },
 });
