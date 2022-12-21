@@ -41,6 +41,13 @@ img {
     transform: translateX(-50%);
 }
 
+:root {
+    --swiper-theme-color: #CCC;
+}
+.swiper-pagination-bullet {
+    background: var(--swiper-pagination-bullet-inactive-color, #FFF);
+}
+
 @media screen and (orientation: landscape) {
     .swiper-container {
         width: 60%;
