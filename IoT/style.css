@@ -39,7 +39,7 @@
         position: relative;
         width: 100%;
         left: 50%;
-        margin-top: 30%;
+        margin-top: 40px;
         transform: translateX(-50%);
     }
     img {
