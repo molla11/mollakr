@@ -21,27 +21,33 @@ body {
     text-align: center;
 }
 
+.swiper-container {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.swiper-wrapper {
+    position: relative;
+}
+
+.swiper-slide {
+    position: relative;
+}
+
+img {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 @media screen and (orientation: landscape) {
     .swiper-container {
-        position: relative;
         width: 60%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .swiper-wrapper {
-        position: relative;
-    }
-
-    .swiper-slide {
-        position: relative;
     }
 
     img {
-        position: relative;
         width: 50%;
-        left: 50%;
-        transform: translateX(-50%);
     }
 
     .text {
@@ -50,30 +56,12 @@ body {
 }
 
 @media screen and (orientation: portrait) {
-    #wrapper {
-        margin-top: 1%;
-    }
-
     .swiper-container {
-        position: relative;
         width: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .swiper-wrapper {
-        position: relative;
-    }
-
-    .swiper-slide {
-        position: relative;
     }
 
     img {
-        position: relative;
         width: 100%;
-        left: 50%;
-        transform: translateX(-50%);
     }
 
     .text {
