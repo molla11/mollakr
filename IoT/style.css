@@ -2,91 +2,81 @@
     margin: 0;
 }
 
+.body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+body {
+    background-color: #112233;
+}
+
+.text {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+}
+
 @media screen and (orientation: landscape) {
-    #image {
+    .swiper-container {
         position: relative;
-        width: 512px;
+        width: 60%;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+    .swiper-wrapper {
+        position: relative;
+    }
+
+    .swiper-slide {
+        position: relative;
     }
 
     img {
-        width: 512px;
-    }
-
-    #text {
-        position: absolute;
-        display: inline-block;
-        line-height: 25px;
-        height: 25px;
-        font-size: 70%;
-        text-align: center;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80%;
-    }
-
-    #buttons {
-        width: 512px;
         position: relative;
+        width: 50%;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+    .text {
+        font-size: medium;
     }
 }
 
 @media screen and (orientation: portrait) {
-    #image {
+    #wrapper {
+        margin-top: 1%;
+    }
+
+    .swiper-container {
         position: relative;
         width: 100%;
         left: 50%;
-        margin-top: 40px;
         transform: translateX(-50%);
     }
+
+    .swiper-wrapper {
+        position: relative;
+    }
+
+    .swiper-slide {
+        position: relative;
+    }
+
     img {
-        width: 100%;
-    }
-
-    #text {
-        position: absolute;
-        display: inline-block;
-        line-height: 25px;
-        height: 25px;
-        font-size: 60%;
-        text-align: center;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80%;
-    }
-
-    #buttons {
-        width: 100%;
         position: relative;
+        width: 100%;
         left: 50%;
         transform: translateX(-50%);
     }
+
+    .text {
+        font-size: x-small;
+    }
 }
-
-
-
-#left, #right {
-    position: relative;
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    border-radius: 7px;
-    background-color: #ddd;
-    line-height: 20px;
-    font-weight: 1000;
-    font-size: 20px;
-    color: #888;
-    text-align: center;
-}
-
-#left {
-    float: left;
-}
-
-#right {
-    float: right;
-}
-
