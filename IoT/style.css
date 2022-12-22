@@ -1,78 +1,86 @@
+body { overflow: hidden; }
+body * { touch-action: none; }
+
 * {
-    margin: 0;
+  margin: 0;
 }
 
 .body {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+  display: none; /* Chrome, Safari, Opera */
 }
 
 body {
-    background-color: #222;
-    overflow: hidden;
+  background-color: #222;
+  overflow: hidden;
 }
 
 .text {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: white;
-    text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: white;
+  text-align: center;
 }
 
+.text2 {
+    color: white;
+    text-align: center;
+  }
+
 .swiper-container {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .swiper-wrapper {
-    position: relative;
+  position: relative;
 }
 
 .swiper-slide {
-    position: relative;
+  position: relative;
 }
 
 img {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 :root {
-    --swiper-theme-color: #CCC;
+  --swiper-theme-color: #CCC;
 }
 .swiper-pagination-bullet {
-    background: var(--swiper-pagination-bullet-inactive-color, #FFF);
+  background: var(--swiper-pagination-bullet-inactive-color, rgba(255, 255, 255, 0.75));
 }
 
 @media screen and (orientation: landscape) {
-    .swiper-container {
-        width: 60%;
-    }
+  .swiper-container {
+    width: 60%;
+  }
 
-    img {
-        width: 70%;
-    }
+  img {
+    width: 70%;
+  }
 
-    .text {
-        font-size: medium;
-    }
+  .text {
+    font-size: medium;
+  }
 }
 
 @media screen and (orientation: portrait) {
-    .swiper-container {
-        width: 100%;
-    }
+  .swiper-container {
+    width: 100%;
+  }
 
-    img {
-        width: 100%;
-    }
+  img {
+    width: 100%;
+  }
 
-    .text {
-        font-size: x-small;
-    }
+  .text {
+    font-size: x-small;
+  }
 }
