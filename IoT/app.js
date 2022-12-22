@@ -30,10 +30,6 @@ window.onkeydown = (e) => {
     case ' ':
       buttonNext.click();
       break;
-
-    case 'Enter':
-      buttonNext.click();
-      break;
     
     case 'PageUp':
       buttonPrev.click();
