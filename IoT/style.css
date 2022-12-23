@@ -69,6 +69,10 @@ img {
   .text {
     font-size: medium;
   }
+
+  .text {
+    font-size: medium;
+  }
 }
 
 @media screen and (orientation: portrait) {
@@ -81,6 +85,10 @@ img {
   }
 
   .text {
+    font-size: x-small;
+  }
+
+  .text2 {
     font-size: x-small;
   }
 }
