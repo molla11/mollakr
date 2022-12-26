@@ -26,10 +26,6 @@ window.onkeydown = (e) => {
     case 'ArrowRight':
       buttonNext.click();
       break;
-
-    case ' ':
-      buttonNext.click();
-      break;
     
     case 'PageUp':
       buttonPrev.click();
