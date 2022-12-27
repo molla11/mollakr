@@ -53,8 +53,9 @@ function setEventListener() {
         HTML.perResult.innerHTML = permutation(BigInt(HTML.perN.value), BigInt(HTML.perR.value));
         function permutation(n, r) {
             if (n < r) {
-                window.alert('r ≤ n 이어야 합니다.');
-                HTML.perR.innerHTML = '0';
+                window.alert('n ≥ r 이어야 합니다.');
+                HTML.perR.value = '0';
+                return 1n.toString();
             }
             else {
                 return (factorial(n) / factorial(n - r)).toString();
@@ -66,8 +67,9 @@ function setEventListener() {
         HTML.comResult.innerHTML = combination(BigInt(HTML.comN.value), BigInt(HTML.comR.value));
         function combination(n, r) {
             if (n < r) {
-                window.alert('r ≤ n 이어야 합니다.');
-                HTML.comR.innerHTML = '0';
+                window.alert('n ≥ r 이어야 합니다.');
+                HTML.comR.value = '0';
+                return 1n.toString();
             }
             else {
                 return (factorial(n) / (factorial(n - r) * factorial(r))).toString();

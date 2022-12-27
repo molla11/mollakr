@@ -52,7 +52,8 @@ function setEventListener() {
         function permutation(n: bigint, r: bigint):string {
             if (n < r) {
                 window.alert('n ≥ r 이어야 합니다.');
-                HTML.perR.innerHTML = '0';
+                HTML.perR.value = '0';
+                return 1n.toString()
             } else {
                 return (factorial(n) / factorial(n - r)).toString();
             }
@@ -65,7 +66,8 @@ function setEventListener() {
         function combination(n: bigint, r: bigint):string {
             if (n < r) {
                 window.alert('n ≥ r 이어야 합니다.');
-                HTML.comR.innerHTML = '0';
+                HTML.comR.value = '0';
+                return 1n.toString();
             } else {
                 return (factorial(n) / (factorial(n - r) * factorial(r))).toString();
             }
