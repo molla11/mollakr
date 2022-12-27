@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    margin-left: 5px;
+    background-color: #333;
+    color: white;
+}
+
+h1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+h2 {
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+p {
+    font-size: small;
+}
+
+input {
+    width: 25px;
+}
+
+.rule {
+    width: 40px;
+}
+
+.opcode {
+    font-size: xx-large;
+    font-style: italic;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.result {
+    border: 1px solid #FFF;
+    font-size: medium;
+    max-width: 50%;
+    word-break: break-all;
+    margin: 5px;
+    margin-left: 20px;
+}
+
+.text1 {
+    font-size: medium;
+    margin: 10px;
+}
+
+.text2 {
+    font-size: small;
+}

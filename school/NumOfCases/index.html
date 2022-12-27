@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경우의 수 계산기</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>경우의 수 계산기</h1>
+    <div class="text1">
+        0에서 100 사이의 정수를 입력하세요.
+    </div>
+    <h2>합의 법칙</h2>
+    <p>
+        사건이 독립적으로 일어나는 경우:
+        <br><input type="number" class="input-box rule" step="1" min="0" id="sum-1st-event" placeholder="사건1">
+        <input type="number" class="input-box rule" step="1" min="0" id="sum-2nd-event" placeholder="사건2">
+        <div class="result">
+            <br>경우의 수: <span id="sum-result"></span>
+        </div>
+    </p>
+    <hr>
+    <h2>곱의 법칙</h2>
+    <p>
+        사건이 동시에 일어나는 경우:
+        <br><input type="number" class="input-box rule" step="1" min="0" id="mul-1st-event" placeholder="사건1">
+        <input type="number" class="input-box rule" step="1" min="0" id="mul-2nd-event" placeholder="사건2">
+        <div class="result">
+            <br>경우의 수: <span id="mul-result"></span>
+        </div>
+    </p>
+    <hr>
+    <h2>순열</h2>
+    <p>
+        n개 중 r개를 골라<b>배열</b>하는 경우의 수
+        <br>(조건: nPr에 대하여 0 ≤ r ≤ n)
+        <br><input type="number" class="input-box" step="1" min="0" id="permutation-n" placeholder="n">
+        <span class="opcode">P</span>
+        <input type="number" class="input-box" step="1" min="0" id="permutation-r" placeholder="r">
+        <div class="result">
+            <br>경우의 수: <span id="permutation-result"></span>
+        </div>
+    </p>
+    <hr>
+    <h2>조합</h2>
+    <p>
+        n개 중 r개를 순서에 관계없이 고르는 경우의 수
+        <br>(조건: nCr에 대하여 0 ≤ r ≤ n)
+        <br><input type="number" class="input-box" step="1" min="0" id="combination-n" placeholder="n">
+        <span class="opcode">C</span>
+        <input type="number" class="input-box" step="1" min="0" id="combination-r" placeholder="r">
+        <div class="result">
+            <br>경우의 수: <span id="combination-result"></span>
+        </div>
+    </p>
+    <hr>
+    <div class="text2">
+        <br>이 페이지는 Internet Explorer에서 제대로 동작하지 않을 수 있습니다.
+    </div>
+</body>
+<script src="app.js"></script>
+</html>
