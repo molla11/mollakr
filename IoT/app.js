@@ -17,7 +17,6 @@ const buttonNext = document.querySelector('.swiper-button-next');
 const buttonPrev = document.querySelector('.swiper-button-prev');
 
 window.onkeydown = (e) => {
-  console.log(e);
   switch (e.key) {
     case 'ArrowLeft':
       buttonPrev.click();
