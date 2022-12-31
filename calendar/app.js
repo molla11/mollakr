@@ -24,8 +24,7 @@ class DateData extends MonthData {
     constructor(data) {
         super(data);
     }
-    // idx start from 1.
-    weekIdx = this.weekIdx;
+    // Indexes are start from 1.
     dateIdx = this.getDate();
     dayIdx = this.getDay() + 1;
     shortNameOfMonth = new Intl.DateTimeFormat("en-US", { month: 'short' }).format(this);
@@ -73,11 +72,12 @@ function initialize() {
         });
         HTML.gotoAnywhen.addEventListener('input', () => {
             const temp = HTML.gotoAnywhen.value;
-            if (!(temp === '')) {
-                dataOfSelected.y = Math.max(Math.min(parseInt(temp.substring(0, 4)), 9999), 1);
-                dataOfSelected.m = Math.max(Math.min(parseInt(temp.substring(5, 7)), 12), 1);
-                setCalendar();
+            if (temp === '') {
+                return;
             }
+            dataOfSelected.y = Math.max(Math.min(parseInt(temp.substring(0, 4)), 9999), 1);
+            dataOfSelected.m = Math.max(Math.min(parseInt(temp.substring(5, 7)), 12), 1);
+            setCalendar();
         });
         HTML.gotoToday.addEventListener('click', () => {
             dataOfSelected.y = new Date().getFullYear();
@@ -98,19 +98,21 @@ function initialize() {
                 });
             }
         }
-        function changeDataOfSelected(amount) {
-            const tempMonth = (dataOfSelected.y * 12) + dataOfSelected.m + amount - 1;
-            if (tempMonth < 120000 && tempMonth > 11) {
-                dataOfSelected.y = Math.max(Math.min(Math.floor(tempMonth / 12), 9999), 1);
-                dataOfSelected.m = (tempMonth % 12) + 1;
-            }
-        }
-        function erasePrevColor() {
-            const selected = new DateData(dataOfSelected);
-            document.querySelector(`#w${selected.weekIdx} .${selected.shortNameOfDay}`).style.backgroundColor = '#FFF';
-            document.querySelector(`#weekdays .${selected.shortNameOfDay}`).style.backgroundColor = '#FFF';
+    }
+    function changeDataOfSelected(amount) {
+        const tempMonth = (dataOfSelected.y * 12) + dataOfSelected.m + amount - 1;
+        dataOfSelected.y = Math.max(Math.min(Math.floor(tempMonth / 12), 9999), 1);
+        dataOfSelected.m = (tempMonth % 12) + 1;
+        const changedDatesOfMonth = new MonthData({ y: dataOfSelected.y, m: dataOfSelected.m, d: 1 }).datesOfMonth;
+        if (dataOfSelected.d > changedDatesOfMonth) {
+            dataOfSelected.d = changedDatesOfMonth;
         }
     }
+}
+function erasePrevColor() {
+    const selected = new DateData(dataOfSelected);
+    document.querySelector(`#w${selected.weekIdx} .${selected.shortNameOfDay}`).style.backgroundColor = '#FFF';
+    document.querySelector(`#weekdays .${selected.shortNameOfDay}`).style.backgroundColor = '#FFF';
 }
 function setCalendar() {
     const selected = new MonthData(dataOfSelected);
@@ -138,17 +140,17 @@ function setCalendar() {
                 document.querySelector(CSSSelector + ' div').innerHTML = '';
             }
         }
-        for (let i = 0; i < 7; i++) {
-            document.querySelector(`#weekdays .${week[i]}`).style.backgroundColor = '#FFF';
+        for (let i of week) {
+            document.querySelector(`#weekdays .${i}`).style.backgroundColor = '#FFF';
         }
     }
     function setInputValue(value) {
         document.querySelector('#goto-anywhen').value = value;
     }
-    function fillDateField(start, date) {
+    function fillDateField(idxOf1st, date) {
         const week = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
         for (let i = 0; i < date; i++) {
-            const css = `#w${Math.ceil((start + i + 1) / 7)} .${week[(start + i) % 7]}`;
+            const css = `#w${Math.ceil((idxOf1st + i + 1) / 7)} .${week[(idxOf1st + i) % 7]}`;
             document.querySelector(css + ' div').innerHTML = (i + 1).toString();
         }
     }

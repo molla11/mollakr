@@ -53,6 +53,7 @@ img {
 :root {
   --swiper-theme-color: #CCC;
 }
+
 .swiper-pagination-bullet {
   background: var(--swiper-pagination-bullet-inactive-color, rgba(255, 255, 255, 0.75));
 }
@@ -91,4 +92,13 @@ img {
   .text2 {
     font-size: x-small;
   }
+}
+
+.instagram {
+  color: #BBF; 
+  text-decoration: none;
+}
+
+.instagram:hover {
+  text-decoration: underline;
 }

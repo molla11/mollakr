@@ -1,8 +1,10 @@
+type Data = { y: number, m: number, d: number };
+
 class MonthData extends Date {
-    constructor(data: { y: number, m: number, d: number }) {
+    constructor(data: Data) {
         super(`${data.y.toString().padStart(4, '0')}-${data.m.toString().padStart(2, '0')}-${data.d.toString().padStart(2, '0')}`);
     }
-    
+
     readonly YYYY = this.getFullYear().toString().padStart(4, "0");
     readonly MM = (this.getMonth() + 1).toString().padStart(2, "0");
 
@@ -27,12 +29,11 @@ class MonthData extends Date {
 }
 
 class DateData extends MonthData {
-    constructor(data: { y: number, m: number, d: number }) {
+    constructor(data: Data) {
         super(data);
     }
 
-    // idx start from 1.
-    readonly weekIdx = this.weekIdx;
+    // Indexes are start from 1.
     readonly dateIdx = this.getDate();
     readonly dayIdx = this.getDay() + 1;
 
@@ -42,7 +43,7 @@ class DateData extends MonthData {
         const n = parseInt(this.getDate().toString(), 10);
         const suffix = ['th', 'st', 'nd', 'rd'];
         const mod100 = n % 100;
-    
+
         return n + (suffix[(mod100 - 20) % 10] || suffix[mod100] || suffix[0]);
     })();
 }
@@ -55,7 +56,7 @@ const dataOfSelected = {
 
 initialize();
 
-function initialize() {
+function initialize() { // only once
     setEventListener();
     setCalendar();
 
@@ -84,14 +85,15 @@ function initialize() {
             changeDataOfSelected(1);
             setCalendar();
         });
-    
+
         HTML.gotoAnywhen.addEventListener('input', () => {
             const temp = HTML.gotoAnywhen.value;
-            if (!(temp === '')) {
-                dataOfSelected.y = Math.max(Math.min(parseInt(temp.substring(0, 4)), 9999), 1);
-                dataOfSelected.m = Math.max(Math.min(parseInt(temp.substring(5, 7)), 12), 1);
-                setCalendar();
+            if (temp === '') {
+                return;
             }
+            dataOfSelected.y = Math.max(Math.min(parseInt(temp.substring(0, 4)), 9999), 1);
+            dataOfSelected.m = Math.max(Math.min(parseInt(temp.substring(5, 7)), 12), 1);
+            setCalendar();
         });
         HTML.gotoToday.addEventListener('click', () => {
             dataOfSelected.y = new Date().getFullYear();
@@ -99,9 +101,9 @@ function initialize() {
             dataOfSelected.d = new Date().getDate();
             setCalendar();
         })
-    
+
         const week: Readonly<string[]> = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-    
+
         for (let i = 0; i < 6; i++) {
             for (let j in week) {
                 const tableCell = document.querySelector<HTMLTableCellElement>(`#w${i + 1} .${week[j]}`);
@@ -114,25 +116,26 @@ function initialize() {
                 })
             }
         }
+    }
 
-        function changeDataOfSelected(amount: number) {
-            const tempMonth = (dataOfSelected.y * 12) + dataOfSelected.m + amount - 1;
-            if (tempMonth < 120000 && tempMonth > 11) {
-                dataOfSelected.y = Math.max(Math.min(Math.floor(tempMonth / 12), 9999), 1);
-                dataOfSelected.m = (tempMonth % 12) + 1;
-            }
+    function changeDataOfSelected(amount: number) {
+        const tempMonth = (dataOfSelected.y * 12) + dataOfSelected.m + amount - 1;
+        dataOfSelected.y = Math.max(Math.min(Math.floor(tempMonth / 12), 9999), 1);
+        dataOfSelected.m = (tempMonth % 12) + 1;
+        const changedDatesOfMonth = new MonthData({ y: dataOfSelected.y, m: dataOfSelected.m, d: 1 }).datesOfMonth;
+        if (dataOfSelected.d > changedDatesOfMonth) {
+            dataOfSelected.d = changedDatesOfMonth;
         }
-
-        function erasePrevColor() {
-            const selected = new DateData(dataOfSelected);
-            document.querySelector<HTMLTableCellElement>(`#w${selected.weekIdx} .${selected.shortNameOfDay}`).style.backgroundColor = '#FFF';
-            document.querySelector<HTMLTableCellElement>(`#weekdays .${selected.shortNameOfDay}`).style.backgroundColor = '#FFF';
-        }
-
-    } 
+    }
 }
 
-function setCalendar() { // every event (changing month)
+function erasePrevColor() {
+    const selected = new DateData(dataOfSelected);
+    document.querySelector<HTMLTableCellElement>(`#w${selected.weekIdx} .${selected.shortNameOfDay}`).style.backgroundColor = '#FFF';
+    document.querySelector<HTMLTableCellElement>(`#weekdays .${selected.shortNameOfDay}`).style.backgroundColor = '#FFF';
+}
+
+function setCalendar() { // every event
     const selected = new MonthData(dataOfSelected);
 
     hideUselessWeek(selected.weeksOfMonth);
@@ -154,7 +157,7 @@ function setCalendar() { // every event (changing month)
 
     function clearCalendar(w: number) {
         const week: Readonly<string[]> = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-    
+
         for (let i = 0; i < w; i++) {
             for (let j = 0; j < 7; j++) {
                 const CSSSelector = `#w${i + 1} .${week[j]}`;
@@ -162,27 +165,27 @@ function setCalendar() { // every event (changing month)
                 document.querySelector<HTMLDivElement>(CSSSelector + ' div').innerHTML = '';
             }
         }
-    
-        for (let i = 0; i < 7; i++) {
-            document.querySelector<HTMLTableCellElement>(`#weekdays .${week[i]}`).style.backgroundColor = '#FFF';
+
+        for (let i of week) {
+            document.querySelector<HTMLTableCellElement>(`#weekdays .${i}`).style.backgroundColor = '#FFF';
         }
     }
 
-    function setInputValue(value: string) { 
+    function setInputValue(value: string) {
         document.querySelector<HTMLInputElement>('#goto-anywhen').value = value;
     }
 
-    function fillDateField(start: number, date: number) {
+    function fillDateField(idxOf1st: number, date: number) {
         const week: Readonly<string[]> = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-        
+
         for (let i = 0; i < date; i++) {
-            const css = `#w${Math.ceil((start + i + 1) / 7)} .${week[(start + i) % 7]}`;
+            const css = `#w${Math.ceil((idxOf1st + i + 1) / 7)} .${week[(idxOf1st + i) % 7]}`;
             document.querySelector<HTMLDivElement>(css + ' div').innerHTML = (i + 1).toString();
         }
     }
 }
 
-function handleDateSelected(tableCell: HTMLTableCellElement, day:string, data: string) {
+function handleDateSelected(tableCell: HTMLTableCellElement, day: string, data: string) {
     if (tableCell.style.backgroundColor === 'rgb(255, 255, 255)') {
         tableCell.style.backgroundColor = '#DDF';
         document.querySelector<HTMLTableCellElement>(`#weekdays .${day}`).style.backgroundColor = '#DDF';
