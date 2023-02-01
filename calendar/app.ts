@@ -135,7 +135,7 @@ function erasePrevColor() {
     document.querySelector<HTMLTableCellElement>(`#weekdays .${selected.shortNameOfDay}`).style.backgroundColor = '#FFF';
 }
 
-function setCalendar() { // every event
+function setCalendar() { //Enabled if pages in the calendar are turned over
     const selected = new MonthData(dataOfSelected);
 
     hideUselessWeek(selected.weeksOfMonth);
