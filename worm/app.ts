@@ -100,7 +100,7 @@ function gameStart() {
 
 	function deleteReadyScreen() {
         const body = document.querySelector('body') as HTMLBodyElement;
-        body.removeChild(body.children[1]);
+        body.removeChild(document.querySelector('.wrap') as HTMLDivElement);
 	}
 }
 
