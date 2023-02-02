@@ -1,0 +1,93 @@
+* {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+
+    margin: 0;
+}
+
+.ingame-wrap {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+}
+
+td {
+    width: 17px;
+    height: 17px;
+    border-radius: 30%;
+    background-color: #CCC;
+}
+
+.start-button {
+    width: 200px;
+    height: 60px;
+    border-radius: 30px;
+    font-size: 30px;
+    font-weight: normal;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.game-title {
+    font-size: 55px;
+}
+
+.help {
+    position: relative;
+    width: auto;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+.ingame-title {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.wrap {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+}
+
+.score {
+    display: block;
+    position: relative;
+    width: auto;
+    top: 15px;
+    right: 0px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.credit {
+    display: block;
+    position: relative;
+    width: auto;
+    top: 15px;
+    right: 0px;
+    color: #FFF;
+    transition: .5s;
+}
+
+.credit:hover {
+    color: #000
+}
