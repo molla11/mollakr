@@ -99,8 +99,7 @@ function gameStart() {
     }, constants.delay);
 
 	function deleteReadyScreen() {
-        const body = document.querySelector('body') as HTMLBodyElement;
-        body.removeChild(document.querySelector('.wrap') as HTMLDivElement);
+        (document.querySelector('body') as HTMLBodyElement).removeChild(document.querySelector('.wrap') as HTMLDivElement);
 	}
 }
 

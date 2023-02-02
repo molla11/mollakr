@@ -73,8 +73,7 @@ function gameStart() {
         render();
     }, constants.delay);
     function deleteReadyScreen() {
-        const body = document.querySelector('body');
-        body.removeChild(document.querySelector('.wrap'));
+        document.querySelector('body').removeChild(document.querySelector('.wrap'));
     }
 }
 function gameOver() {
