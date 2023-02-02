@@ -1,7 +1,7 @@
 "use strict";
 const constants = {
     size: 21,
-    length: 10,
+    length: 2,
     delay: 300,
 };
 const board = get2DSquareArray(constants.size);
