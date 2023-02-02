@@ -78,6 +78,7 @@ function gameStart() {
 }
 function gameOver() {
     clearInterval(playing);
+    document.querySelector('.score').innerHTML = `${document.querySelector('.score').innerHTML} | Game Over.`;
 }
 function createTable(size) {
     const wrap = document.createElement('div');

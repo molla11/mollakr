@@ -105,6 +105,7 @@ function gameStart() {
 
 function gameOver() {
 	clearInterval(playing);
+    (document.querySelector('.score') as HTMLSpanElement).innerHTML = `${(document.querySelector('.score') as HTMLSpanElement).innerHTML} | Game Over.`
 }
 
 function createTable(size: number): void {
@@ -336,7 +337,6 @@ function render() {
                 default:           // body
                     color = '#8D4';
                     break;
-                    
             }
 
             element.style.backgroundColor = color;
