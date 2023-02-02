@@ -74,7 +74,7 @@ function gameStart() {
     }, constants.delay);
     function deleteReadyScreen() {
         const body = document.querySelector('body');
-        body.removeChild(body.children[1]);
+        body.removeChild(document.querySelector('.wrap'));
     }
 }
 function gameOver() {
