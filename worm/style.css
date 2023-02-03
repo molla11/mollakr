@@ -20,7 +20,27 @@
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: auto;
+    width: 100%;
+    height: 80%;
+}
+
+.mini-wrap {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: max-content;
+}
+
+
+#table {
+    position: relative;
+    width: min-content;
+    height: min-content;
+    left: 50%;
+    transform: translateX(-50%);
+    display: table;
+    table-layout: fixed;
 }
 
 td {
@@ -28,6 +48,8 @@ td {
     height: 17px;
     border-radius: 30%;
     background-color: #CCC;
+    display: table-cell;
+    table-layout: fixed;
 }
 
 .start-button {
@@ -57,8 +79,13 @@ td {
 }
 
 .ingame-title {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
     font-size: 35px;
     font-weight: bold;
+    text-align: center;
 }
 
 .wrap {
@@ -68,22 +95,22 @@ td {
     transform: translate(-50%, -50%);
 }
 
-.score {
-    display: block;
-    position: relative;
-    width: auto;
-    top: 15px;
-    right: 0px;
+.scoreboard {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
     font-size: large;
     font-weight: bold;
+    text-align: center;
 }
 
 .credit {
-    display: block;
-    position: relative;
-    width: auto;
-    top: 15px;
+    position: absolute;
+    text-align: right;
+    width: 500px;
     right: 0px;
+    bottom: 0px;
     color: #FFF;
     transition: .5s;
 }

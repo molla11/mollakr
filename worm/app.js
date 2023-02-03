@@ -4,8 +4,8 @@ const constants = {
     length: 2,
     delay: 300,
 };
-const board = get2DSquareArray(constants.size);
 const delay = 300;
+const TD_WIDTH = 17;
 let playing;
 let score = constants.length;
 const FEED = -1;
@@ -62,13 +62,21 @@ function ready() {
     wrap.appendChild(help);
     body.appendChild(wrap);
 }
+let board;
+let startTime;
 function gameStart() {
+    startTime = new Date().getTime();
+    board = get2DSquareArray(constants.size);
     deleteReadyScreen();
     createTable(constants.size);
     generateWorm();
     placeFeed();
     render();
     playing = setInterval(() => {
+        if (Math.min(...board.reduce((acc, cur) => { return acc.concat(cur); })) > 0) {
+            success();
+            return;
+        }
         go();
         render();
     }, constants.delay);
@@ -76,61 +84,70 @@ function gameStart() {
         document.querySelector('body').removeChild(document.querySelector('.wrap'));
     }
 }
+function success() {
+    clearInterval(playing);
+    document.querySelector('.scoreboard').innerHTML =
+        `${document.querySelector('.scoreboard').innerHTML} | Success. (${(new Date().getTime() - startTime) / 1000}s)`;
+}
 function gameOver() {
     clearInterval(playing);
-    document.querySelector('.score').innerHTML = `${document.querySelector('.score').innerHTML} | Game Over.`;
+    document.querySelector('.scoreboard').innerHTML =
+        `${document.querySelector('.scoreboard').innerHTML} | Game Over. (${(new Date().getTime() - startTime) / 1000}s)`;
 }
 function createTable(size) {
     const wrap = document.createElement('div');
     wrap.className = 'ingame-wrap';
-    const newTable = document.createElement('table');
-    newTable.id = 'table';
-    const caption = document.createElement('caption');
+    const table = document.createElement('table');
+    table.id = 'table';
+    table.style.width = `${(TD_WIDTH + 2) * constants.size + 2 * (constants.size + 1)}`;
+    const caption = document.createElement('div');
     caption.innerHTML = 'Worm Game';
     caption.className = 'ingame-title';
-    const credit = document.createElement('span');
+    const credit = document.createElement('div');
     credit.innerHTML = 'made by molla.';
     credit.className = 'credit';
-    const scoreboard = document.createElement('span');
-    scoreboard.className = 'score';
-    scoreboard.innerHTML = `SCORE | ${constants.length}`;
-    newTable.appendChild(caption);
-    wrap.appendChild(newTable);
+    const miniWrap = document.createElement('div');
+    miniWrap.className = 'mini-wrap';
+    const scoreboard = document.createElement('div');
+    scoreboard.className = 'scoreboard';
+    scoreboard.innerHTML = `SCORE - ${constants.length}`;
     for (let i = 0; i < size; i++) {
         const tr = document.createElement('tr');
         tr.id = 'row' + i.toString();
-        newTable.appendChild(tr);
+        table.appendChild(tr);
         for (let j = 0; j < size; j++) {
             const td = document.createElement('td');
             td.className = 'col' + j.toString();
             tr.appendChild(td);
         }
     }
-    wrap.appendChild(scoreboard);
-    wrap.appendChild(document.createElement('br'));
-    wrap.appendChild(credit);
+    miniWrap.appendChild(caption);
+    miniWrap.appendChild(table);
+    miniWrap.appendChild(scoreboard);
+    wrap.appendChild(miniWrap);
     const body = document.querySelector('body');
     body.appendChild(wrap);
+    body.appendChild(credit);
 }
 window.onkeydown = (e) => {
     switch (e.key) {
         case 'ArrowUp':
-            if (worm.direction !== Direction.Down) {
+            if (judgeDirection(Direction.Up)) {
                 worm.direction = Direction.Up;
             }
             break;
         case 'ArrowDown':
-            if (worm.direction !== Direction.Up) {
+            if (judgeDirection(Direction.Down)) {
                 worm.direction = Direction.Down;
             }
             break;
         case 'ArrowLeft':
-            if (worm.direction !== Direction.Right) {
+            if (judgeDirection(Direction.Left)) {
                 worm.direction = Direction.Left;
             }
             break;
         case 'ArrowRight':
-            if (worm.direction !== Direction.Left) {
+            if (judgeDirection(Direction.Right)) {
                 worm.direction = Direction.Right;
             }
             break;
@@ -138,6 +155,19 @@ window.onkeydown = (e) => {
             break;
     }
 };
+function judgeDirection(dir) {
+    const pos = new Position(worm.length);
+    switch (dir) {
+        case Direction.Up:
+            return (pos.i === 0) || !(board[pos.i - 1][pos.j] === worm.length - 1);
+        case Direction.Down:
+            return (pos.i === constants.size - 1) || !(board[pos.i + 1][pos.j] === worm.length - 1);
+        case Direction.Left:
+            return (pos.j === 0) || !(board[pos.i][pos.j - 1] === worm.length - 1);
+        case Direction.Right:
+            return (pos.j === constants.size - 1) || !(board[pos.i][pos.j + 1] === worm.length - 1);
+    }
+}
 function get2DSquareArray(size) {
     return Array.from(Array(size), () => Array.from(Array(size), () => 0));
 }
@@ -149,6 +179,9 @@ function generateWorm() {
     worm.position = new Position(worm.length);
 }
 function placeFeed() {
+    if (constants.size ** 2 === score) {
+        return;
+    }
     let i = getRandomInt(constants.size);
     let j = getRandomInt(constants.size);
     while (board[i][j] > BLANK) {
@@ -200,7 +233,7 @@ function go() {
     }
     function eatFeed(i, j) {
         score++;
-        document.querySelector('.score').innerHTML = `SCORE | ${score}`;
+        document.querySelector('.scoreboard').innerHTML = `Score | ${score}`;
         board[i][j] = ++worm.length;
         replaceHead(worm.direction);
         placeFeed();
