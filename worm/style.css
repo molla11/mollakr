@@ -44,8 +44,6 @@
 }
 
 td {
-    width: 17px;
-    height: 17px;
     border-radius: 30%;
     background-color: #CCC;
     display: table-cell;
