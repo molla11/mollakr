@@ -194,7 +194,7 @@ function ready() {
         }
 
         function generateWorm() {
-            const center = Math.floor(constants.size / 2);
+            const center = Math.floor((constants.size - 1) / 2);
             for (let i = 0; i < worm.length; i++) {
                 board[center + i][center] = worm.length - i;
             }
