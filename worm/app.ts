@@ -70,6 +70,7 @@ function ready() {
                 j: 0,
             },
         }
+        
         const FEED = -1;
         const BLANK = 0;
 
