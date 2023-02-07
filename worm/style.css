@@ -124,6 +124,20 @@ td {
     transition: .5s;
 }
 
+.credit2 {
+    position: absolute;
+    text-align: left;
+    width: 500px;
+    left: 0px;
+    bottom: 0px;
+    color: #FFF;
+    transition: .5s;
+}
+
+.credit2:hover {
+    color: #A90;
+}
+
 .credit:hover {
     color: #000
 }

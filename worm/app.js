@@ -60,6 +60,7 @@ function ready() {
         const BLANK = 0;
         let score = constants.length;
         let isPlaying = false;
+        let isEnd = false;
         const startTime = new Date().getTime();
         const board = get2DSquareArray(constants.size);
         deleteReadyScreen();
@@ -77,7 +78,6 @@ function ready() {
             render();
         }, constants.delay);
         window.onkeydown = (e) => {
-            console.log(e);
             switch (e.key) {
                 case 'ArrowUp':
                     if (judgeDirection(Direction.Up)) {
@@ -119,26 +119,28 @@ function ready() {
             }
         };
         function togglePause() {
-            const helpPause = document.getElementById('help-pause');
-            let word = 'Pause';
-            if (isPlaying) {
-                word = 'Restart';
-                isPlaying = false;
-                clearInterval(playing);
-                helpPause.innerHTML = `${word} to press space bar.`;
-            }
-            else {
-                word = 'Pause';
-                isPlaying = true;
-                playing = setInterval(() => {
-                    if (Math.min(...board.reduce((acc, cur) => { return acc.concat(cur); })) > 0) {
-                        success();
-                        return;
-                    }
-                    go();
-                    render();
-                }, constants.delay);
-                helpPause.innerHTML = `${word} to press space bar.`;
+            if (!isEnd) {
+                const helpPause = document.getElementById('help-pause');
+                let word = 'Pause';
+                if (isPlaying) {
+                    word = 'Restart';
+                    isPlaying = false;
+                    clearInterval(playing);
+                    helpPause.innerHTML = `${word} to press space bar.`;
+                }
+                else {
+                    word = 'Pause';
+                    isPlaying = true;
+                    playing = setInterval(() => {
+                        if (Math.min(...board.reduce((acc, cur) => { return acc.concat(cur); })) > 0) {
+                            success();
+                            return;
+                        }
+                        go();
+                        render();
+                    }, constants.delay);
+                    helpPause.innerHTML = `${word} to press space bar.`;
+                }
             }
         }
         function get2DSquareArray(size) {
@@ -160,11 +162,14 @@ function ready() {
             const credit = document.createElement('div');
             credit.innerHTML = 'made by molla.';
             credit.className = 'credit';
+            const credit2 = document.createElement('div');
+            credit2.innerHTML = 'supported by 김승한. << 아무것도 안함';
+            credit2.className = 'credit2';
             const miniWrap = document.createElement('div');
             miniWrap.className = 'mini-wrap';
             const scoreboard = document.createElement('div');
             scoreboard.className = 'scoreboard';
-            scoreboard.innerHTML = `SCORE - ${constants.length}`;
+            scoreboard.innerHTML = `Score | ${constants.length}`;
             const helpPause = document.createElement('div');
             helpPause.innerHTML = `Pause to press space bar.`;
             helpPause.id = 'help-pause';
@@ -188,6 +193,7 @@ function ready() {
             const body = document.querySelector('body');
             body.appendChild(wrap);
             body.appendChild(credit);
+            body.appendChild(credit2);
         }
         function generateWorm() {
             const center = Math.floor((constants.size - 1) / 2);
@@ -237,9 +243,12 @@ function ready() {
             }
         }
         function success() {
+            isEnd = true;
             clearInterval(playing);
             document.querySelector('.scoreboard').innerHTML =
                 `${document.querySelector('.scoreboard').innerHTML} | Success. (${(new Date().getTime() - startTime) / 1000}s)`;
+            const helpPause = document.getElementById('help-pause');
+            helpPause.innerHTML = 'Retry to press F5 key.';
         }
         function go() {
             lead(new Position(worm.length));
@@ -279,9 +288,12 @@ function ready() {
                     }
                 }
                 function gameOver() {
+                    isEnd = true;
                     clearInterval(playing);
                     document.querySelector('.scoreboard').innerHTML =
                         `${document.querySelector('.scoreboard').innerHTML} | Game Over. (${(new Date().getTime() - startTime) / 1000}s)`;
+                    const helpPause = document.getElementById('help-pause');
+                    helpPause.innerHTML = 'Retry to press F5 key.';
                 }
             }
             function eatFeed(i, j) {
