@@ -119,11 +119,16 @@ function ready() {
             }
         };
         function togglePause() {
+            const helpPause = document.getElementById('helpPause');
+            let word = 'Pause';
             if (isPlaying) {
+                word = 'Restart';
                 isPlaying = false;
                 clearInterval(playing);
+                helpPause.innerHTML = `${word} to press space bar.`;
             }
             else {
+                word = 'Pause';
                 isPlaying = true;
                 playing = setInterval(() => {
                     if (Math.min(...board.reduce((acc, cur) => { return acc.concat(cur); })) > 0) {
@@ -133,6 +138,7 @@ function ready() {
                     go();
                     render();
                 }, constants.delay);
+                helpPause.innerHTML = `${word} to press space bar.`;
             }
         }
         function get2DSquareArray(size) {
@@ -159,6 +165,9 @@ function ready() {
             const scoreboard = document.createElement('div');
             scoreboard.className = 'scoreboard';
             scoreboard.innerHTML = `SCORE - ${constants.length}`;
+            const helpPause = document.createElement('div');
+            helpPause.innerHTML = `Pause to press space bar.`;
+            helpPause.id = 'helpPause';
             for (let i = 0; i < size; i++) {
                 const tr = document.createElement('tr');
                 tr.id = 'row' + i.toString();
@@ -174,6 +183,7 @@ function ready() {
             miniWrap.appendChild(caption);
             miniWrap.appendChild(table);
             miniWrap.appendChild(scoreboard);
+            miniWrap.appendChild(helpPause);
             wrap.appendChild(miniWrap);
             const body = document.querySelector('body');
             body.appendChild(wrap);

@@ -94,7 +94,17 @@ td {
 }
 
 .scoreboard {
-    position: absolute;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+#helpPause { 
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
     width: 500px;
