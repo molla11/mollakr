@@ -119,7 +119,7 @@ function ready() {
             }
         };
         function togglePause() {
-            const helpPause = document.getElementById('helpPause');
+            const helpPause = document.getElementById('help-pause');
             let word = 'Pause';
             if (isPlaying) {
                 word = 'Restart';
@@ -167,7 +167,7 @@ function ready() {
             scoreboard.innerHTML = `SCORE - ${constants.length}`;
             const helpPause = document.createElement('div');
             helpPause.innerHTML = `Pause to press space bar.`;
-            helpPause.id = 'helpPause';
+            helpPause.id = 'help-pause';
             for (let i = 0; i < size; i++) {
                 const tr = document.createElement('tr');
                 tr.id = 'row' + i.toString();

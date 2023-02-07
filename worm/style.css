@@ -103,7 +103,8 @@ td {
     text-align: center;
 }
 
-#helpPause { 
+#help-pause { 
+    color: #777;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
