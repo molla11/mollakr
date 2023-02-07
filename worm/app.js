@@ -59,6 +59,7 @@ function ready() {
         const FEED = -1;
         const BLANK = 0;
         let score = constants.length;
+        let isPlaying = false;
         const startTime = new Date().getTime();
         const board = get2DSquareArray(constants.size);
         deleteReadyScreen();
@@ -66,7 +67,8 @@ function ready() {
         generateWorm();
         placeFeed();
         render();
-        const playing = setInterval(() => {
+        isPlaying = true;
+        let playing = setInterval(() => {
             if (Math.min(...board.reduce((acc, cur) => { return acc.concat(cur); })) > 0) {
                 success();
                 return;
@@ -75,6 +77,7 @@ function ready() {
             render();
         }, constants.delay);
         window.onkeydown = (e) => {
+            console.log(e);
             switch (e.key) {
                 case 'ArrowUp':
                     if (judgeDirection(Direction.Up)) {
@@ -96,6 +99,8 @@ function ready() {
                         worm.direction = Direction.Right;
                     }
                     break;
+                case ' ':
+                    togglePause();
                 default:
                     break;
             }
@@ -113,6 +118,23 @@ function ready() {
                 }
             }
         };
+        function togglePause() {
+            if (isPlaying) {
+                isPlaying = false;
+                clearInterval(playing);
+            }
+            else {
+                isPlaying = true;
+                playing = setInterval(() => {
+                    if (Math.min(...board.reduce((acc, cur) => { return acc.concat(cur); })) > 0) {
+                        success();
+                        return;
+                    }
+                    go();
+                    render();
+                }, constants.delay);
+            }
+        }
         function get2DSquareArray(size) {
             return Array.from(Array(size), () => Array.from(Array(size), () => 0));
         }
@@ -158,7 +180,7 @@ function ready() {
             body.appendChild(credit);
         }
         function generateWorm() {
-            const center = Math.floor(constants.size / 2);
+            const center = Math.floor((constants.size - 1) / 2);
             for (let i = 0; i < worm.length; i++) {
                 board[center + i][center] = worm.length - i;
             }

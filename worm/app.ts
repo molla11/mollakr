@@ -75,6 +75,7 @@ function ready() {
         const BLANK = 0;
 
         let score = constants.length;
+        let isPlaying = false;
 
         const startTime = new Date().getTime();
         const board = get2DSquareArray(constants.size);
@@ -84,8 +85,8 @@ function ready() {
         generateWorm();
         placeFeed();
         render();
-
-        const playing = setInterval(() => {
+        isPlaying = true;
+        let playing = setInterval(() => {
             if (Math.min(...board.reduce((acc, cur) => { return acc.concat(cur); })) > 0) {
                 success();
                 return;
@@ -95,6 +96,7 @@ function ready() {
         }, constants.delay);
 
         window.onkeydown = (e: KeyboardEvent) => {
+            console.log(e);
             switch (e.key) {
                 case 'ArrowUp':
                     if (judgeDirection(Direction.Up)) {
@@ -119,6 +121,9 @@ function ready() {
                         worm.direction = Direction.Right;
                     }
                     break;
+                
+                case ' ':
+                    togglePause();
 
                 default:
                     break;
@@ -139,6 +144,23 @@ function ready() {
                     case Direction.Right:
                         return (pos.j === constants.size - 1) || !(board[pos.i][pos.j + 1] === worm.length - 1);
                 }
+            }
+        }
+
+        function togglePause() {
+            if (isPlaying) {
+                isPlaying = false;
+                clearInterval(playing);
+            } else {
+                isPlaying = true;
+                playing = setInterval(() => {
+                    if (Math.min(...board.reduce((acc, cur) => { return acc.concat(cur); })) > 0) {
+                        success();
+                        return;
+                    }
+                    go();
+                    render();
+                }, constants.delay);
             }
         }
 
