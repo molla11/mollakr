@@ -18,6 +18,7 @@ function ready() {
     notranslate.name = 'google';
     notranslate.content = 'notranslate';
 
+    head.appendChild(notranslate);
     head.appendChild(linkCss);
 
     const title = document.querySelector('title') as HTMLTitleElement;

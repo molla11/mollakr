@@ -15,6 +15,7 @@ function ready() {
     const notranslate = document.createElement('meta');
     notranslate.name = 'google';
     notranslate.content = 'notranslate';
+    head.appendChild(notranslate);
     head.appendChild(linkCss);
     const title = document.querySelector('title');
     title.innerHTML = 'Worm Game';
