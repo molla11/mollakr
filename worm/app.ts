@@ -1,7 +1,7 @@
 const constants = {
-	size: 21,
-	length: 2,
-	delay: 300,
+    size: 21,
+    length: 2,
+    delay: 300,
 }
 
 ready();
