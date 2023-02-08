@@ -42,8 +42,8 @@ function ready() {
 
     function gameStart() {
         class Position {
-            i: number;
-            j: number;
+            i;
+            j;
             constructor(raw: number) {
                 const index = board.flat().findIndex(x => x === raw);
                 this.i = Math.floor(index / constants.size);
@@ -129,7 +129,7 @@ function ready() {
                     break;
             }
 
-            function judgeDirection(dir: Direction): boolean {
+            function judgeDirection(dir: Direction) {
                 const pos = new Position(worm.length);
                 switch (dir) {
                     case Direction.Up:
@@ -262,14 +262,15 @@ function ready() {
         function render() {
             type SeqUnion<End extends number, Arr extends Array<never> = [never], Result extends number = 1> =
                 Arr['length'] extends End ? 0 | Result | Arr['length'] : SeqUnion<End, [...Arr, never], Result | Arr['length']>;
+            
             type Hex = SeqUnion<9> | 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
             type AbbrHexCode = `#${Hex}${Hex}${Hex}`;
 
             for (const i in board) {
-                const tr = document.getElementById('row' + i.toString()) as HTMLTableRowElement;
+                const tr = document.getElementById('row' + i) as HTMLTableRowElement;
                 for (const j in board[0]) {
                     const raw = board[i][j]
-                    const element = tr.children[j] as HTMLTableCellElement
+                    const element = tr.children[parseInt(j)] as HTMLTableCellElement
                     let color: AbbrHexCode;
 
                     switch (raw) {
