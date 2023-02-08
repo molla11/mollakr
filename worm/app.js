@@ -6,10 +6,15 @@ const constants = {
 };
 ready();
 function ready() {
+    const html = document.querySelector('html');
+    html.translate = false;
     const head = document.querySelector('head');
     const linkCss = document.createElement('link');
     linkCss.rel = 'stylesheet';
     linkCss.href = 'style.css';
+    const notranslate = document.createElement('meta');
+    notranslate.name = 'google';
+    notranslate.content = 'notranslate';
     head.appendChild(linkCss);
     const title = document.querySelector('title');
     title.innerHTML = 'Worm Game';
@@ -219,10 +224,10 @@ function ready() {
         }
         function render() {
             for (const i in board) {
-                const tr = document.getElementById('row' + i.toString());
+                const tr = document.getElementById('row' + i);
                 for (const j in board[0]) {
                     const raw = board[i][j];
-                    const element = tr.children[j];
+                    const element = tr.children[parseInt(j)];
                     let color;
                     switch (raw) {
                         case BLANK:

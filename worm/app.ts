@@ -7,10 +7,17 @@ const constants = {
 ready();
 
 function ready() {
+    const html = document.querySelector('html') as HTMLHtmlElement;
+    html.translate = false;
+
     const head = document.querySelector('head') as HTMLHeadElement;
     const linkCss = document.createElement('link');
     linkCss.rel = 'stylesheet';
     linkCss.href = 'style.css';
+    const notranslate = document.createElement('meta');
+    notranslate.name = 'google';
+    notranslate.content = 'notranslate';
+
     head.appendChild(linkCss);
 
     const title = document.querySelector('title') as HTMLTitleElement;
