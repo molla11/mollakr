@@ -4,21 +4,7 @@ const constants = {
     length: 2,
     delay: 300,
 };
-if (constants.size <= 1) {
-    alert('board is too small!');
-    location.reload();
-}
-else if (constants.length > Math.ceil(constants.size + 1 / 2)) {
-    alert('Your greed is too much.');
-    location.reload();
-}
-else if (constants.delay <= 0 || constants.size > 100 || constants.length < 2) {
-    alert('One or more property of the constants are strange.');
-    location.reload();
-}
-else {
-    ready();
-}
+ready();
 function ready() {
     const html = document.querySelector('html');
     html.translate = false;
@@ -43,7 +29,23 @@ function ready() {
     startButton.innerHTML = 'Start';
     startButton.className = 'start-button';
     startButton.type = 'button';
-    startButton.addEventListener('click', () => gameStart());
+    startButton.addEventListener('click', () => {
+        if (constants.size <= 1) {
+            alert('board is too small!\nThis page will be refrashed.');
+            location.reload();
+        }
+        else if (constants.length > Math.ceil(constants.size + 1 / 2)) {
+            alert('Your greed is too much.\nThis page will be refrashed.');
+            location.reload();
+        }
+        else if (constants.delay <= 0 || constants.size > 100 || constants.length < 2) {
+            alert('One or more property of the constants are strange.\nThis page will be refrashed.');
+            location.reload();
+        }
+        else {
+            gameStart();
+        }
+    });
     const help = document.createElement('div');
     help.className = 'help';
     help.innerHTML = 'Use arrow key';
