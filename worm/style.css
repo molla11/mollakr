@@ -114,6 +114,17 @@ td {
     text-align: center;
 }
 
+#help-boost {
+    color: #A7A;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
 .credit {
     position: absolute;
     text-align: right;

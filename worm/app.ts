@@ -85,6 +85,8 @@ function ready() {
         let score = constants.length;
         let isPlaying = false;
         let isEnd = false;
+        let playing: number;
+        let isPaused: boolean;
 
         const startTime = new Date().getTime();
         const board = get2DSquareArray(constants.size);
@@ -94,47 +96,67 @@ function ready() {
         generateWorm();
         placeFeed();
         render();
-        isPlaying = true;
-        let playing = setInterval(() => {
-            if (Math.min(...board.reduce((acc, cur) => { return acc.concat(cur); })) > 0) {
-                success();
-                return;
-            }
-            go();
-            render();
-        }, constants.delay);
+        startGame();
+
+        let booster: number;
+        let isBoosting = false;
 
         window.onkeydown = (e: KeyboardEvent) => {
-            switch (e.key) {
-                case 'ArrowUp':
-                    if (judgeDirection(Direction.Up)) {
-                        worm.direction = Direction.Up;
-                    }
-                    break;
+            if (!isEnd) {
+                switch (e.code) {
+                    case 'ArrowUp':
+                        if (judgeDirection(Direction.Up)) {
+                            worm.direction = Direction.Up;
+                        }
+                        break;
 
-                case 'ArrowDown':
-                    if (judgeDirection(Direction.Down)) {
-                        worm.direction = Direction.Down;
-                    }
-                    break;
+                    case 'ArrowDown':
+                        if (judgeDirection(Direction.Down)) {
+                            worm.direction = Direction.Down;
+                        }
+                        break;
 
-                case 'ArrowLeft':
-                    if (judgeDirection(Direction.Left)) {
-                        worm.direction = Direction.Left;
-                    }
-                    break;
+                    case 'ArrowLeft':
+                        if (judgeDirection(Direction.Left)) {
+                            worm.direction = Direction.Left;
+                        }
+                        break;
 
-                case 'ArrowRight':
-                    if (judgeDirection(Direction.Right)) {
-                        worm.direction = Direction.Right;
-                    }
-                    break;
-                
-                case ' ':
-                    togglePause();
+                    case 'ArrowRight':
+                        if (judgeDirection(Direction.Right)) {
+                            worm.direction = Direction.Right;
+                        }
+                        break;
 
-                default:
-                    break;
+                    case 'Space':
+                        togglePause();
+                        break;
+
+                    case 'ShiftLeft':
+                        if (!isBoosting && !isPaused) {
+                            boost();
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            
+            window.onkeyup = (e: KeyboardEvent) => {
+                if (isBoosting) {
+                    switch (e.code) {
+                        case 'ShiftLeft':
+                            unBoost();
+                            if (!isEnd && !isPaused) {
+                                startGame();
+                            }
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
             }
 
             function judgeDirection(dir: Direction) {
@@ -162,20 +184,19 @@ function ready() {
                 if (isPlaying) {
                     word = 'Restart';
                     isPlaying = false;
-                    clearInterval(playing);
-                    helpPause.innerHTML = `${word} to press space bar.`
+                    isPaused = true;
+                    stopGame();
+                    unBoost();
+                    helpPause.innerHTML = `${word} | Spacebar`
+                    helpPause.style.color = '#000';
                 } else {
                     word = 'Pause';
                     isPlaying = true;
-                    playing = setInterval(() => {
-                        if (Math.min(...board.reduce((acc, cur) => { return acc.concat(cur); })) > 0) {
-                            success();
-                            return;
-                        }
-                        go();
-                        render();
-                    }, constants.delay);
-                    helpPause.innerHTML = `${word} to press space bar.`
+                    isPaused = false;
+                    startGame();
+                    unBoost();
+                    helpPause.innerHTML = `${word} | Spacebar`
+                    helpPause.style.color = '#777';
                 }
             }
         }
@@ -213,8 +234,11 @@ function ready() {
             scoreboard.className = 'scoreboard';
             scoreboard.innerHTML = `Score | ${constants.length}`;
             const helpPause = document.createElement('div');
-            helpPause.innerHTML = `Pause to press space bar.`;
+            helpPause.innerHTML = `Pause | Spacebar`;
             helpPause.id = 'help-pause';
+            const helpBoost = document.createElement('div');
+            helpBoost.innerHTML = `Boost | Left Shift key`;
+            helpBoost.id = 'help-boost';
 
             for (let i = 0; i < size; i++) {
                 const tr = document.createElement('tr');
@@ -233,6 +257,7 @@ function ready() {
             miniWrap.appendChild(table);
             miniWrap.appendChild(scoreboard);
             miniWrap.appendChild(helpPause);
+            miniWrap.appendChild(helpBoost);
             wrap.appendChild(miniWrap);
 
             const body = document.querySelector('body') as HTMLBodyElement;
@@ -304,15 +329,6 @@ function ready() {
             }
         }
 
-        function success() {
-            isEnd = true;
-            clearInterval(playing);
-            (document.querySelector('.scoreboard') as HTMLSpanElement).innerHTML =
-                `${(document.querySelector('.scoreboard') as HTMLSpanElement).innerHTML} | Success. (${(new Date().getTime() - startTime) / 1000}s)`;
-            const helpPause = document.getElementById('help-pause') as HTMLDivElement;
-            helpPause.innerHTML = 'Retry to press F5 key.';
-        }
-
         function go() {
             lead(new Position(worm.length));
 
@@ -337,29 +353,55 @@ function ready() {
             }
 
             function judge(x: -1 | 0 | 1, y: -1 | 0 | 1, pos: Position) {
-                const i = pos.i + x;
-                const j = pos.j + y;
-                if (i < 0 || i > constants.size - 1 || j < 0 || j > constants.size - 1) {
-                    gameOver();
+                if (isSuccess()) {
+                    success();
                 } else {
-                    const raw = board[i][j];
-                    if (raw > BLANK) {
+                    const i = pos.i + x;
+                    const j = pos.j + y;
+                    if (i < 0 || i > constants.size - 1 || j < 0 || j > constants.size - 1) {
                         gameOver();
-                    } else if (raw === FEED) {
-                        eatFeed(i, j);
                     } else {
-                        board[i][j] = worm.length;
-                        follow();
+                        const raw = board[i][j];
+                        if (raw > BLANK) {
+                            gameOver();
+                        } else if (raw === FEED) {
+                            eatFeed(i, j);
+                        } else {
+                            board[i][j] = worm.length;
+                            follow();
+                        }
                     }
                 }
 
+                function isSuccess(): boolean {
+                    if (Math.min(...board.reduce((acc, cur) => { return acc.concat(cur); })) > 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+
+                function success() {
+                    (document.querySelector('.scoreboard') as HTMLSpanElement).innerHTML =
+                        `${(document.querySelector('.scoreboard') as HTMLSpanElement).innerHTML} | Success. (${(new Date().getTime() - startTime) / 1000}s)`;
+                    end();
+                }
+
                 function gameOver() {
-                    isEnd = true;
-                    clearInterval(playing);
                     (document.querySelector('.scoreboard') as HTMLSpanElement).innerHTML =
                         `${(document.querySelector('.scoreboard') as HTMLSpanElement).innerHTML} | Game Over. (${(new Date().getTime() - startTime) / 1000}s)`;
+                    end();
+                }
+
+                function end() {
+                    isEnd = true;
+                    isPlaying = false;
+                    stopGame();
+                    unBoost();
                     const helpPause = document.getElementById('help-pause') as HTMLDivElement;
                     helpPause.innerHTML = 'Retry to press F5 key.';
+                    const helpBoost = document.getElementById('help-boost') as HTMLDivElement;
+                    helpBoost.innerHTML = '';
                 }
             }
 
@@ -434,6 +476,38 @@ function ready() {
                     ];
                 }
             }
+        }
+
+        function boost() {
+            isBoosting = true;
+            booster = setInterval(() => {
+                go();
+                render();
+            }, Math.floor(constants.delay / 3));
+            stopGame();
+            const helpBoost = document.getElementById('help-boost') as HTMLDivElement;
+            helpBoost.style.color = '#E00';
+            helpBoost.innerHTML = 'Boosting...';
+        }
+
+        function unBoost() {
+            isBoosting = false;
+            clearInterval(booster);
+            const helpBoost = document.getElementById('help-boost') as HTMLDivElement;
+            helpBoost.style.color = '#A7A';
+            helpBoost.innerHTML = 'Boost | Left Shift key';
+        }
+
+        function startGame() {
+            isPlaying = true;
+            playing = setInterval(() => {
+                go();
+                render();
+            }, constants.delay);
+        }
+
+        function stopGame() {
+            clearInterval(playing);
         }
     }
 }
