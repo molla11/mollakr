@@ -8,7 +8,7 @@ const constants:
     size: 21,
     length: 2,
     delay: 300,
-    faster: 3,
+    faster: 4,
 }
 
 ready();
