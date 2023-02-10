@@ -3,6 +3,7 @@ const constants = {
     size: 21,
     length: 2,
     delay: 300,
+    faster: 3,
 };
 ready();
 function ready() {
@@ -123,6 +124,8 @@ function ready() {
                         break;
                     case 'ShiftLeft':
                         if (!isBoosting && !isPaused) {
+                            go();
+                            render();
                             boost();
                         }
                         break;
@@ -420,7 +423,7 @@ function ready() {
             booster = setInterval(() => {
                 go();
                 render();
-            }, Math.floor(constants.delay / 3));
+            }, Math.floor(constants.delay / constants.faster));
             stopGame();
             const helpBoost = document.getElementById('help-boost');
             helpBoost.style.color = '#E00';
