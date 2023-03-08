@@ -41,6 +41,13 @@ const dataOfSelected = {
     m: new Date().getMonth() + 1,
     d: new Date().getDate(),
 };
+const head = document.querySelector('head');
+const linkCss = document.createElement('link');
+linkCss.rel = 'stylesheet';
+linkCss.href = 'style.css';
+const notranslate = document.createElement('meta');
+notranslate.name = 'google';
+notranslate.content = 'notranslate';
 initialize();
 function initialize() {
     setEventListener();
