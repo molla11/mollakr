@@ -1,18 +1,4 @@
 const words = {
-  "day0": {
-    "0": {
-      word: "only-test",
-      "meaning": {
-        "noun": ["made by molla"],
-        "verb": ["CSS is so hard"],
-        "adjective": ["Im sad"],
-        "adverb": ["hello", "world!"],
-        "preposition": ["English is so difficult"],
-        "conjunction": ["Korean is too"],
-        "interjection": ["집에가고싶다"]
-      }
-    }
-  },
   "day1": {
     "1": {
       "word": "confirm",
@@ -8197,5 +8183,17 @@ const words = {
   }, 
   "day18": {
     
+  },
+  "day19": {
+
+  },
+  "day20": {
+
+  },
+  "day21": {
+
+  },
+  "day22": {
+
   }
 }

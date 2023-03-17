@@ -9,11 +9,12 @@
 </head>
 <body>
     <div id="top">
-        <div id="checkboxes"></div>
     </div>
+    <div id="settings" class="settings">
+        <img id="img-settings" src="./img/icon/settings.png"></img>
+    </div>
+    <div id="checkboxes"></div>
     <div id="main">
-        <span id="word">only-test</span>
-        <span id="index">No. 0</span>
         <div id="meaning">
             <div id="noun" class="means"></div>
             <div id="verb" class="means"></div>
@@ -26,15 +27,11 @@
     </div>
     <br>
     <div id="bottom">
-<!--         
-            <span id="help">
-                1. 물결표(~)를 정확히 입력하십시오.
-                <br>2. 띄어쓰기 오류는 판별하지 않습니다.
-                <br>3. 괄호 및 괄호 안의 내용은 생략하십시오.
-            </span>
-        -->
+        <div id="buttons">
+            <span class="button btn-previous">&laquo; Previous</span>
+            <span class="button btn-next">Next &raquo;</span>
+        </div>
     </div>
-
     <script src="data.js"></script>
     <script defer src="app.js"></script>
 </body>
