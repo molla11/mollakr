@@ -1,19 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <title>Word Master</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <span id="absolutes">
+        <div id="help1" class="box-help">어휘의 범위를 정해 주세요.</div>
+        <div id="say" class="box-help"></div>
+        <div id="checkboxes"></div>
+        <div id="shuffle">
+            <img id="img-shuffle" src="./img/icon/shuffle.png">
+        </div>
+    </span> <!--todo: (1(현재 index)/40(선택한 단어 수)) 표기-->
     <div id="top">
+        <span id="word" class="in-top word"></span>
+        <span id="index" class="in-top index"></span>
     </div>
     <div id="settings" class="settings">
         <img id="img-settings" src="./img/icon/settings.png"></img>
     </div>
-    <div id="checkboxes"></div>
     <div id="main">
         <div id="meaning">
             <div id="noun" class="means"></div>
@@ -25,11 +35,18 @@
             <div id="interjection" class="means"></div>
         </div>
     </div>
-    <br>
     <div id="bottom">
         <div id="buttons">
-            <span class="button btn-previous">&laquo; Previous</span>
-            <span class="button btn-next">Next &raquo;</span>
+            <span id="btn-previous" class="button btn-previous">&laquo; Previous</span>
+            <span id="btn-next" class="button btn-next">Next &raquo;</span>
+        </div>
+    </div>
+    <div id="copyright">
+        <div id="icon-copyright">
+            <img id="img-copyright" src="./img/icon/copyright.png">
+        </div>
+        <div id="copyright-list" class="box-help">
+            Shuffle / Copyright icon from <a target="_blank" href="https://www.iconfinder.com/">iconfinder.com</a>
         </div>
     </div>
     <script src="data.js"></script>

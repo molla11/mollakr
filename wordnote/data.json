@@ -6145,7 +6145,7 @@
       }
     },
     "511": {
-      "word": "vaniry",
+      "word": "vanity",
       "meaning": {
         "noun": ["자만심", "허영심", "헛됨"],
         "verb": [],
@@ -7078,6 +7078,18 @@
         "noun": [],
         "verb": ["무디게 하다", "둔화시키다"],
         "adjective": ["무딘", "뭉툭한", "솔직한", "직설적인"],
+        "adverb": [],
+        "preposition": [],
+        "conjunction": [],
+        "interjection": []
+      }
+    },
+    "589": {
+      "word": "blur",
+      "meaning": {
+        "noun": ["흐릿함", "얼룩", "오점"],
+        "verb": ["흐리게 하다", "더럽히다"],
+        "adjective": [],
         "adverb": [],
         "preposition": [],
         "conjunction": [],
