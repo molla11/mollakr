@@ -8,7 +8,8 @@ const HTML = {
     adverb: document.getElementById("adverb") as HTMLInputElement,
     preposition: document.getElementById("preposition") as HTMLInputElement,
     conjunction: document.getElementById("conjunction") as HTMLInputElement,
-    interjection: document.getElementById("interjection") as HTMLInputElement
+    interjection: document.getElementById("interjection") as HTMLInputElement,
+    phrase: document.getElementById("phrase") as HTMLInputElement
   },
   submit: document.getElementById("submit") as HTMLInputElement,
   jsonData: document.getElementById("json-data") as HTMLDivElement
@@ -32,7 +33,8 @@ function makeJsonData() {
     adverb: HTML.mean.adverb.value.split(', '),
     preposition: HTML.mean.preposition.value.split(', '),
     conjunction: HTML.mean.conjunction.value.split(', '),
-    interjection: HTML.mean.interjection.value.split(', ')
+    interjection: HTML.mean.interjection.value.split(', '),
+    phrase: HTML.mean.phrase.value.split(', ')
   }
 
   function arrToString(arr: string[]): string {
@@ -53,7 +55,7 @@ function makeJsonData() {
 
   const data = 
 `"${ parseInt(HTML.index.value) }": {
-  "word": "${ HTML.word.value.replaceAll(" ", "") }",
+  "word": "${ HTML.word.value }",
   "meaning": {
   "noun": [${ arrToString(mean.noun) }],
   "verb": [${ arrToString(mean.verb) }],
@@ -61,7 +63,8 @@ function makeJsonData() {
   "adverb": [${ arrToString(mean.adverb) }],
   "preposition": [${ arrToString(mean.preposition) }],
   "conjunction": [${ arrToString(mean.conjunction) }],
-  "interjection": [${ arrToString(mean.interjection) }]
+  "interjection": [${ arrToString(mean.interjection) }],
+  "phrase": [${ arrToString(mean.phrase) }]
   }
 },`;
 
