@@ -8,7 +8,7 @@ const HTML = {
         adverb: document.getElementById("adverb"),
         preposition: document.getElementById("preposition"),
         conjunction: document.getElementById("conjunction"),
-        interjection: document.getElementById("interjection"),
+        exclamation: document.getElementById("exclamation"),
         phrase: document.getElementById("phrase")
     },
     submit: document.getElementById("submit"),
@@ -31,7 +31,7 @@ function makeJsonData() {
         adverb: HTML.mean.adverb.value.split(', '),
         preposition: HTML.mean.preposition.value.split(', '),
         conjunction: HTML.mean.conjunction.value.split(', '),
-        interjection: HTML.mean.interjection.value.split(', '),
+        exclamation: HTML.mean.exclamation.value.split(', '),
         phrase: HTML.mean.phrase.value.split(', ')
     };
     function arrToString(arr) {
@@ -56,7 +56,7 @@ function makeJsonData() {
   "adverb": [${arrToString(mean.adverb)}],
   "preposition": [${arrToString(mean.preposition)}],
   "conjunction": [${arrToString(mean.conjunction)}],
-  "interjection": [${arrToString(mean.interjection)}],
+  "exclamation": [${arrToString(mean.exclamation)}],
   "phrase": [${arrToString(mean.phrase)}]
   }
 },`;
