@@ -1,6 +1,6 @@
 "use strict";
 const constants = {
-    size: 21,
+    size: 15,
     length: 2,
     delay: 300,
     faster: 4,
@@ -50,9 +50,15 @@ function ready() {
     const help = document.createElement('div');
     help.className = 'help';
     help.innerHTML = 'Use arrow key';
+    const help2 = document.createElement('div');
+    help2.className = 'help';
+    help2.innerHTML = 'Pause and boost functions are not supported on mobile.';
     wrap.appendChild(gameTitle);
     wrap.appendChild(startButton);
     wrap.appendChild(help);
+    wrap.appendChild(document.createElement("br"));
+    wrap.appendChild(document.createElement("hr"));
+    wrap.appendChild(help2);
     body.appendChild(wrap);
     function gameStart() {
         class Position {
@@ -93,29 +99,29 @@ function ready() {
         generateWorm();
         placeFeed();
         render();
-        startGame();
+        setTimeout(startGame, 500);
         let booster;
         let isBoosting = false;
         window.onkeydown = (e) => {
             if (!isEnd) {
                 switch (e.code) {
                     case 'ArrowUp':
-                        if (judgeDirection(Direction.Up)) {
+                        if (isAvailableToChange(Direction.Up)) {
                             worm.direction = Direction.Up;
                         }
                         break;
                     case 'ArrowDown':
-                        if (judgeDirection(Direction.Down)) {
+                        if (isAvailableToChange(Direction.Down)) {
                             worm.direction = Direction.Down;
                         }
                         break;
                     case 'ArrowLeft':
-                        if (judgeDirection(Direction.Left)) {
+                        if (isAvailableToChange(Direction.Left)) {
                             worm.direction = Direction.Left;
                         }
                         break;
                     case 'ArrowRight':
-                        if (judgeDirection(Direction.Right)) {
+                        if (isAvailableToChange(Direction.Right)) {
                             worm.direction = Direction.Right;
                         }
                         break;
@@ -147,20 +153,20 @@ function ready() {
                     }
                 }
             };
-            function judgeDirection(dir) {
-                const pos = new Position(worm.length);
-                switch (dir) {
-                    case Direction.Up:
-                        return (pos.i === 0) || !(board[pos.i - 1][pos.j] === worm.length - 1);
-                    case Direction.Down:
-                        return (pos.i === constants.size - 1) || !(board[pos.i + 1][pos.j] === worm.length - 1);
-                    case Direction.Left:
-                        return (pos.j === 0) || !(board[pos.i][pos.j - 1] === worm.length - 1);
-                    case Direction.Right:
-                        return (pos.j === constants.size - 1) || !(board[pos.i][pos.j + 1] === worm.length - 1);
-                }
-            }
         };
+        function isAvailableToChange(dir) {
+            const pos = new Position(worm.length);
+            switch (dir) {
+                case Direction.Up:
+                    return (pos.i === 0) || !(board[pos.i - 1][pos.j] === worm.length - 1);
+                case Direction.Down:
+                    return (pos.i === constants.size - 1) || !(board[pos.i + 1][pos.j] === worm.length - 1);
+                case Direction.Left:
+                    return (pos.j === 0) || !(board[pos.i][pos.j - 1] === worm.length - 1);
+                case Direction.Right:
+                    return (pos.j === constants.size - 1) || !(board[pos.i][pos.j + 1] === worm.length - 1);
+            }
+        }
         function togglePause() {
             if (!isEnd) {
                 const helpPause = document.getElementById('help-pause');
@@ -240,6 +246,56 @@ function ready() {
             body.appendChild(wrap);
             body.appendChild(credit);
             body.appendChild(credit2);
+            let element;
+            function getDirectionId(str) {
+                if (str === "up") {
+                    return 0;
+                }
+                else if (str === "down") {
+                    return 1;
+                }
+                else if (str === "left") {
+                    return 2;
+                }
+                else {
+                    return 3;
+                }
+            }
+            const wrapOfTouchPad = document.createElement("div");
+            wrapOfTouchPad.id = "wrap-touchpad";
+            body.appendChild(wrapOfTouchPad);
+            makeTouchPad();
+            function makeTouchPad() {
+                const directions = ["up", "down", "left", "right"];
+                for (const dir of directions) {
+                    const element = document.createElement("div");
+                    element.id = "touchpad-" + dir;
+                    element.className = "touchpad";
+                    element.innerHTML = dir;
+                    document.getElementById("wrap-touchpad").appendChild(element);
+                }
+            }
+            const touchpad = {
+                up: document.getElementById("touchpad-up"),
+                down: document.getElementById("touchpad-down"),
+                left: document.getElementById("touchpad-left"),
+                right: document.getElementById("touchpad-right")
+            };
+            for (element in touchpad) {
+                const directionId = getDirectionId(element);
+                const thisElement = touchpad[element];
+                thisElement.addEventListener("click", () => {
+                    if (isAvailableToChange(directionId)) {
+                        worm.direction = directionId;
+                        let timeout = 0;
+                        clearInterval(timeout);
+                        thisElement.style.backgroundColor = "#888";
+                        timeout = setTimeout(() => {
+                            thisElement.style.backgroundColor = "#333";
+                        }, 200);
+                    }
+                });
+            }
         }
         function generateWorm() {
             const center = Math.floor((constants.size - 1) / 2);
@@ -354,7 +410,7 @@ function ready() {
                     stopGame();
                     unBoost();
                     const helpPause = document.getElementById('help-pause');
-                    helpPause.innerHTML = 'Retry to press F5 key.';
+                    helpPause.innerHTML = 'Refresh this page to retry';
                     const helpBoost = document.getElementById('help-boost');
                     helpBoost.innerHTML = '';
                 }

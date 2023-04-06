@@ -1,11 +1,5 @@
-const constants: 
-{
-    size: number,
-    length: number,
-    delay: number,
-    faster: number,
-} = {
-    size: 21,
+const constants = {
+    size: 15,
     length: 2,
     delay: 300,
     faster: 4,
@@ -62,10 +56,16 @@ function ready() {
     const help = document.createElement('div');
     help.className = 'help';
     help.innerHTML = 'Use arrow key';
+    const help2 = document.createElement('div');
+    help2.className = 'help';
+    help2.innerHTML = 'Pause and boost functions are not supported on mobile.'
 
     wrap.appendChild(gameTitle);
     wrap.appendChild(startButton);
     wrap.appendChild(help);
+    wrap.appendChild(document.createElement("br"));
+    wrap.appendChild(document.createElement("hr"));
+    wrap.appendChild(help2);
     body.appendChild(wrap);
 
     function gameStart() {
@@ -98,7 +98,7 @@ function ready() {
                 j: 0,
             },
         }
-        
+
         const FEED = -1;
         const BLANK = 0;
 
@@ -116,7 +116,7 @@ function ready() {
         generateWorm();
         placeFeed();
         render();
-        startGame();
+        setTimeout(startGame, 500);
 
         let booster: number;
         let isBoosting = false;
@@ -125,25 +125,25 @@ function ready() {
             if (!isEnd) {
                 switch (e.code) {
                     case 'ArrowUp':
-                        if (judgeDirection(Direction.Up)) {
+                        if (isAvailableToChange(Direction.Up)) {
                             worm.direction = Direction.Up;
                         }
                         break;
 
                     case 'ArrowDown':
-                        if (judgeDirection(Direction.Down)) {
+                        if (isAvailableToChange(Direction.Down)) {
                             worm.direction = Direction.Down;
                         }
                         break;
 
                     case 'ArrowLeft':
-                        if (judgeDirection(Direction.Left)) {
+                        if (isAvailableToChange(Direction.Left)) {
                             worm.direction = Direction.Left;
                         }
                         break;
 
                     case 'ArrowRight':
-                        if (judgeDirection(Direction.Right)) {
+                        if (isAvailableToChange(Direction.Right)) {
                             worm.direction = Direction.Right;
                         }
                         break;
@@ -164,7 +164,7 @@ function ready() {
                         break;
                 }
             }
-            
+
             window.onkeyup = (e: KeyboardEvent) => {
                 if (isBoosting) {
                     switch (e.code) {
@@ -180,22 +180,22 @@ function ready() {
                     }
                 }
             }
+        }
+        
+        function isAvailableToChange(dir: Direction) {
+            const pos = new Position(worm.length);
+            switch (dir) {
+                case Direction.Up:
+                    return (pos.i === 0) || !(board[pos.i - 1][pos.j] === worm.length - 1);
 
-            function judgeDirection(dir: Direction) {
-                const pos = new Position(worm.length);
-                switch (dir) {
-                    case Direction.Up:
-                        return (pos.i === 0) || !(board[pos.i - 1][pos.j] === worm.length - 1);
+                case Direction.Down:
+                    return (pos.i === constants.size - 1) || !(board[pos.i + 1][pos.j] === worm.length - 1);
 
-                    case Direction.Down:
-                        return (pos.i === constants.size - 1) || !(board[pos.i + 1][pos.j] === worm.length - 1);
+                case Direction.Left:
+                    return (pos.j === 0) || !(board[pos.i][pos.j - 1] === worm.length - 1);
 
-                    case Direction.Left:
-                        return (pos.j === 0) || !(board[pos.i][pos.j - 1] === worm.length - 1);
-
-                    case Direction.Right:
-                        return (pos.j === constants.size - 1) || !(board[pos.i][pos.j + 1] === worm.length - 1);
-                }
+                case Direction.Right:
+                    return (pos.j === constants.size - 1) || !(board[pos.i][pos.j + 1] === worm.length - 1);
             }
         }
 
@@ -286,6 +286,59 @@ function ready() {
             body.appendChild(wrap);
             body.appendChild(credit);
             body.appendChild(credit2);
+
+            let element: "up" | "down" | "left" | "right";
+
+            function getDirectionId(str: typeof element) {
+                if (str === "up") {
+                    return 0;
+                } else if (str === "down") {
+                    return 1;
+                } else if (str === "left") {
+                    return 2;
+                } else {
+                    return 3;
+                }
+            } 
+
+            const wrapOfTouchPad = document.createElement("div");
+            wrapOfTouchPad.id = "wrap-touchpad";
+            body.appendChild(wrapOfTouchPad);
+
+            makeTouchPad();
+            function makeTouchPad() {
+                const directions = ["up", "down", "left", "right"];
+                for (const dir of directions) {
+                    const element = document.createElement("div");
+                    element.id = "touchpad-" + dir;
+                    element.className = "touchpad";
+                    element.innerHTML = dir;
+                    (document.getElementById("wrap-touchpad") as HTMLDivElement).appendChild(element);
+                }
+            }
+
+            const touchpad = {
+                up: document.getElementById("touchpad-up") as HTMLDivElement,
+                down: document.getElementById("touchpad-down") as HTMLDivElement,
+                left: document.getElementById("touchpad-left") as HTMLDivElement,
+                right: document.getElementById("touchpad-right") as HTMLDivElement
+            }
+
+            for (element in touchpad) {
+                const directionId = getDirectionId(element);
+                const thisElement = touchpad[element];
+                thisElement.addEventListener("click", () => {
+                    if (isAvailableToChange(directionId)) {
+                        worm.direction = directionId;
+                        let timeout = 0;
+                        clearInterval(timeout);
+                        thisElement.style.backgroundColor = "#888";
+                        timeout = setTimeout(() => {
+                            thisElement.style.backgroundColor = "#333";
+                        }, 200);
+                    }
+                });
+            }
         }
 
         function generateWorm() {
@@ -421,7 +474,7 @@ function ready() {
                     stopGame();
                     unBoost();
                     const helpPause = document.getElementById('help-pause') as HTMLDivElement;
-                    helpPause.innerHTML = 'Retry to press F5 key.';
+                    helpPause.innerHTML = 'Refresh this page to retry';
                     const helpBoost = document.getElementById('help-boost') as HTMLDivElement;
                     helpBoost.innerHTML = '';
                 }

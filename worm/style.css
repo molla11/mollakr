@@ -15,9 +15,58 @@
     margin: 0;
 }
 
+#wrap-touchpad {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 480px;
+    position: absolute;
+    height: 140px;
+    width: 140px;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: #AAA;
+}
+
+#touchpad-up {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#touchpad-down {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#touchpad-left {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#touchpad-right {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.touchpad {
+    text-align: center;
+    line-height: 50px;
+    font-weight: bolder;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-color: #333;
+    color: #FFF;
+    transition: .1s;
+    border-radius: 10px;
+}
+
 .ingame-wrap {
     position: absolute;
-    top: 45%;
+    top: 43%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
@@ -26,8 +75,7 @@
 
 .mini-wrap {
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0px;
     width: 100%;
     height: max-content;
 }
@@ -63,6 +111,7 @@ td {
 
 .game-title {
     font-size: 55px;
+    text-align: center;
 }
 
 .help {
