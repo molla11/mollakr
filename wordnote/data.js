@@ -13104,5 +13104,3237 @@ const words = {
         ]
       }
     }
+  },
+  "day33": {
+    "1281": {
+      "word": "erosion",
+      "meaning": {
+        "noun": [
+          "침식",
+          "부식"
+        ]
+      }
+    },
+    "1282": {
+      "word": "farewell",
+      "meaning": {
+        "noun": [
+          "작별"
+        ],
+        "adjective": [
+          "작별의"
+        ],
+        "exclamation": [
+          "안녕!",
+          "잘 가시오!"
+        ]
+      }
+    },
+    "1283": {
+      "word": "patch",
+      "meaning": {
+        "noun": [
+          "헝겊 조각",
+          "부분",
+          "일부"
+        ],
+        "verb": [
+          "헝겊 조각을 덧대다",
+          "수선하다"
+        ]
+      }
+    },
+    "1284": {
+      "word": "choke",
+      "meaning": {
+        "noun": [
+          "질식"
+        ],
+        "verb": [
+          "질식시키다",
+          "억제하다"
+        ]
+      }
+    },
+    "1285": {
+      "word": "commend",
+      "meaning": {
+        "verb": [
+          "칭찬하다",
+          "추천하다"
+        ]
+      }
+    },
+    "1286": {
+      "word": "default",
+      "meaning": {
+        "noun": [
+          "채무 불이행",
+          "태만",
+          "초기 설정"
+        ],
+        "verb": [
+          "채무를 이행하지 않다"
+        ]
+      }
+    },
+    "1287": {
+      "word": "desireble",
+      "meaning": {
+        "adjective": [
+          "바람직한",
+          "호감이 가는"
+        ]
+      }
+    },
+    "1288": {
+      "word": "abnormal",
+      "meaning": {
+        "adjective": [
+          "비정상적인",
+          "이상한"
+        ]
+      }
+    },
+    "1289": {
+      "word": "feat",
+      "meaning": {
+        "noun": [
+          "위업",
+          "공로"
+        ]
+      }
+    },
+    "1290": {
+      "word": "villain",
+      "meaning": {
+        "noun": [
+          "악당"
+        ]
+      }
+    },
+    "1291": {
+      "word": "literacy",
+      "meaning": {
+        "noun": [
+          "읽고 쓰는 능력"
+        ]
+      }
+    },
+    "1292": {
+      "word": "frontier",
+      "meaning": {
+        "noun": [
+          "국경",
+          "한계"
+        ],
+        "adjective": [
+          "국경의"
+        ]
+      }
+    },
+    "1293": {
+      "word": "harassment",
+      "meaning": {
+        "noun": [
+          "괴롭힘",
+          "희롱"
+        ]
+      }
+    },
+    "1294": {
+      "word": "hostage",
+      "meaning": {
+        "noun": [
+          "인질",
+          "저당",
+          "담보물"
+        ]
+      }
+    },
+    "1295": {
+      "word": "negotiate",
+      "meaning": {
+        "verb": [
+          "협상하다",
+          "협의하다"
+        ]
+      }
+    },
+    "1296": {
+      "word": "plague",
+      "meaning": {
+        "noun": [
+          "전염병",
+          "역병"
+        ],
+        "verb": [
+          "괴롭히다"
+        ]
+      }
+    },
+    "1297": {
+      "word": "pandemic",
+      "meaning": {
+        "noun": [
+          "전 세계적인 유행병"
+        ],
+        "adjective": [
+          "전 세계적으로 유행하는"
+        ]
+      }
+    },
+    "1298": {
+      "word": "dose",
+      "meaning": {
+        "noun": [
+          "1회 복용량"
+        ],
+        "verb": [
+          "복용시키다",
+          "투약하다"
+        ]
+      }
+    },
+    "1299": {
+      "word": "turbulence",
+      "meaning": {
+        "noun": [
+          "난기류",
+          "격동"
+        ]
+      }
+    },
+    "1300": {
+      "word": "veteran",
+      "meaning": {
+        "noun": [
+          "노련한 사람",
+          "노병"
+        ],
+        "adjective": [
+          "노련한",
+          "베테랑의"
+        ]
+      }
+    },
+    "1301": {
+      "word": "illiterate",
+      "meaning": {
+        "noun": [
+          "문맹"
+        ],
+        "adjective": [
+          "문맹의",
+          "읽고 쓸 줄 모르는"
+        ]
+      }
+    },
+    "1302": {
+      "word": "animate",
+      "meaning": {
+        "verb": [
+          "생기를 불어넣다"
+        ],
+        "adjective": [
+          "살아 있는",
+          "생기 있는"
+        ]
+      }
+    },
+    "1303": {
+      "word": "priest",
+      "meaning": {
+        "noun": [
+          "신부",
+          "성직자"
+        ]
+      }
+    },
+    "1304": {
+      "word": "preach",
+      "meaning": {
+        "verb": [
+          "설교하다",
+          "전도하다"
+        ]
+      }
+    },
+    "1305": {
+      "word": "abilish",
+      "meaning": {
+        "verb": [
+          "폐지하다",
+          "없애다"
+        ]
+      }
+    },
+    "1306": {
+      "word": "demolish",
+      "meaning": {
+        "verb": [
+          "파괴하다",
+          "철거하다"
+        ]
+      }
+    },
+    "1307": {
+      "word": "fortress",
+      "meaning": {
+        "noun": [
+          "요새",
+          "견고한 곳"
+        ]
+      }
+    },
+    "1308": {
+      "word": "troop",
+      "meaning": {
+        "noun": [
+          "군대",
+          "무리",
+          "떼"
+        ],
+        "verb": [
+          "떼지어 모이다"
+        ]
+      }
+    },
+    "1309": {
+      "word": "dock",
+      "meaning": {
+        "noun": [
+          "부두"
+        ],
+        "verb": [
+          "부두에 대다",
+          "정박하다"
+        ]
+      }
+    },
+    "1310": {
+      "word": "proclaim",
+      "meaning": {
+        "verb": [
+          "선언하다",
+          "분명히 보여주다"
+        ]
+      }
+    },
+    "1311": {
+      "word": "acclaim",
+      "meaning": {
+        "noun": [
+          "환호",
+          "호평"
+        ],
+        "verb": [
+          "환호하다",
+          "칭송하다"
+        ]
+      }
+    },
+    "1312": {
+      "word": "exclaim",
+      "meaning": {
+        "verb": [
+          "외치다",
+          "소리치다"
+        ]
+      }
+    },
+    "1313": {
+      "word": "deficient",
+      "meaning": {
+        "adjective": [
+          "부족한",
+          "결핍된"
+        ]
+      }
+    },
+    "1314": {
+      "word": "sufficient",
+      "meaning": {
+        "adjective": [
+          "충분한",
+          "~할 능력이 있는"
+        ]
+      }
+    },
+    "1315": {
+      "word": "assure",
+      "meaning": {
+        "verb": [
+          "확신시키다",
+          "보장하다"
+        ]
+      }
+    },
+    "1316": {
+      "word": "insure",
+      "meaning": {
+        "verb": [
+          "보험에 가입하다",
+          "~을 보증하다"
+        ]
+      }
+    },
+    "1317": {
+      "word": "ensure",
+      "meaning": {
+        "verb": [
+          "보증하다",
+          "확실하게 하다"
+        ]
+      }
+    },
+    "1318": {
+      "word": "define",
+      "meaning": {
+        "verb": [
+          "정의하다",
+          "규정하다"
+        ]
+      }
+    },
+    "1319": {
+      "word": "confine",
+      "meaning": {
+        "noun": [
+          "경계",
+          "한계"
+        ],
+        "verb": [
+          "한정하다",
+          "가두다"
+        ]
+      }
+    },
+    "1320": {
+      "word": "infinite",
+      "meaning": {
+        "noun": [
+          "무한한 것"
+        ],
+        "adjective": [
+          "무한한",
+          "한계가 없는"
+        ]
+      }
+    }
+  },
+  "day34": {
+    "1321": {
+      "word": "binocular",
+      "meaning": {
+        "noun": [
+          "쌍안경"
+        ],
+        "adjective": [
+          "두 눈의",
+          "쌍안의"
+        ]
+      }
+    },
+    "1322": {
+      "word": "errand",
+      "meaning": {
+        "noun": [
+          "심부름",
+          "용건"
+        ]
+      }
+    },
+    "1323": {
+      "word": "impartial",
+      "meaning": {
+        "adjective": [
+          "치우치지 않은",
+          "공정한"
+        ]
+      }
+    },
+    "1324": {
+      "word": "subconscious",
+      "meaning": {
+        "noun": [
+          "잠재의식"
+        ],
+        "adjective": [
+          "잠재의식의"
+        ]
+      }
+    },
+    "1325": {
+      "word": "peril",
+      "meaning": {
+        "noun": [
+          "위험",
+          "위기"
+        ]
+      }
+    },
+    "1326": {
+      "word": "sanitize",
+      "meaning": {
+        "verb": [
+          "위생 처리하다",
+          "살균하다"
+        ]
+      }
+    },
+    "1327": {
+      "word": "cast",
+      "meaning": {
+        "noun": [
+          "던지기",
+          "배역",
+          "깁스"
+        ],
+        "verb": [
+          "던지다",
+          "역을 배정하다"
+        ]
+      }
+    },
+    "1328": {
+      "word": "appendix",
+      "meaning": {
+        "noun": [
+          "맹장",
+          "부록",
+          "부속물"
+        ]
+      }
+    },
+    "1329": {
+      "word": "bribe",
+      "meaning": {
+        "noun": [
+          "뇌물"
+        ],
+        "verb": [
+          "뇌물을 주다",
+          "매수하다"
+        ]
+      }
+    },
+    "1330": {
+      "word": "certify",
+      "meaning": {
+        "verb": [
+          "증명하다",
+          "보증하다"
+        ]
+      }
+    },
+    "1331": {
+      "word": "pollutant",
+      "meaning": {
+        "noun": [
+          "오염 물질",
+          "오염원"
+        ]
+      }
+    },
+    "1332": {
+      "word": "invalid",
+      "meaning": {
+        "noun": [
+          "병자",
+          "병약자"
+        ],
+        "adjective": [
+          "효력 없는",
+          "병약한"
+        ]
+      }
+    },
+    "1333": {
+      "word": "monument",
+      "meaning": {
+        "noun": [
+          "기념물",
+          "기념비",
+          "유적"
+        ]
+      }
+    },
+    "1334": {
+      "word": "nationality",
+      "meaning": {
+        "noun": [
+          "국적",
+          "민족",
+          "국민성"
+        ]
+      }
+    },
+    "1335": {
+      "word": "obese",
+      "meaning": {
+        "adjective": [
+          "비만의",
+          "뚱뚱한"
+        ]
+      }
+    },
+    "1336": {
+      "word": "intimate",
+      "meaning": {
+        "adjective": [
+          "친밀한",
+          "사적인"
+        ]
+      }
+    },
+    "1337": {
+      "word": "reverse",
+      "meaning": {
+        "noun": [
+          "역",
+          "반대",
+          "뒤"
+        ],
+        "verb": [
+          "거꾸로 하다",
+          "뒤집다"
+        ],
+        "adjective": [
+          "거꾸로 된",
+          "반대의",
+          "뒤의"
+        ]
+      }
+    },
+    "1338": {
+      "word": "rush",
+      "meaning": {
+        "noun": [
+          "급습",
+          "돌진",
+          "혼잡"
+        ],
+        "verb": [
+          "서두르다",
+          "돌진하다"
+        ],
+        "adjective": [
+          "서두르는",
+          "돌진하는"
+        ]
+      }
+    },
+    "1339": {
+      "word": "scale",
+      "meaning": {
+        "noun": [
+          "규모",
+          "등급",
+          "저울"
+        ],
+        "verb": [
+          "오르다",
+          "평가하다"
+        ]
+      }
+    },
+    "1340": {
+      "word": "split",
+      "meaning": {
+        "noun": [
+          "쪼개기",
+          "분열",
+          "분할"
+        ],
+        "verb": [
+          "쪼개다",
+          "분열시키다"
+        ]
+      }
+    },
+    "1341": {
+      "word": "takeoff",
+      "meaning": {
+        "noun": [
+          "이륙",
+          "출발"
+        ]
+      }
+    },
+    "1342": {
+      "word": "vibrant",
+      "meaning": {
+        "adjective": [
+          "진동하는",
+          "활기찬"
+        ]
+      }
+    },
+    "1343": {
+      "word": "epidemic",
+      "meaning": {
+        "noun": [
+          "유행병",
+          "전염병"
+        ],
+        "adjective": [
+          "유행성인",
+          "전염성의"
+        ]
+      }
+    },
+    "1344": {
+      "word": "habitat",
+      "meaning": {
+        "noun": [
+          "서식지",
+          "거주지"
+        ]
+      }
+    },
+    "1345": {
+      "word": "agony",
+      "meaning": {
+        "noun": [
+          "고통",
+          "고뇌"
+        ]
+      }
+    },
+    "1346": {
+      "word": "garment",
+      "meaning": {
+        "noun": [
+          "의류",
+          "옷"
+        ],
+        "verb": [
+          "입히다"
+        ]
+      }
+    },
+    "1347": {
+      "word": "plead",
+      "meaning": {
+        "verb": [
+          "탄원하다",
+          "변호하다"
+        ]
+      }
+    },
+    "1348": {
+      "word": "appeal",
+      "meaning": {
+        "noun": [
+          "간청",
+          "호소",
+          "항소"
+        ],
+        "verb": [
+          "간청하다",
+          "호소하다",
+          "항소하다"
+        ]
+      }
+    },
+    "1349": {
+      "word": "vapor",
+      "meaning": {
+        "noun": [
+          "증기",
+          "수증기"
+        ],
+        "verb": [
+          "증발시키다"
+        ]
+      }
+    },
+    "1350": {
+      "word": "evaporate",
+      "meaning": {
+        "verb": [
+          "증발하다",
+          "사라지다"
+        ]
+      }
+    },
+    "1351": {
+      "word": "dissolve",
+      "meaning": {
+        "verb": [
+          "녹이다",
+          "용해시키다",
+          "해산시키다"
+        ]
+      }
+    },
+    "1352": {
+      "word": "dismiss",
+      "meaning": {
+        "verb": [
+          "일축하다",
+          "해고하다",
+          "해산시키다"
+        ]
+      }
+    },
+    "1353": {
+      "word": "commute",
+      "meaning": {
+        "noun": [
+          "통근",
+          "통근 거리"
+        ],
+        "verb": [
+          "통근하다"
+        ]
+      }
+    },
+    "1354": {
+      "word": "commit",
+      "meaning": {
+        "verb": [
+          "저지르다",
+          "전념하다"
+        ]
+      }
+    },
+    "1355": {
+      "word": "dwell",
+      "meaning": {
+        "verb": [
+          "살다",
+          "거주하다"
+        ]
+      }
+    },
+    "1356": {
+      "word": "reside",
+      "meaning": {
+        "verb": [
+          "거주하다",
+          "살다",
+          "존재하다"
+        ]
+      }
+    },
+    "1357": {
+      "word": "introvert",
+      "meaning": {
+        "noun": [
+          "내향적인 사람",
+          "내성적인 사람"
+        ],
+        "adjective": [
+          "내향성의",
+          "내성적인"
+        ]
+      }
+    },
+    "1358": {
+      "word": "extrovert",
+      "meaning": {
+        "noun": [
+          "외향적인 사람",
+          "사교적인 사람"
+        ],
+        "adjective": [
+          "외향적인",
+          "사교적인"
+        ]
+      }
+    },
+    "1359": {
+      "word": "resemble",
+      "meaning": {
+        "verb": [
+          "닮다",
+          "비슷하다"
+        ]
+      }
+    },
+    "1360": {
+      "word": "assemble",
+      "meaning": {
+        "verb": [
+          "모으다",
+          "조립하다"
+        ]
+      }
+    }
+  },
+  "day35": {
+    "1361": {
+      "word": "pension",
+      "meaning": {
+        "noun": [
+          "연금"
+        ],
+        "verb": [
+          "연금을 주다"
+        ]
+      }
+    },
+    "1362": {
+      "word": "thrifty",
+      "meaning": {
+        "adjective": [
+          "검소한",
+          "절약하는",
+          "번성하는"
+        ]
+      }
+    },
+    "1363": {
+      "word": "modest",
+      "meaning": {
+        "adjective": [
+          "겸손한",
+          "적당한"
+        ]
+      }
+    },
+    "1364": {
+      "word": "grin",
+      "meaning": {
+        "noun": [
+          "싱글싱글 웃음"
+        ],
+        "verb": [
+          "싱긋 웃다"
+        ]
+      }
+    },
+    "1365": {
+      "word": "vowel",
+      "meaning": {
+        "noun": [
+          "모음",
+          "모음자"
+        ],
+        "adjective": [
+          "모음의"
+        ]
+      }
+    },
+    "1366": {
+      "word": "servant",
+      "meaning": {
+        "noun": [
+          "하인",
+          "부하"
+        ]
+      }
+    },
+    "1367": {
+      "word": "sprain",
+      "meaning": {
+        "noun": [
+          "삠",
+          "접질림"
+        ],
+        "verb": [
+          "삐다",
+          "접질리다"
+        ]
+      }
+    },
+    "1368": {
+      "word": "abound",
+      "meaning": {
+        "verb": [
+          "풍부하다",
+          "많이 있다"
+        ]
+      }
+    },
+    "1369": {
+      "word": "admirable",
+      "meaning": {
+        "adjective": [
+          "감탄할 만한",
+          "훌륭한"
+        ]
+      }
+    },
+    "1370": {
+      "word": "antique",
+      "meaning": {
+        "noun": [
+          "고미술품",
+          "골동품"
+        ],
+        "adjective": [
+          "고대의",
+          "과거의"
+        ]
+      }
+    },
+    "1371": {
+      "word": "scheme",
+      "meaning": {
+        "noun": [
+          "계획",
+          "음모",
+          "체계"
+        ],
+        "verb": [
+          "계획하다",
+          "음모를 꾸미다"
+        ]
+      }
+    },
+    "1372": {
+      "word": "assent",
+      "meaning": {
+        "noun": [
+          "찬성",
+          "동의"
+        ],
+        "verb": [
+          "동의하다",
+          "찬성하다"
+        ]
+      }
+    },
+    "1373": {
+      "word": "launch",
+      "meaning": {
+        "noun": [
+          "개시",
+          "판매",
+          "발사"
+        ],
+        "verb": [
+          "시작하다",
+          "출시하다",
+          "발사하다"
+        ]
+      }
+    },
+    "1374": {
+      "word": "intoxicate",
+      "meaning": {
+        "verb": [
+          "취하게 하다",
+          "흥분시키다",
+          "중독시키다"
+        ]
+      }
+    },
+    "1375": {
+      "word": "fuse",
+      "meaning": {
+        "noun": [
+          "도화선"
+        ],
+        "verb": [
+          "녹이다",
+          "융합시키다"
+        ]
+      }
+    },
+    "1376": {
+      "word": "milestone",
+      "meaning": {
+        "noun": [
+          "이정표",
+          "획기적인 사건"
+        ]
+      }
+    },
+    "1377": {
+      "word": "remark",
+      "meaning": {
+        "noun": [
+          "발언",
+          "언급",
+          "주목"
+        ],
+        "verb": [
+          "언급하다",
+          "주목하다"
+        ]
+      }
+    },
+    "1378": {
+      "word": "bankrupt",
+      "meaning": {
+        "verb": [
+          "파산시키다"
+        ],
+        "adjective": [
+          "파산한",
+          "파산의"
+        ]
+      }
+    },
+    "1379": {
+      "word": "nostalgia",
+      "meaning": {
+        "noun": [
+          "향수",
+          "그리움",
+          "향수병"
+        ]
+      }
+    },
+    "1380": {
+      "word": "symphony",
+      "meaning": {
+        "noun": [
+          "교향곡",
+          "연주회",
+          "조화"
+        ]
+      }
+    },
+    "1381": {
+      "word": "mobilize",
+      "meaning": {
+        "verb": [
+          "동원하다",
+          "결집하다"
+        ]
+      }
+    },
+    "1382": {
+      "word": "underneath",
+      "meaning": {
+        "noun": [
+          "밑면",
+          "바닥"
+        ],
+        "adjective": [
+          "낮은",
+          "아래의"
+        ],
+        "adverb": [
+          "아래에"
+        ],
+        "preposition": [
+          "~의 아래에"
+        ]
+      }
+    },
+    "1383": {
+      "word": "unwind",
+      "meaning": {
+        "verb": [
+          "풀다",
+          "긴장을 풀다"
+        ]
+      }
+    },
+    "1384": {
+      "word": "virtue",
+      "meaning": {
+        "noun": [
+          "미덕",
+          "선",
+          "장점"
+        ]
+      }
+    },
+    "1385": {
+      "word": "apologize",
+      "meaning": {
+        "verb": [
+          "사과하다",
+          "변명하다"
+        ]
+      }
+    },
+    "1386": {
+      "word": "gratify",
+      "meaning": {
+        "verb": [
+          "기쁘게 하다",
+          "만족시키다"
+        ]
+      }
+    },
+    "1387": {
+      "word": "nutrient",
+      "meaning": {
+        "noun": [
+          "영양소",
+          "영양분"
+        ],
+        "adjective": [
+          "영양이 되는"
+        ]
+      }
+    },
+    "1388": {
+      "word": "malnutrition",
+      "meaning": {
+        "noun": [
+          "영양실조",
+          "영양 부족"
+        ]
+      }
+    },
+    "1389": {
+      "word": "install",
+      "meaning": {
+        "verb": [
+          "설치하다",
+          "장착하다"
+        ]
+      }
+    },
+    "1390": {
+      "word": "resent",
+      "meaning": {
+        "verb": [
+          "분개하다",
+          "화내다"
+        ]
+      }
+    },
+    "1391": {
+      "word": "pessimism",
+      "meaning": {
+        "noun": [
+          "비관론",
+          "비관주의"
+        ]
+      }
+    },
+    "1392": {
+      "word": "apt",
+      "meaning": {
+        "adjective": [
+          "적절한",
+          "~하기 쉬운",
+          "~하는 경향이 있는"
+        ]
+      }
+    },
+    "1393": {
+      "word": "aptitude",
+      "meaning": {
+        "noun": [
+          "소질",
+          "적성",
+          "경향"
+        ]
+      }
+    },
+    "1394": {
+      "word": "suspend",
+      "meaning": {
+        "verb": [
+          "중단하다",
+          "연기하다",
+          "정학시키다"
+        ]
+      }
+    },
+    "1395": {
+      "word": "resume",
+      "meaning": {
+        "verb": [
+          "재개하다",
+          "다시 시작하다"
+        ]
+      }
+    },
+    "1396": {
+      "word": "massive",
+      "meaning": {
+        "adjective": [
+          "거대한",
+          "대규모의"
+        ]
+      }
+    },
+    "1397": {
+      "word": "gigantic",
+      "meaning": {
+        "adjective": [
+          "거대한",
+          "거인 같은"
+        ]
+      }
+    },
+    "1398": {
+      "word": "meditate",
+      "meaning": {
+        "verb": [
+          "중재하다",
+          "조정하다"
+        ]
+      }
+    },
+    "1399": {
+      "word": "medieval",
+      "meaning": {
+        "adjective": [
+          "중세의",
+          "중세풍의"
+        ]
+      }
+    },
+    "1400": {
+      "word": "intermediate",
+      "meaning": {
+        "noun": [
+          "중급자",
+          "중재자"
+        ],
+        "adjective": [
+          "중간의",
+          "중급의"
+        ]
+      }
+    }
+  },
+  "day36": {
+    "1401": {
+      "word": "facet",
+      "meaning": {
+        "noun": [
+          "측면",
+          "양상"
+        ]
+      }
+    },
+    "1402": {
+      "word": "acquaint",
+      "meaning": {
+        "verb": [
+          "익숙하게 하다",
+          "숙지시키다"
+        ]
+      }
+    },
+    "1403": {
+      "word": "tailor",
+      "meaning": {
+        "noun": [
+          "재단사"
+        ],
+        "verb": [
+          "양복을 짓다",
+          "~을 맞추다"
+        ]
+      }
+    },
+    "1404": {
+      "word": "deputy",
+      "meaning": {
+        "noun": [
+          "대리인",
+          "보좌관"
+        ],
+        "adjective": [
+          "대리의",
+          "부의"
+        ]
+      }
+    },
+    "1405": {
+      "word": "canivorous",
+      "meaning": {
+        "adjective": [
+          "육식성의"
+        ]
+      }
+    },
+    "1406": {
+      "word": "civilian",
+      "meaning": {
+        "noun": [
+          "민간인",
+          "일반 시민"
+        ],
+        "adjective": [
+          "민간인의"
+        ]
+      }
+    },
+    "1407": {
+      "word": "commonplace",
+      "meaning": {
+        "adjective": [
+          "평범한",
+          "아주 흔한"
+        ]
+      }
+    },
+    "1408": {
+      "word": "democratic",
+      "meaning": {
+        "adjective": [
+          "민주적인",
+          "민주주의의"
+        ]
+      }
+    },
+    "1409": {
+      "word": "demonstrate",
+      "meaning": {
+        "verb": [
+          "증명하다",
+          "설명하다",
+          "시위운동을 하다"
+        ]
+      }
+    },
+    "1410": {
+      "word": "console",
+      "meaning": {
+        "verb": [
+          "위로하다",
+          "위안을 주다"
+        ]
+      }
+    },
+    "1411": {
+      "word": "doom",
+      "meaning": {
+        "noun": [
+          "운명",
+          "파멸"
+        ],
+        "verb": [
+          "운명을 맞게 하다"
+        ]
+      }
+    },
+    "1412": {
+      "word": "excel",
+      "meaning": {
+        "verb": [
+          "능가하다",
+          "뛰어나다"
+        ]
+      }
+    },
+    "1413": {
+      "word": "exotic",
+      "meaning": {
+        "adjective": [
+          "이국적인",
+          "외국의"
+        ]
+      }
+    },
+    "1414": {
+      "word": "hydrogen",
+      "meaning": {
+        "noun": [
+          "수소"
+        ]
+      }
+    },
+    "1415": {
+      "word": "itinerary",
+      "meaning": {
+        "noun": [
+          "여행 일정",
+          "여정"
+        ]
+      }
+    },
+    "1416": {
+      "word": "neglect",
+      "meaning": {
+        "verb": [
+          "무시하다",
+          "방치하다"
+        ]
+      }
+    },
+    "1417": {
+      "word": "norm",
+      "meaning": {
+        "noun": [
+          "표준",
+          "규범"
+        ]
+      }
+    },
+    "1418": {
+      "word": "pasture",
+      "meaning": {
+        "noun": [
+          "목초지",
+          "목장"
+        ],
+        "verb": [
+          "방목하다"
+        ]
+      }
+    },
+    "1419": {
+      "word": "prompt",
+      "meaning": {
+        "adjective": [
+          "즉각적인",
+          "신속한"
+        ]
+      }
+    },
+    "1420": {
+      "word": "troublesome",
+      "meaning": {
+        "adjective": [
+          "성가신",
+          "골치 아픈"
+        ]
+      }
+    },
+    "1421": {
+      "word": "undergo",
+      "meaning": {
+        "verb": [
+          "겪다",
+          "경험하다"
+        ]
+      }
+    },
+    "1422": {
+      "word": "wither",
+      "meaning": {
+        "verb": [
+          "시들다",
+          "말라 죽다"
+        ]
+      }
+    },
+    "1423": {
+      "word": "surpass",
+      "meaning": {
+        "verb": [
+          "능가하다",
+          "뛰어넘다"
+        ]
+      }
+    },
+    "1424": {
+      "word": "surplus",
+      "meaning": {
+        "noun": [
+          "잉여",
+          "과잉",
+          "여분"
+        ]
+      }
+    },
+    "1425": {
+      "word": "deem",
+      "meaning": {
+        "verb": [
+          "생각하다",
+          "간주하다"
+        ]
+      }
+    },
+    "1426": {
+      "word": "tyrant",
+      "meaning": {
+        "noun": [
+          "폭군",
+          "독재자"
+        ]
+      }
+    },
+    "1427": {
+      "word": "riot",
+      "meaning": {
+        "noun": [
+          "폭동",
+          "소동"
+        ],
+        "verb": [
+          "소동을 일으키다"
+        ]
+      }
+    },
+    "1428": {
+      "word": "rebel",
+      "meaning": {
+        "noun": [
+          "반역자"
+        ],
+        "verb": [
+          "반란을 일으키다",
+          "저항하다"
+        ]
+      }
+    },
+    "1429": {
+      "word": "rotate",
+      "meaning": {
+        "verb": [
+          "회전하다",
+          "순환하다",
+          "교대하다"
+        ]
+      }
+    },
+    "1430": {
+      "word": "resolve",
+      "meaning": {
+        "verb": [
+          "돌다",
+          "회전하다"
+        ]
+      }
+    },
+    "1431": {
+      "word": "fertile",
+      "meaning": {
+        "adjective": [
+          "비옥한",
+          "기름진"
+        ]
+      }
+    },
+    "1432": {
+      "word": "barren",
+      "meaning": {
+        "adjective": [
+          "불모의",
+          "척박한"
+        ]
+      }
+    },
+    "1433": {
+      "word": "pierce",
+      "meaning": {
+        "verb": [
+          "꿰뚫다",
+          "관통하다"
+        ]
+      }
+    },
+    "1434": {
+      "word": "fierce",
+      "meaning": {
+        "adjective": [
+          "격렬한",
+          "사나운"
+        ]
+      }
+    },
+    "1435": {
+      "word": "vow",
+      "meaning": {
+        "noun": [
+          "맹세",
+          "서약"
+        ],
+        "verb": [
+          "맹세하다",
+          "서약하다"
+        ]
+      }
+    },
+    "1436": {
+      "word": "pledge",
+      "meaning": {
+        "noun": [
+          "약속",
+          "맹세"
+        ],
+        "verb": [
+          "맹세하다"
+        ]
+      }
+    },
+    "1437": {
+      "word": "swear",
+      "meaning": {
+        "verb": [
+          "맹세하다",
+          "선서하다"
+        ]
+      }
+    },
+    "1438": {
+      "word": "conserve",
+      "meaning": {
+        "verb": [
+          "보호하다",
+          "보존하다"
+        ]
+      }
+    },
+    "1439": {
+      "word": "preserve",
+      "meaning": {
+        "verb": [
+          "보존하다",
+          "보호하다",
+          "유지하다"
+        ]
+      }
+    },
+    "1440": {
+      "word": "reserve",
+      "meaning": {
+        "verb": [
+          "예약하다",
+          "따로 남겨두다",
+          "보류하다",
+          "보유하다"
+        ]
+      }
+    }
+  },
+  "day37": {
+    "1441": {
+      "word": "hazard",
+      "meaning": {
+        "noun": [
+          "위험",
+          "위험 요소"
+        ]
+      }
+    },
+    "1442": {
+      "word": "decode",
+      "meaning": {
+        "verb": [
+          "해독하다",
+          "이해하다"
+        ]
+      }
+    },
+    "1443": {
+      "word": "speculate",
+      "meaning": {
+        "verb": [
+          "추측하다",
+          "숙고하다",
+          "투기하다"
+        ]
+      }
+    },
+    "1444": {
+      "word": "sensible",
+      "meaning": {
+        "adjective": [
+          "분별 있는",
+          "현명한",
+          "합리적인"
+        ]
+      }
+    },
+    "1445": {
+      "word": "categorize",
+      "meaning": {
+        "verb": [
+          "분류하다",
+          "범주에 넣다"
+        ]
+      }
+    },
+    "1446": {
+      "word": "clarify",
+      "meaning": {
+        "verb": [
+          "명확하게 하다",
+          "맑게 하다"
+        ]
+      }
+    },
+    "1447": {
+      "word": "composition",
+      "meaning": {
+        "noun": [
+          "구성",
+          "합성",
+          "작곡"
+        ]
+      }
+    },
+    "1448": {
+      "word": "spatial",
+      "meaning": {
+        "adjective": [
+          "공간의",
+          "공간적인"
+        ]
+      }
+    },
+    "1449": {
+      "word": "disclose",
+      "meaning": {
+        "verb": [
+          "밝히다",
+          "폭로하다"
+        ]
+      }
+    },
+    "1450": {
+      "word": "adjacent",
+      "meaning": {
+        "adjective": [
+          "인접한",
+          "가까운"
+        ]
+      }
+    },
+    "1451": {
+      "word": "ego",
+      "meaning": {
+        "noun": [
+          "자아",
+          "자기 자신"
+        ]
+      }
+    },
+    "1452": {
+      "word": "throne",
+      "meaning": {
+        "noun": [
+          "왕위",
+          "왕좌"
+        ],
+        "verb": [
+          "왕위에 앉다"
+        ]
+      }
+    },
+    "1453": {
+      "word": "soar",
+      "meaning": {
+        "verb": [
+          "급증하다",
+          "치솟다"
+        ]
+      }
+    },
+    "1454": {
+      "word": "malfunction",
+      "meaning": {
+        "noun": [
+          "오작동",
+          "기능 불량"
+        ],
+        "verb": [
+          "제대로 작동하지 않다"
+        ]
+      }
+    },
+    "1455": {
+      "word": "prolong",
+      "meaning": {
+        "verb": [
+          "연장하다",
+          "늘이다"
+        ]
+      }
+    },
+    "1456": {
+      "word": "textile",
+      "meaning": {
+        "noun": [
+          "직물",
+          "옷감"
+        ],
+        "adjective": [
+          "직물의"
+        ]
+      }
+    },
+    "1457": {
+      "word": "measure",
+      "meaning": {
+        "noun": [
+          "측정",
+          "수단",
+          "조치"
+        ],
+        "verb": [
+          "측정하다",
+          "재다"
+        ]
+      }
+    },
+    "1458": {
+      "word": "qualify",
+      "meaning": {
+        "verb": [
+          "자격을 얻다",
+          "자격을 주다"
+        ]
+      }
+    },
+    "1459": {
+      "word": "imperial",
+      "meaning": {
+        "adjective": [
+          "제국의",
+          "황제의"
+        ]
+      }
+    },
+    "1460": {
+      "word": "sway",
+      "meaning": {
+        "noun": [
+          "흔들림",
+          "진동"
+        ],
+        "verb": [
+          "흔들다",
+          "흔들리다"
+        ]
+      }
+    },
+    "1461": {
+      "word": "maternal",
+      "meaning": {
+        "adjective": [
+          "어머니의",
+          "모계의"
+        ]
+      }
+    },
+    "1462": {
+      "word": "arithmetic",
+      "meaning": {
+        "noun": [
+          "산수",
+          "계산"
+        ],
+        "adjective": [
+          "산수의"
+        ]
+      }
+    },
+    "1463": {
+      "word": "tremendous",
+      "meaning": {
+        "adjective": [
+          "거대한",
+          "엄청난"
+        ]
+      }
+    },
+    "1464": {
+      "word": "wreck",
+      "meaning": {
+        "noun": [
+          "난파",
+          "난파선"
+        ],
+        "verb": [
+          "난파시키다"
+        ]
+      }
+    },
+    "1465": {
+      "word": "sphere",
+      "meaning": {
+        "noun": [
+          "구",
+          "구체",
+          "범위",
+          "영역"
+        ]
+      }
+    },
+    "1466": {
+      "word": "tentative",
+      "meaning": {
+        "adjective": [
+          "잠정적인",
+          "임시의"
+        ]
+      }
+    },
+    "1467": {
+      "word": "initiative",
+      "meaning": {
+        "noun": [
+          "시작",
+          "주도권",
+          "발의권"
+        ]
+      }
+    },
+    "1468": {
+      "word": "bureaucracy",
+      "meaning": {
+        "noun": [
+          "관료주의",
+          "관료 제도"
+        ]
+      }
+    },
+    "1469": {
+      "word": "starvation",
+      "meaning": {
+        "noun": [
+          "굶주림",
+          "기아"
+        ]
+      }
+    },
+    "1470": {
+      "word": "odor",
+      "meaning": {
+        "noun": [
+          "냄새",
+          "악취"
+        ]
+      }
+    },
+    "1471": {
+      "word": "mutual",
+      "meaning": {
+        "adjective": [
+          "상호간의",
+          "서로의"
+        ]
+      }
+    },
+    "1472": {
+      "word": "communal",
+      "meaning": {
+        "adjective": [
+          "공동의",
+          "공동체의"
+        ]
+      }
+    },
+    "1473": {
+      "word": "imprison",
+      "meaning": {
+        "verb": [
+          "투옥하다",
+          "가두다"
+        ]
+      }
+    },
+    "1474": {
+      "word": "discharge",
+      "meaning": {
+        "noun": [
+          "방출",
+          "해고",
+          "제대"
+        ],
+        "verb": [
+          "짐이나 승객을 내리다",
+          "방출하다"
+        ]
+      }
+    },
+    "1475": {
+      "word": "queue",
+      "meaning": {
+        "noun": [
+          "줄",
+          "대기 행렬"
+        ]
+      }
+    },
+    "1476": {
+      "word": "cue",
+      "meaning": {
+        "noun": [
+          "신호",
+          "암시"
+        ]
+      }
+    },
+    "1477": {
+      "word": "mischief",
+      "meaning": {
+        "noun": [
+          "장난",
+          "피해"
+        ]
+      }
+    },
+    "1478": {
+      "word": "mischievous",
+      "meaning": {
+        "adjective": [
+          "짓궂은",
+          "악의 있는"
+        ]
+      }
+    },
+    "1479": {
+      "word": "sole",
+      "meaning": {
+        "adjective": [
+          "유일한",
+          "단 하나의"
+        ]
+      }
+    },
+    "1480": {
+      "word": "solitude",
+      "meaning": {
+        "noun": [
+          "고독"
+        ]
+      }
+    }
+  },
+  "day38": {
+    "1481": {
+      "word": "indulge",
+      "meaning": {
+        "verb": [
+          "충족시키다",
+          "~가 제멋대로 하게 하다"
+        ]
+      }
+    },
+    "1482": {
+      "word": "attentive",
+      "meaning": {
+        "adjective": [
+          "주의 깊은",
+          "경청하는"
+        ]
+      }
+    },
+    "1483": {
+      "word": "assertive",
+      "meaning": {
+        "adjective": [
+          "확신에 찬",
+          "자기주장이 강한"
+        ]
+      }
+    },
+    "1484": {
+      "word": "ponder",
+      "meaning": {
+        "verb": [
+          "곰곰이 생각하다",
+          "숙고하다"
+        ]
+      }
+    },
+    "1485": {
+      "word": "excalate",
+      "meaning": {
+        "verb": [
+          "확대하다",
+          "증대시키다"
+        ]
+      }
+    },
+    "1486": {
+      "word": "remorse",
+      "meaning": {
+        "noun": [
+          "후회",
+          "양심의 가책"
+        ]
+      }
+    },
+    "1487": {
+      "word": "furnish",
+      "meaning": {
+        "verb": [
+          "비치하다",
+          "제공하다"
+        ]
+      }
+    },
+    "1488": {
+      "word": "hinder",
+      "meaning": {
+        "verb": [
+          "방해하다",
+          "저지하다"
+        ]
+      }
+    },
+    "1489": {
+      "word": "incomplete",
+      "meaning": {
+        "adjective": [
+          "불완전한",
+          "미완성의"
+        ]
+      }
+    },
+    "1490": {
+      "word": "larva",
+      "meaning": {
+        "noun": [
+          "유충",
+          "애벌레"
+        ]
+      }
+    },
+    "1491": {
+      "word": "parental",
+      "meaning": {
+        "adjective": [
+          "부모의"
+        ]
+      }
+    },
+    "1492": {
+      "word": "compatible",
+      "meaning": {
+        "adjective": [
+          "양립할 수 있는",
+          "호환이 되는"
+        ]
+      }
+    },
+    "1493": {
+      "word": "temper",
+      "meaning": {
+        "noun": [
+          "기질",
+          "성질",
+          "화"
+        ]
+      }
+    },
+    "1494": {
+      "word": "timber",
+      "meaning": {
+        "noun": [
+          "목재",
+          "수목"
+        ]
+      }
+    },
+    "1495": {
+      "word": "unconditional",
+      "meaning": {
+        "adjective": [
+          "무조건적인",
+          "절대적인"
+        ]
+      }
+    },
+    "1496": {
+      "word": "accelerate",
+      "meaning": {
+        "verb": [
+          "가속화하다",
+          "속도를 높이다"
+        ]
+      }
+    },
+    "1497": {
+      "word": "uphold",
+      "meaning": {
+        "verb": [
+          "유지하다",
+          "지탱하다"
+        ]
+      }
+    },
+    "1498": {
+      "word": "consecutive",
+      "meaning": {
+        "adjective": [
+          "연속적인",
+          "계속되는"
+        ]
+      }
+    },
+    "1499": {
+      "word": "autograph",
+      "meaning": {
+        "noun": [
+          "서명",
+          "자필"
+        ],
+        "verb": [
+          "서명하다"
+        ]
+      }
+    },
+    "1500": {
+      "word": "unearth",
+      "meaning": {
+        "verb": [
+          "발굴하다",
+          "발견하다"
+        ]
+      }
+    },
+    "1501": {
+      "word": "seemingly",
+      "meaning": {
+        "adverb": [
+          "겉으로는",
+          "외견상으로는"
+        ]
+      }
+    },
+    "1502": {
+      "word": "splendid",
+      "meaning": {
+        "adjective": [
+          "화려한",
+          "웅장한",
+          "멋진"
+        ]
+      }
+    },
+    "1503": {
+      "word": "assort",
+      "meaning": {
+        "verb": [
+          "분류하다",
+          "구분하다"
+        ]
+      }
+    },
+    "1504": {
+      "word": "expedition",
+      "meaning": {
+        "noun": [
+          "원정",
+          "탐험",
+          "탐험대"
+        ]
+      }
+    },
+    "1505": {
+      "word": "deduct",
+      "meaning": {
+        "verb": [
+          "빼다",
+          "공제하다"
+        ]
+      }
+    },
+    "1506": {
+      "word": "detect",
+      "meaning": {
+        "verb": [
+          "발견하다",
+          "감지하다"
+        ]
+      }
+    },
+    "1507": {
+      "word": "sustainable",
+      "meaning": {
+        "adjective": [
+          "지속 가능한"
+        ]
+      }
+    },
+    "1508": {
+      "word": "momentary",
+      "meaning": {
+        "adjective": [
+          "순간적인",
+          "일시의"
+        ]
+      }
+    },
+    "1509": {
+      "word": "token",
+      "meaning": {
+        "noun": [
+          "표시",
+          "상징",
+          "징표"
+        ]
+      }
+    },
+    "1510": {
+      "word": "reckon",
+      "meaning": {
+        "verb": [
+          "~라고 여기다",
+          "생각하다"
+        ]
+      }
+    },
+    "1511": {
+      "word": "incurable",
+      "meaning": {
+        "adjective": [
+          "불치의",
+          "치료할 수 없는"
+        ]
+      }
+    },
+    "1512": {
+      "word": "chronic",
+      "meaning": {
+        "adjective": [
+          "만성적인",
+          "오래 끄는"
+        ]
+      }
+    },
+    "1513": {
+      "word": "swift",
+      "meaning": {
+        "adjective": [
+          "빠른",
+          "신속한"
+        ]
+      }
+    },
+    "1514": {
+      "word": "inherit",
+      "meaning": {
+        "verb": [
+          "~을 상속하다",
+          "물려받다"
+        ]
+      }
+    },
+    "1515": {
+      "word": "inherent",
+      "meaning": {
+        "adjective": [
+          "내재된",
+          "고유의",
+          "타고난"
+        ]
+      }
+    },
+    "1516": {
+      "word": "facility",
+      "meaning": {
+        "noun": [
+          "시설",
+          "설비",
+          "기관"
+        ]
+      }
+    },
+    "1517": {
+      "word": "facilitate",
+      "meaning": {
+        "verb": [
+          "용이하게 하다",
+          "촉진하다"
+        ]
+      }
+    },
+    "1518": {
+      "word": "maintain",
+      "meaning": {
+        "verb": [
+          "유지하다",
+          "지속하다"
+        ]
+      }
+    },
+    "1519": {
+      "word": "sustain",
+      "meaning": {
+        "verb": [
+          "떠받치다",
+          "지탱하다"
+        ]
+      }
+    },
+    "1520": {
+      "word": "retain",
+      "meaning": {
+        "verb": [
+          "보유하다",
+          "유지하다"
+        ]
+      }
+    }
+  },
+  "day39": {
+    "1521": {
+      "word": "solidarity",
+      "meaning": {
+        "noun": [
+          "결속",
+          "연대"
+        ]
+      }
+    },
+    "1522": {
+      "word": "tedious",
+      "meaning": {
+        "adjective": [
+          "지루한",
+          "지겨운"
+        ]
+      }
+    },
+    "1523": {
+      "word": "circumvent",
+      "meaning": {
+        "verb": [
+          "피하다",
+          "면피하다"
+        ]
+      }
+    },
+    "1524": {
+      "word": "fuss",
+      "meaning": {
+        "noun": [
+          "야단법석",
+          "호들갑"
+        ],
+        "verb": [
+          "야단법석을 떨다"
+        ]
+      }
+    },
+    "1525": {
+      "word": "scribble",
+      "meaning": {
+        "verb": [
+          "갈겨쓰다",
+          "낙서하다"
+        ]
+      }
+    },
+    "1526": {
+      "word": "converge",
+      "meaning": {
+        "verb": [
+          "모여들다",
+          "집중되다",
+          "수렴하다"
+        ]
+      }
+    },
+    "1527": {
+      "word": "integrity",
+      "meaning": {
+        "noun": [
+          "진실성",
+          "정직",
+          "성실",
+          "온전함",
+          "완전한 상태"
+        ]
+      }
+    },
+    "1528": {
+      "word": "permissible",
+      "meaning": {
+        "adjective": [
+          "허용되는",
+          "무방한"
+        ]
+      }
+    },
+    "1529": {
+      "word": "volatile",
+      "meaning": {
+        "adjective": [
+          "변덕스러운",
+          "불안정한",
+          "휘발성의"
+        ]
+      }
+    },
+    "1530": {
+      "word": "symmetry",
+      "meaning": {
+        "noun": [
+          "대칭",
+          "균형"
+        ]
+      }
+    },
+    "1531": {
+      "word": "transcribe",
+      "meaning": {
+        "verb": [
+          "베껴 쓰다",
+          "기록하다"
+        ]
+      }
+    },
+    "1532": {
+      "word": "submerge",
+      "meaning": {
+        "verb": [
+          "물에 잠그다",
+          "잠수하다"
+        ]
+      }
+    },
+    "1533": {
+      "word": "telltale",
+      "meaning": {
+        "adjective": [
+          "명백한",
+          "숨길 수 없는"
+        ]
+      }
+    },
+    "1534": {
+      "word": "respiratory",
+      "meaning": {
+        "adjective": [
+          "호흡의",
+          "호흡 기관의"
+        ]
+      }
+    },
+    "1535": {
+      "word": "ostensible",
+      "meaning": {
+        "adjective": [
+          "표면상의",
+          "명백한",
+          "구체적으로 나타내는"
+        ]
+      }
+    },
+    "1536": {
+      "word": "lag",
+      "meaning": {
+        "noun": [
+          "뒤처짐",
+          "시차"
+        ],
+        "verb": [
+          "뒤처지다",
+          "뒤떨어지다"
+        ]
+      }
+    },
+    "1537": {
+      "word": "proactive",
+      "meaning": {
+        "adjective": [
+          "상황을 앞서서 주도하는",
+          "예방의"
+        ]
+      }
+    },
+    "1538": {
+      "word": "basin",
+      "meaning": {
+        "noun": [
+          "분지",
+          "강의 유역",
+          "대야",
+          "대접"
+        ]
+      }
+    },
+    "1539": {
+      "word": "filthy",
+      "meaning": {
+        "adjective": [
+          "더러운",
+          "불결한"
+        ]
+      }
+    },
+    "1540": {
+      "word": "deflect",
+      "meaning": {
+        "verb": [
+          "빗나가다",
+          "방향을 바꾸다"
+        ]
+      }
+    },
+    "1541": {
+      "word": "decease",
+      "meaning": {
+        "noun": [
+          "사망"
+        ],
+        "verb": [
+          "사망하다"
+        ]
+      }
+    },
+    "1542": {
+      "word": "inheritance",
+      "meaning": {
+        "noun": [
+          "유산",
+          "유전적 성질"
+        ]
+      }
+    },
+    "1543": {
+      "word": "pharmaceutical",
+      "meaning": {
+        "noun": [
+          "약",
+          "조제약"
+        ],
+        "adjective": [
+          "제약의",
+          "약학의"
+        ]
+      }
+    },
+    "1544": {
+      "word": "falter",
+      "meaning": {
+        "verb": [
+          "흔들리다",
+          "약해지다"
+        ]
+      }
+    },
+    "1545": {
+      "word": "defy",
+      "meaning": {
+        "verb": [
+          "저항하다",
+          "거역하다"
+        ]
+      }
+    },
+    "1546": {
+      "word": "elusive",
+      "meaning": {
+        "adjective": [
+          "붙잡기 어려운",
+          "이해하기 어려운"
+        ]
+      }
+    },
+    "1547": {
+      "word": "exemplify",
+      "meaning": {
+        "verb": [
+          "~을 예시하다",
+          "~의 좋은 예가 되다"
+        ]
+      }
+    },
+    "1548": {
+      "word": "wane",
+      "meaning": {
+        "verb": [
+          "약해지다",
+          "줄어들다"
+        ]
+      }
+    },
+    "1549": {
+      "word": "quench",
+      "meaning": {
+        "verb": [
+          "풀다",
+          "끄다"
+        ]
+      }
+    },
+    "1550": {
+      "word": "sturdy",
+      "meaning": {
+        "adjective": [
+          "강건한",
+          "견고한"
+        ]
+      }
+    },
+    "1551": {
+      "word": "creed",
+      "meaning": {
+        "noun": [
+          "교리",
+          "신념",
+          "신조"
+        ]
+      }
+    },
+    "1552": {
+      "word": "perseverance",
+      "meaning": {
+        "noun": [
+          "인내",
+          "끈기"
+        ]
+      }
+    },
+    "1553": {
+      "word": "wrench",
+      "meaning": {
+        "noun": [
+          "비틀기",
+          "쓰라림",
+          "렌치",
+          "스패너"
+        ],
+        "verb": [
+          "~을 비틀다",
+          "억지로 잡아떼다",
+          "삐다",
+          "접질리다"
+        ]
+      }
+    },
+    "1554": {
+      "word": "introspective",
+      "meaning": {
+        "adjective": [
+          "자기 성찰적인",
+          "내향적인"
+        ]
+      }
+    },
+    "1555": {
+      "word": "prolific",
+      "meaning": {
+        "adjective": [
+          "다산의",
+          "다작의",
+          "풍부한"
+        ]
+      }
+    },
+    "1556": {
+      "word": "reverence",
+      "meaning": {
+        "noun": [
+          "경외",
+          "숭배"
+        ]
+      }
+    },
+    "1557": {
+      "word": "clutter",
+      "meaning": {
+        "noun": [
+          "어수선함",
+          "잡동사니"
+        ],
+        "verb": [
+          "어지르다",
+          "혼란스럽게 하다"
+        ]
+      }
+    },
+    "1558": {
+      "word": "frantic",
+      "meaning": {
+        "adjective": [
+          "미친 듯한",
+          "극도로 흥분한"
+        ]
+      }
+    },
+    "1559": {
+      "word": "adept",
+      "meaning": {
+        "adjective": [
+          "능숙한",
+          "숙련된"
+        ]
+      }
+    },
+    "1560": {
+      "word": "ardent",
+      "meaning": {
+        "adjective": [
+          "열렬한",
+          "열정적인"
+        ]
+      }
+    }
+  },
+  "day40": {
+    "1561": {
+      "word": "pragmatic",
+      "meaning": {
+        "adjective": [
+          "실용적인",
+          "실용주의의"
+        ]
+      }
+    },
+    "1562": {
+      "word": "outward",
+      "meaning": {
+        "adjective": [
+          "외형적인",
+          "밖으로 향하는"
+        ]
+      }
+    },
+    "1563": {
+      "word": "propagate",
+      "meaning": {
+        "verb": [
+          "선전하다",
+          "전파하다",
+          "번식시키다"
+        ]
+      }
+    },
+    "1564": {
+      "word": "pervasive",
+      "meaning": {
+        "adjective": [
+          "만연하는",
+          "널리 퍼져 있는"
+        ]
+      }
+    },
+    "1565": {
+      "word": "turmoil",
+      "meaning": {
+        "noun": [
+          "혼란",
+          "소란"
+        ]
+      }
+    },
+    "1566": {
+      "word": "sanction",
+      "meaning": {
+        "noun": [
+          "제재",
+          "처벌"
+        ],
+        "verb": [
+          "처벌하다",
+          "제재를 가하다"
+        ]
+      }
+    },
+    "1567": {
+      "word": "assassinate",
+      "meaning": {
+        "verb": [
+          "암살하다"
+        ]
+      }
+    },
+    "1568": {
+      "word": "specimen",
+      "meaning": {
+        "noun": [
+          "표본",
+          "견본"
+        ]
+      }
+    },
+    "1569": {
+      "word": "aversion",
+      "meaning": {
+        "noun": [
+          "혐오감",
+          "아주 싫어함"
+        ]
+      }
+    },
+    "1570": {
+      "word": "serendipity",
+      "meaning": {
+        "noun": [
+          "우연히 찾아낸 것",
+          "뜻밖의 발견"
+        ]
+      }
+    },
+    "1571": {
+      "word": "precipitation",
+      "meaning": {
+        "noun": [
+          "강수",
+          "투하",
+          "낙하"
+        ]
+      }
+    },
+    "1572": {
+      "word": "pseudo",
+      "meaning": {
+        "noun": [
+          "사기꾼"
+        ],
+        "adjective": [
+          "가짜의",
+          "허위의"
+        ]
+      }
+    },
+    "1573": {
+      "word": "credulous",
+      "meaning": {
+        "adjective": [
+          "잘 속는",
+          "잘 믿는"
+        ]
+      }
+    },
+    "1574": {
+      "word": "overtake",
+      "meaning": {
+        "verb": [
+          "추월하다",
+          "앞지르다"
+        ]
+      }
+    },
+    "1575": {
+      "word": "nuisance",
+      "meaning": {
+        "noun": [
+          "성가신 일",
+          "골칫거리"
+        ]
+      }
+    },
+    "1576": {
+      "word": "spur",
+      "meaning": {
+        "noun": [
+          "박차",
+          "자극"
+        ],
+        "verb": [
+          "박차를 가하다",
+          "자극하다"
+        ]
+      }
+    },
+    "1577": {
+      "word": "agility",
+      "meaning": {
+        "noun": [
+          "민첩함",
+          "재빠름"
+        ]
+      }
+    },
+    "1578": {
+      "word": "nimble",
+      "meaning": {
+        "adjective": [
+          "민첩한",
+          "날렵한"
+        ]
+      }
+    },
+    "1579": {
+      "word": "complacent",
+      "meaning": {
+        "adjective": [
+          "자기만족의",
+          "현실에 안주하는"
+        ]
+      }
+    },
+    "1580": {
+      "word": "devastate",
+      "meaning": {
+        "verb": [
+          "황폐화시키다",
+          "파괴하다"
+        ]
+      }
+    },
+    "1581": {
+      "word": "avert",
+      "meaning": {
+        "verb": [
+          "눈을 돌리다",
+          "막다",
+          "피하다"
+        ]
+      }
+    },
+    "1582": {
+      "word": "temperament",
+      "meaning": {
+        "noun": [
+          "기질",
+          "성질"
+        ]
+      }
+    },
+    "1583": {
+      "word": "utilitarian",
+      "meaning": {
+        "adjective": [
+          "실용적인",
+          "실리주의의"
+        ]
+      }
+    },
+    "1584": {
+      "word": "intertwine",
+      "meaning": {
+        "verb": [
+          "서로 뒤얽히다",
+          "밀접하게 관련되다"
+        ]
+      }
+    },
+    "1585": {
+      "word": "abide",
+      "meaning": {
+        "verb": [
+          "준수하다",
+          "지키다",
+          "~을 견디다",
+          "참다"
+        ]
+      }
+    },
+    "1586": {
+      "word": "subsequent",
+      "meaning": {
+        "adjective": [
+          "그 이후의",
+          "바로 다음의"
+        ]
+      }
+    },
+    "1587": {
+      "word": "salient",
+      "meaning": {
+        "adjective": [
+          "가장 중요한",
+          "두드러진",
+          "눈에 띄는"
+        ]
+      }
+    },
+    "1588": {
+      "word": "exert",
+      "meaning": {
+        "verb": [
+          "행사하다",
+          "발휘하다",
+          "열심히 노력하다"
+        ]
+      }
+    },
+    "1589": {
+      "word": "surmount",
+      "meaning": {
+        "verb": [
+          "극복하다",
+          "이겨내다",
+          "오르다"
+        ]
+      }
+    },
+    "1590": {
+      "word": "enzyme",
+      "meaning": {
+        "noun": [
+          "효소"
+        ]
+      }
+    },
+    "1591": {
+      "word": "dodge",
+      "meaning": {
+        "verb": [
+          "피하다",
+          "비키다"
+        ]
+      }
+    },
+    "1592": {
+      "word": "nomadic",
+      "meaning": {
+        "adjective": [
+          "유목의",
+          "방랑의"
+        ]
+      }
+    },
+    "1593": {
+      "word": "postulate",
+      "meaning": {
+        "noun": [
+          "가정",
+          "가설",
+          "근본 원리"
+        ],
+        "verb": [
+          "가정하다",
+          "상정하다"
+        ]
+      }
+    },
+    "1594": {
+      "word": "appease",
+      "meaning": {
+        "verb": [
+          "달래다",
+          "진정시키다"
+        ]
+      }
+    },
+    "1595": {
+      "word": "allot",
+      "meaning": {
+        "verb": [
+          "할당하다",
+          "배당하다"
+        ]
+      }
+    },
+    "1596": {
+      "word": "alienate",
+      "meaning": {
+        "verb": [
+          "멀어지게 만들다",
+          "소외감을 느끼게 하다"
+        ]
+      }
+    },
+    "1597": {
+      "word": "dissent",
+      "meaning": {
+        "noun": [
+          "반대",
+          "이견"
+        ],
+        "verb": [
+          "의견이 다르다",
+          "이의를 제기하다"
+        ]
+      }
+    },
+    "1598": {
+      "word": "solicit",
+      "meaning": {
+        "verb": [
+          "간청하다",
+          "요청하다"
+        ]
+      }
+    },
+    "1599": {
+      "word": "affluent",
+      "meaning": {
+        "adjective": [
+          "부유한",
+          "풍부한"
+        ]
+      }
+    },
+    "1600": {
+      "word": "metabolism",
+      "meaning": {
+        "noun": [
+          "신진대사",
+          "물질대사"
+        ]
+      }
+    }
   }
-};
+}
