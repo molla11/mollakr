@@ -1,0 +1,102 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+#wrap-canvas {
+    z-index: -1;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min-content;
+    height: min-content;
+    position: relative;
+    transition: .3s;
+}
+
+#canvas {
+    z-index: -1;
+    position: relative;
+    border: 1px solid black;
+    transition: .3s;
+}
+
+input[type=number] {
+    position: relative;
+    border: 2px solid rgb(65, 0, 178);
+    border-radius: 5px;
+    text-align: center;
+    width: 100px;
+    height: 25px;
+    margin: 3px;
+    transition: .3s;
+    caret-color: transparent;
+}
+
+#generate-dots {
+    width: 100px;
+    height: 25px;
+    margin: 5px;
+    position: relative;
+}
+
+input[type=number]::placeholder {
+    color: rgb(65, 0, 178);
+    transition: .3s;
+}
+
+input[type=number]:focus::placeholder {
+    color: rgb(132, 0, 255);
+    transition: .3s;
+}
+
+input[type=number]:focus {
+    transition: .3s ease-in;
+    border: 10px solid rgb(132, 0, 255);
+    border-radius: 30px;
+    outline: none;
+}
+
+#inputs {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    transition: .3s;
+}
+
+input::-webkit-inner-spin-button {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+#values {
+    border: 1px solid black;
+    padding: 5px;
+    position: absolute;
+    left: 10px;
+    top: 180px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.box-help {
+    position: absolute;
+    border-radius: 5px;
+    background-color: #222;
+    color: #DDD;
+    line-height: 25px;
+    padding: 2.5px 5px;
+    z-index: -1;
+    opacity: 0;
+    transition: .3s;
+    text-align: center;
+    border: 2px solid gray;
+}
+
+#say {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    width: 350px;
+    transform: translateX(-50%);
+}
