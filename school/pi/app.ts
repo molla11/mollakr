@@ -34,6 +34,8 @@ let interval: number;
 let inCircle: number = 0;
 let outCircle: number = 0;
 let delay: number = 100;
+let accuracy: number = 3; // 0.xxx
+let tenToTheAccuracy: number = 1000;
 let isOptimize: boolean = false;
 let isRunning: boolean = false;
 
@@ -47,6 +49,7 @@ const inputNumberOfDot = document.getElementById("number-of-dot") as HTMLInputEl
 inputNumberOfDot.addEventListener("input", processInputs);
 const inputDelay = document.getElementById("delay") as HTMLInputElement;
 inputDelay.addEventListener("input", processInputs);
+const inputAccuracy = document.getElementById("accuracy")
 const btnGenerateDots = document.getElementById("generate-dots") as HTMLButtonElement;
 btnGenerateDots.addEventListener("click", () => {
     if (!isRunning) {
@@ -68,6 +71,21 @@ function toggleIsOptimize() {
         isOptimize = true;
         say("optimized (show progress in console).");
         console.log("When you click generating button, I will show you progress.");
+    }
+}
+
+function changeAccuracy(value: number) {
+    if (value > 18) {
+        say("Too accurate. Accuracy should be no more than 18.");
+        accuracy = 3;
+        tenToTheAccuracy = 1000;
+    } else if (value < 0) {
+        say("Strange accuracy.");
+        accuracy = 0;
+        tenToTheAccuracy = 1;
+    } else {
+        accuracy = value;
+        tenToTheAccuracy = 10 ** value;
     }
 }
 
@@ -125,7 +143,7 @@ function judgeInputs() {
 }
 
 function showData() {
-    document.getElementById("values").innerHTML = `size = ${sideLength}(px)<br>dot = ${numberOfDot}<br>delay = ${delay}(ms)<br>r<sub>n</sub> = ${inCircle}<br>n = ${dotted}<br>π ≒ 4 × r<sub>n</sub> / n = ${dotted === 0 ? "Not defined" : Math.round(4 * inCircle / dotted * 1000) / 1000}`;
+    document.getElementById("values").innerHTML = `size = ${sideLength}(px)<br>dot = ${numberOfDot}<br>delay = ${delay}(ms)<br>r<sub>n</sub> = ${inCircle}<br>n = ${dotted}<br>π ≒ 4 × r<sub>n</sub> / n = ${dotted === 0 ? "Not defined" : Math.round(4 * inCircle / dotted * tenToTheAccuracy) / tenToTheAccuracy}`;
 }
 
 function drawCircle() {
@@ -142,7 +160,6 @@ function generateDots() {
     isRunning = true;
     if (isOptimize) {
         optimizedDot();
-        isRunning = false;
     } else {
         interval = setInterval(dot, delay);
     }
@@ -192,9 +209,10 @@ function optimizedDot() { // call only one
                 outCircle++;
             }
         }
-        showData();
         console.log("Repeated " + dotted + " times.");
     }
+    showData();
+    isRunning = false;
 }
 
 let saveTimeout: number;

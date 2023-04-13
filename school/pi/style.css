@@ -1,6 +1,14 @@
 * {
     padding: 0;
     margin: 0;
+    /*.parts-of-speech, .button, .label-checkbox, #word, #index, #buttons, #forder, #checkboxes, .box-help*/
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* internet explorer */
+    user-select: none;
 }
 
 #wrap-canvas {
@@ -26,7 +34,7 @@ input[type=number] {
     border: 2px solid rgb(65, 0, 178);
     border-radius: 5px;
     text-align: center;
-    width: 100px;
+    width: 120px;
     height: 25px;
     margin: 3px;
     transition: .3s;
@@ -34,10 +42,28 @@ input[type=number] {
 }
 
 #generate-dots {
-    width: 100px;
+    width: 120px;
     height: 25px;
-    margin: 5px;
+    margin: 3px;
     position: relative;
+    background-color: white;
+    border-radius: 12.5px;
+    border: 2px solid rgb(0, 164, 22);
+    color: rgb(0, 164, 22);
+    transition: .3s;
+    cursor: pointer;
+}
+
+#generate-dots:active {
+    transition: .3s;
+    color: white;
+    background-color: rgb(0, 164, 22);
+}
+
+#generate-dots:hover {
+    transition: .3s;
+    color: white;
+    background-color: rgb(0, 164, 22);
 }
 
 input[type=number]::placeholder {
@@ -55,6 +81,8 @@ input[type=number]:focus {
     border: 10px solid rgb(132, 0, 255);
     border-radius: 30px;
     outline: none;
+    width: 130px;
+    height: 40px;
 }
 
 #inputs {
@@ -97,6 +125,7 @@ input::-webkit-inner-spin-button {
     position: absolute;
     left: 50%;
     top: 70%;
-    width: 350px;
+    padding-left: 15px;
+    padding-right: 15px;
     transform: translateX(-50%);
 }
