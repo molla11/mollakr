@@ -19,7 +19,7 @@ function getCanvas() {
         context = canvas.getContext("2d");
     }
     catch (err) {
-        alert("canvas를 불러오는 중 에러가 발생하였습니다.\n페이지를 새로 고칩니다.\n" + err);
+        alert("An error occured. This page will be refreshed.\n" + err);
         location.reload();
     }
 }
