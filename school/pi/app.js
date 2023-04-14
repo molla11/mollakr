@@ -42,6 +42,10 @@ inputNumberOfDot.addEventListener("input", processInputs);
 const inputDelay = document.getElementById("delay");
 inputDelay.addEventListener("input", processInputs);
 const inputAccuracy = document.getElementById("accuracy");
+inputAccuracy.addEventListener("input", () => {
+    changeAccuracy(parseInt(inputAccuracy.value));
+    document.getElementById("show-accuracy").innerHTML = "accuracy = " + inputAccuracy.value;
+});
 const btnGenerateDots = document.getElementById("generate-dots");
 btnGenerateDots.addEventListener("click", () => {
     if (!isRunning) {
@@ -65,8 +69,8 @@ function toggleIsOptimize() {
     }
 }
 function changeAccuracy(value) {
-    if (value > 18) {
-        say("Too accurate. Accuracy should be no more than 18.");
+    if (value > 20) {
+        say("Too accurate. Accuracy should be no more than 20.");
         accuracy = 3;
         tenToTheAccuracy = 1000;
     }
@@ -79,6 +83,7 @@ function changeAccuracy(value) {
         accuracy = value;
         tenToTheAccuracy = 10 ** value;
     }
+    showData();
 }
 initialize();
 function initialize() {
@@ -134,7 +139,7 @@ function judgeInputs() {
     }
 }
 function showData() {
-    document.getElementById("values").innerHTML = `size = ${sideLength}(px)<br>dot = ${numberOfDot}<br>delay = ${delay}(ms)<br>r<sub>n</sub> = ${inCircle}<br>n = ${dotted}<br>π ≒ 4 × r<sub>n</sub> / n = ${dotted === 0 ? "Not defined" : Math.round(4 * inCircle / dotted * tenToTheAccuracy) / tenToTheAccuracy}`;
+    document.getElementById("values").innerHTML = `size = ${sideLength}(px)<br>dot = ${numberOfDot}<br>delay = ${delay}(ms)<br>r<sub>n</sub> = ${inCircle}<br>n = ${dotted}<br>π ≒ 4 × r<sub>n</sub> / n = ${dotted === 0 ? "Not defined" : Math.round(4 * inCircle / dotted * tenToTheAccuracy) / tenToTheAccuracy}<br>deviation = ${dotted === 0 ? "π" : Math.abs(Math.round((Math.PI - (4 * inCircle / dotted)) * tenToTheAccuracy) / tenToTheAccuracy)}`;
 }
 function drawCircle() {
     context.beginPath();

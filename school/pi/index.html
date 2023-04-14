@@ -8,14 +8,6 @@
     <title>Pi Evaluator</title>
 </head>
 <body>
-    <div id="values" class="katex">
-        size = 200(px)
-        <br>dot = 300
-        <br>delay = 100(ms)
-        <br>r<sub>n</sub> = 0
-        <br>n = 0
-        <br>π ≒ 4  × r<sub>n</sub> / n = not defined
-    </div>
     <div id="wrap-canvas">
         <canvas></canvas>
     </div>
@@ -24,7 +16,18 @@
         <input id="size" type="number" placeholder="size(px)"><br>
         <input id="number-of-dot" type="number" placeholder="number of dot"><br>
         <input id="delay" type="number" placeholder="delay(ms)"><br>
-        <input id="generate-dots" type="button" value="generate dots">
+        <input id="generate-dots" type="button" value="generate dots"><br>
+        <input id="accuracy" type="range" value="3" max="20" min="0" step="1"><br>
+        <span id="show-accuracy" class="katex">accuracy = 3</span>
+    </div>
+    <div id="values" class="katex">
+        size = 200(px)
+        <br>dot = 300
+        <br>delay = 100(ms)
+        <br>r<sub>n</sub> = 0
+        <br>n = 0
+        <br>π ≒ 4 × r<sub>n</sub> / n = Not defined
+        <br>deviation = π
     </div>
     <div id="say" class="box-help"></div>
 </body>
