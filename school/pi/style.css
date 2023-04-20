@@ -57,13 +57,14 @@ input[type=number] {
 #generate-dots:active {
     transition: .3s;
     color: white;
-    background-color: rgb(0, 164, 22);
+    background-color: rgb(0, 174, 23);
 }
 
 #generate-dots:hover {
     transition: .3s;
     color: white;
-    background-color: rgb(0, 164, 22);
+    background-color: rgb(0, 209, 28);
+    border: 2px solid rgb(0, 209, 28);
 }
 
 input[type=number]::placeholder {
