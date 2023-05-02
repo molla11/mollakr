@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 0;
+    zoom: 100%;
+    max-zoom: 100%;
+    min-zoom: 100%;
+}
+
+#board {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 10px solid black;
+    border-radius: 15px;
+    box-shadow: 11px solid black;
+}
