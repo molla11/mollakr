@@ -1,6 +1,6 @@
 "use strict";
 const constants = {
-    size: 15,
+    size: Mobile() ? 15 : 21,
     length: 2,
     delay: 300,
     faster: 4,
@@ -26,11 +26,13 @@ function ready() {
     const gameTitle = document.createElement('h1');
     gameTitle.innerHTML = 'Worm Game';
     gameTitle.className = 'game-title';
+    let isStarted = false;
     const startButton = document.createElement('button');
     startButton.innerHTML = 'Start';
     startButton.className = 'start-button';
     startButton.type = 'button';
-    startButton.addEventListener('click', () => {
+    startButton.addEventListener('click', isCanStart);
+    function isCanStart() {
         if (constants.size <= 1) {
             alert('board is too small!\nThis page will be refrashed.');
             location.reload();
@@ -44,9 +46,14 @@ function ready() {
             location.reload();
         }
         else {
-            gameStart();
+            if (isStarted === false) {
+                gameStart();
+            }
+            else {
+                console.log("Already started.");
+            }
         }
-    });
+    }
     const help = document.createElement('div');
     help.className = 'help';
     help.innerHTML = 'Use arrow key';
@@ -55,10 +62,14 @@ function ready() {
     help2.innerHTML = 'Pause and boost functions are not supported on mobile.';
     wrap.appendChild(gameTitle);
     wrap.appendChild(startButton);
-    wrap.appendChild(help);
-    wrap.appendChild(document.createElement("br"));
-    wrap.appendChild(document.createElement("hr"));
-    wrap.appendChild(help2);
+    if (!Mobile()) {
+        wrap.appendChild(help);
+    }
+    // wrap.appendChild(document.createElement("br"));
+    // wrap.appendChild(document.createElement("hr"));
+    else {
+        wrap.appendChild(help2);
+    }
     body.appendChild(wrap);
     function gameStart() {
         class Position {
@@ -83,11 +94,12 @@ function ready() {
             position: {
                 i: 0,
                 j: 0,
-            },
+            }
         };
         const FEED = -1;
         const BLANK = 0;
         let score = constants.length;
+        isStarted = true;
         let isPlaying = false;
         let isEnd = false;
         let playing;
@@ -261,40 +273,42 @@ function ready() {
                     return 3;
                 }
             }
-            const wrapOfTouchPad = document.createElement("div");
-            wrapOfTouchPad.id = "wrap-touchpad";
-            body.appendChild(wrapOfTouchPad);
-            makeTouchPad();
+            if (Mobile()) {
+                makeTouchPad();
+            }
             function makeTouchPad() {
+                const wrapOfTouchPad = document.createElement("div");
+                wrapOfTouchPad.id = "wrap-touchpad";
+                body.appendChild(wrapOfTouchPad);
                 const directions = ["up", "down", "left", "right"];
                 for (const dir of directions) {
-                    const element = document.createElement("div");
-                    element.id = "touchpad-" + dir;
-                    element.className = "touchpad";
-                    element.innerHTML = dir;
-                    document.getElementById("wrap-touchpad").appendChild(element);
-                }
-            }
-            const touchpad = {
-                up: document.getElementById("touchpad-up"),
-                down: document.getElementById("touchpad-down"),
-                left: document.getElementById("touchpad-left"),
-                right: document.getElementById("touchpad-right")
-            };
-            for (element in touchpad) {
-                const directionId = getDirectionId(element);
-                const thisElement = touchpad[element];
-                thisElement.addEventListener("click", () => {
-                    if (isAvailableToChange(directionId)) {
-                        worm.direction = directionId;
-                        let timeout = 0;
-                        clearInterval(timeout);
-                        thisElement.style.backgroundColor = "#888";
-                        timeout = setTimeout(() => {
-                            thisElement.style.backgroundColor = "#333";
-                        }, 200);
+                    const newDivElement = document.createElement("div");
+                    newDivElement.id = "touchpad-" + dir;
+                    newDivElement.className = "touchpad";
+                    newDivElement.innerHTML = dir;
+                    document.getElementById("wrap-touchpad").appendChild(newDivElement);
+                    const touchpad = {
+                        up: document.getElementById("touchpad-up"),
+                        down: document.getElementById("touchpad-down"),
+                        left: document.getElementById("touchpad-left"),
+                        right: document.getElementById("touchpad-right")
+                    };
+                    for (element in touchpad) {
+                        const directionId = getDirectionId(element);
+                        const thisElement = touchpad[element];
+                        thisElement.addEventListener("click", () => {
+                            if (isAvailableToChange(directionId)) {
+                                worm.direction = directionId;
+                                let timeout = 0;
+                                clearInterval(timeout);
+                                thisElement.style.backgroundColor = "#888";
+                                timeout = setTimeout(() => {
+                                    thisElement.style.backgroundColor = "#333";
+                                }, 200);
+                            }
+                        });
                     }
-                });
+                }
             }
         }
         function generateWorm() {
@@ -504,3 +518,4 @@ function ready() {
         }
     }
 }
+function Mobile() { return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); }
