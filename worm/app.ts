@@ -42,6 +42,12 @@ function ready() {
     startButton.type = 'button';
     startButton.addEventListener('click', isCanStart);
 
+    window.onkeydown = (e) => {
+        if (e.code === 'Enter') {
+            isCanStart();
+        }
+    }
+
     function isCanStart() {
         if (constants.size <= 1) {
             alert('board is too small!\nThis page will be refrashed.');
@@ -55,27 +61,24 @@ function ready() {
         } else {
             if (isStarted === false) {
                 gameStart();
-            } else {
-                console.log("Already started.");
             }
         }
     }
 
-    const help = document.createElement('div');
-    help.className = 'help';
-    help.innerHTML = 'Use arrow key';
-    const help2 = document.createElement('div');
-    help2.className = 'help';
-    help2.innerHTML = 'Pause and boost functions are not supported on mobile.'
-
     wrap.appendChild(gameTitle);
     wrap.appendChild(startButton);
     if (!Mobile()) {
+        const help = document.createElement('div');
+        help.className = 'help';
+        help.innerHTML = 'Use arrow key';
         wrap.appendChild(help);
     } 
     // wrap.appendChild(document.createElement("br"));
     // wrap.appendChild(document.createElement("hr"));
     else {
+        const help2 = document.createElement('div');
+        help2.className = 'help';
+        help2.innerHTML = 'Pause and boost functions are not supported on mobile.';
         wrap.appendChild(help2);
     }
 
@@ -178,20 +181,20 @@ function ready() {
                         break;
                 }
             }
+        }
 
-            window.onkeyup = (e: KeyboardEvent) => {
-                if (isBoosting) {
-                    switch (e.code) {
-                        case 'ShiftLeft':
-                            unBoost();
-                            if (!isEnd && !isPaused) {
-                                startGame();
-                            }
-                            break;
+        window.onkeyup = (e: KeyboardEvent) => {
+            if (isBoosting) {
+                switch (e.code) {
+                    case 'ShiftLeft':
+                        unBoost();
+                        if (!isEnd && !isPaused) {
+                            startGame();
+                        }
+                        break;
 
-                        default:
-                            break;
-                    }
+                    default:
+                        break;
                 }
             }
         }
@@ -214,7 +217,7 @@ function ready() {
         }
 
         function togglePause() {
-            if (!isEnd) {
+            if (!isEnd && !Mobile()) {
                 const helpPause = document.getElementById('help-pause') as HTMLDivElement;
                 let word: 'Pause' | 'Restart' = 'Pause';
                 if (isPlaying) {
@@ -275,6 +278,11 @@ function ready() {
             const helpBoost = document.createElement('div');
             helpBoost.innerHTML = `Boost | Left Shift key`;
             helpBoost.id = 'help-boost';
+
+            if (Mobile()) {
+                helpPause.style.display = 'none';
+                helpBoost.style.display = 'none';
+            }
 
             for (let i = 0; i < size; i++) {
                 const tr = document.createElement('tr');
