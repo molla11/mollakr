@@ -325,34 +325,34 @@ function ready() {
 
                 const directions = ["up", "down", "left", "right"];
                 for (const dir of directions) {
-                    const newDivElement = document.createElement("div");
-                    newDivElement.id = "touchpad-" + dir;
-                    newDivElement.className = "touchpad";
-                    newDivElement.innerHTML = dir;
-                    (document.getElementById("wrap-touchpad") as HTMLDivElement).appendChild(newDivElement);
+                    const childElement = document.createElement("div");
+                    childElement.id = "touchpad-" + dir;
+                    childElement.className = "touchpad";
+                    childElement.innerHTML = dir;
+                    (document.getElementById("wrap-touchpad") as HTMLDivElement).appendChild(childElement);
+                }
 
-                    const touchpad = {
-                        up: document.getElementById("touchpad-up") as HTMLDivElement,
-                        down: document.getElementById("touchpad-down") as HTMLDivElement,
-                        left: document.getElementById("touchpad-left") as HTMLDivElement,
-                        right: document.getElementById("touchpad-right") as HTMLDivElement
-                    }
+                const touchpad = {
+                    up: document.getElementById("touchpad-up") as HTMLDivElement,
+                    down: document.getElementById("touchpad-down") as HTMLDivElement,
+                    left: document.getElementById("touchpad-left") as HTMLDivElement,
+                    right: document.getElementById("touchpad-right") as HTMLDivElement
+                }
 
-                    for (element in touchpad) {
-                        const directionId = getDirectionId(element);
-                        const thisElement = touchpad[element];
-                        thisElement.addEventListener("click", () => {
-                            if (isAvailableToChange(directionId)) {
-                                worm.direction = directionId;
-                                let timeout = 0;
-                                clearInterval(timeout);
-                                thisElement.style.backgroundColor = "#888";
-                                timeout = setTimeout(() => {
-                                    thisElement.style.backgroundColor = "#333";
-                                }, 200);
-                            }
-                        });
-                    }
+                for (element in touchpad) {
+                    const directionId = getDirectionId(element);
+                    const thisElement = touchpad[element];
+                    thisElement.addEventListener("click", () => {
+                        if (isAvailableToChange(directionId)) {
+                            worm.direction = directionId;
+                            let timeout = 0;
+                            clearInterval(timeout);
+                            thisElement.style.backgroundColor = "#888";
+                            timeout = setTimeout(() => {
+                                thisElement.style.backgroundColor = "#333";
+                            }, 200);
+                        }
+                    });
                 }
             }
         }

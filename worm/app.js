@@ -282,32 +282,32 @@ function ready() {
                 body.appendChild(wrapOfTouchPad);
                 const directions = ["up", "down", "left", "right"];
                 for (const dir of directions) {
-                    const newDivElement = document.createElement("div");
-                    newDivElement.id = "touchpad-" + dir;
-                    newDivElement.className = "touchpad";
-                    newDivElement.innerHTML = dir;
-                    document.getElementById("wrap-touchpad").appendChild(newDivElement);
-                    const touchpad = {
-                        up: document.getElementById("touchpad-up"),
-                        down: document.getElementById("touchpad-down"),
-                        left: document.getElementById("touchpad-left"),
-                        right: document.getElementById("touchpad-right")
-                    };
-                    for (element in touchpad) {
-                        const directionId = getDirectionId(element);
-                        const thisElement = touchpad[element];
-                        thisElement.addEventListener("click", () => {
-                            if (isAvailableToChange(directionId)) {
-                                worm.direction = directionId;
-                                let timeout = 0;
-                                clearInterval(timeout);
-                                thisElement.style.backgroundColor = "#888";
-                                timeout = setTimeout(() => {
-                                    thisElement.style.backgroundColor = "#333";
-                                }, 200);
-                            }
-                        });
-                    }
+                    const childElement = document.createElement("div");
+                    childElement.id = "touchpad-" + dir;
+                    childElement.className = "touchpad";
+                    childElement.innerHTML = dir;
+                    document.getElementById("wrap-touchpad").appendChild(childElement);
+                }
+                const touchpad = {
+                    up: document.getElementById("touchpad-up"),
+                    down: document.getElementById("touchpad-down"),
+                    left: document.getElementById("touchpad-left"),
+                    right: document.getElementById("touchpad-right")
+                };
+                for (element in touchpad) {
+                    const directionId = getDirectionId(element);
+                    const thisElement = touchpad[element];
+                    thisElement.addEventListener("click", () => {
+                        if (isAvailableToChange(directionId)) {
+                            worm.direction = directionId;
+                            let timeout = 0;
+                            clearInterval(timeout);
+                            thisElement.style.backgroundColor = "#888";
+                            timeout = setTimeout(() => {
+                                thisElement.style.backgroundColor = "#333";
+                            }, 200);
+                        }
+                    });
                 }
             }
         }
