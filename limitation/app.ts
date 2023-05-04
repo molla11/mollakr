@@ -1,6 +1,7 @@
 const boardWidth = 7;
 const boardHeight = 7;
 const board = Array.from(Array(boardHeight), () => Array.from(Array(boardWidth), () => 0));
+const proportionSpeed = 1;
 
 const cellSize = 50;
 const m = cellSize / 2; // margin
@@ -50,7 +51,7 @@ function limit(data: MusicData) {
         const x = thisData[0] * cellSize + padding;
         const y = thisData[1] * cellSize + padding;
 
-        const delay = thisData[2];
+        const delay = thisData[2] * proportionSpeed;
 
         /** Independent variable */
         let p = 0;
