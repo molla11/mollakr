@@ -27,31 +27,48 @@ function clearBoard() {
     ctx.clearRect(0, 0, boardElement.width, boardElement.height);
 }
 
-/**
- * MusicData = [
- *      [ posX1, posY1, delay1 ],
- *      [ posX2, posY2, delay2 ],
- *      ...
- * ]
- */
-type MusicData = [number, number, number][];
 
-function limit(data: MusicData) {
-    const musicData = data;
-    if (musicData.length === 0) {
+type Content = [number, number, number][];
+
+type offsetBoard = {
+    "endX": number,
+    "endY": number
+}
+type offsetSong = {
+    "bpm": number,
+    "startMargin": number
+}
+type offsetDifficulty = [ "easy"?, "normal"?, "hard"?, "insane"? ];
+
+type Offset = {
+    "board": offsetBoard,
+    "song": offsetSong,
+    "difficulty": offsetDifficulty
+}
+
+type MusicData = {
+    "title": string,
+    "offset": Offset,
+    "content": Content
+};
+
+function limit(musicData: MusicData) {
+    if (musicData.content.length === 0) {
         return;
     } else {
         let animation: number;
 
         const w = boardElement.width;
         const h = boardElement.height;
+        
+        const bpm = musicData.offset.song.bpm;
 
-        const thisData = musicData.shift();
+        const chaebo = musicData.content.shift();
 
-        const x = thisData[0] * cellSize + padding;
-        const y = thisData[1] * cellSize + padding;
+        const x = chaebo[0] * cellSize + padding;
+        const y = chaebo[1] * cellSize + padding;
 
-        const delay = thisData[2] * proportionSpeed;
+        const delay = chaebo[2] * 60 * 1000 / bpm;
 
         /** Independent variable */
         let p = 0;
@@ -60,6 +77,8 @@ function limit(data: MusicData) {
         let nowTime = startTime;
 
         clearBoard();
+
+        setTimeout(animate, musicData.offset.song.startMargin)
         animate();
 
         function animate() {

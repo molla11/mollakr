@@ -1,6 +1,7 @@
 const boardWidth = 7;
 const boardHeight = 7;
 const board = Array.from(Array(boardHeight), () => Array.from(Array(boardWidth), () => 0));
+const proportionSpeed = 1;
 const cellSize = 50;
 const m = cellSize / 2; // margin
 const padding = cellSize;
@@ -20,24 +21,25 @@ function initBoard() {
 function clearBoard() {
     ctx.clearRect(0, 0, boardElement.width, boardElement.height);
 }
-function limit(data) {
-    const musicData = data;
-    if (musicData.length === 0) {
+function limit(musicData) {
+    if (musicData.content.length === 0) {
         return;
     }
     else {
         let animation;
         const w = boardElement.width;
         const h = boardElement.height;
-        const thisData = musicData.shift();
-        const x = thisData[0] * cellSize + padding;
-        const y = thisData[1] * cellSize + padding;
-        const delay = thisData[2];
+        const bpm = musicData.offset.song.bpm;
+        const chaebo = musicData.content.shift();
+        const x = chaebo[0] * cellSize + padding;
+        const y = chaebo[1] * cellSize + padding;
+        const delay = chaebo[2] * 60 * 1000 / bpm;
         /** Independent variable */
         let p = 0;
         const startTime = new Date().getTime();
         let nowTime = startTime;
         clearBoard();
+        setTimeout(animate, musicData.offset.song.startMargin);
         animate();
         function animate() {
             nowTime = new Date().getTime();
