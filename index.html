@@ -5,22 +5,123 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mollakr</title>
-    <style>
-        h1{ font-size:130%; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>
-        <h1>Welcome!</h1>
-        이 사이트는 어떤 학생이 HTML을 공부하기 위해서 만들었어요.
-        <h1>Menu</h1>
-        <ul>
-            <li><a href="/calendar">달력</a></li>
-            <li><a href="/kkutu">낱장작 계산기</a></li>
-            <li><a href="/IoT">IoT와 보안에 관련된 한 게시물</li>
-            <li><a href="/school">school</a></li>   
-            <li><a href="/worm">Worm Game</a></li>
-        </ul>
-    </p>
+    <div id="wrap">
+
+        <div id="introduction" class="paragraph">
+            <h2>소개 페이지</h2>
+            <hr class="in-div">
+            <p>
+                반갑습니다! 저는 <strong>molla</strong>예요.
+                <br><br>저는 최근에 TypeScript를 이용한 웹 개발을 하고 있어요.
+                <br>지금은 Github Pages 서비스를 이용해 단순한 HTML/CSS/JS 파일만 인터넷상에 올리고 있지만
+                <br>조만간 개인 서버를 구축하여 DBMS 등을 이용한 저만의 <b>특별한</b> 서비스를 구축하려고 계획 중에 있습니다.
+                <br><br>여러분을 만나뵙게 되어 정말 반갑습니다! 앞으로 잘 지내봐요.
+            </p>
+        </div>
+
+        <hr>
+
+        <div id="contact" class="paragraph">
+            <h3>연락처</h3>
+            자주 확인하는 순서대로 적었어요.
+            <ul>
+                <li>Instagram | _molla35</li>
+                <li>Email | me@molla.kr</li>
+                <li>Discord | molla#1510</li>
+            </ul>
+        </div>
+
+        <div id="information" class="paragraph">
+            <h3>간단한 인적사항</h3>
+            <hr class="in-div">
+            저예요. (마지막 인적사항 업데이트: 2023. 05. 19.)
+            <ul>
+                <li>이름: 장현수</li>
+                <li>나이: 만 17세 (06년생)</li>
+                <li>거주지: 전라남도 무안군 남악리</li>
+                <li>학적: <a href="https://yeongheung.hs.jne.kr/" target="_blank">영흥고등학교</a> 2학년</li>
+            </ul>
+        </div>
+
+        <div id="preference" class="paragraph">
+            <h3>취향</h3>
+            <hr class="in-div">
+            제가 좋아하는 것과 싫어하는 것들을 모아놓았어요.
+            <p>
+            <ul>
+                <li>
+                    <p>
+                        취미: 웹 개발, Valorant(FPS 게임), KKuTu(끝말잇기 게임), 쿠키런: 오븐브레이크, 잠 많이 자기
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        흥미: Rust(Programming Language), 정규표현식, 알고리즘, DBMS 쿼리문(특히 MySQL), 작곡
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        싫어하는 것: Python Programming, ChatGPT에 과도한 의존(검색이 목적이 아닌 프로그래밍을 시키는 등...)
+                    </p>
+                </li>
+            </ul>
+            </p>
+        </div>
+
+        <div id="result" class="paragraph">
+            <h3>내가 만든 것들</h3>
+            <hr class="in-div">
+            저는 이런 것들을 만들었어요.
+            <ul id="result-list">
+                <li>
+                    <p>
+                        <a href="https://molla.kr/calendar" target="_blank">달력</a> | TypeScript로 Date 객체를 활용해 자동으로 데이터를
+                        불러와 달력을
+                        생성하는 웹 페이지를 만들었어요.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="https://molla.kr/school/pi" target="_blank">파이값 계산기</a> | 통계적 확률의 상대도수(r<sub>n</sub> /
+                        n)에서
+                        시행횟수(n)이 무한히 커지면
+                        <br>상대도수가 수학적 확률로 수렴하는 원리를 파이 값 도출을 통해 직관적으로 이해해 볼 수 있는 웹 페이지를 만들었어요.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="https://molla.kr/worm" target="_blank">Worm Game</a> | 인터넷 상에서 널리 알려진 Snake Game을 직접 제작했어요.
+                        <br>해당 페이지는 반응형 웹으로서, 모바일과 데스크탑 환경을 모두 지원합니다.
+                        <br> 또한 데스크탑 버전에는 부스트 및 일시정지 기능을 추가했어요.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <a href="https://molla.kr/IoT" target="_blank">IoT 시대에 꼭 알아야 할 7가지</a> | 모든 사물에 인터넷이 연결될 사회에,
+                        <br>우리가 알아야 할 것(특히 보안 측면에서)들을 정리해 인스타그램 게시물 형식으로 제작했어요.
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div id="trash" class="paragraph">
+            <h3>???</h3>
+            <p>이런 웹 페이지 구조를 
+                <a href="https://en.wikipedia.org/wiki/Accordion_(GUI)" target="_blank" style="text-decoration: none; color: #FAF">
+                    아코디언 메뉴</a>라고 한대요!
+            </p>
+        </div>
+
+        <hr>
+
+        <div id="help">
+            각 챕터의 제목에 마우스를 올려 보세요. <b><del>CSS 너무 어려워요</del></b>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>

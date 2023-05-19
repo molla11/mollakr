@@ -1,0 +1,102 @@
+body {
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+#wrap {
+    margin: 10px 0px 0px 10px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+#help {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.paragraph {
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 10px;
+    transition: 1.5s;
+}
+
+.paragraph:hover {
+    transition: .7s;
+}
+
+#introduction:hover {
+    background-color: #FDF;
+}
+
+#contact:hover {
+    background-color: #EED;
+}
+
+#information:hover {
+    background-color: #DDF;
+}
+
+#preference:hover {
+    background-color: #FFB;
+}
+
+#result:hover {
+    background-color: #BFB;
+}
+
+#trash {
+    color: #FFF;
+}
+
+#trash:hover {
+    background-color: #000;
+}
+
+hr {
+    margin: 10px 0px;
+}
+
+hr .in-div {
+    background-color: black;
+}
+
+#help {
+    margin-left: 10px;
+    padding: 5px;
+    background-color: #FFA;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 290px;
+    height: 20px;
+    transition: .4s ease-in-out;
+}
+
+#help:hover {
+    width: 430px;
+    transition: .4s ease-in-out;
+}
+
+::selection {
+    background-color: rgba(127, 127, 127, 0.2);
+    color: darkslateblue;
+}
