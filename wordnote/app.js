@@ -246,6 +246,18 @@ try {
 function showCheckBoxes() {
   const REPEAT = 5;
   let repeated = 0;
+
+  const selectToText = document.createElement("div");
+  selectToText.id = "select-to-text";
+  
+  const inputText = document.createElement("input");
+  inputText.type = "number";
+  inputText.id = "input-text";
+
+  selectToText.appendChild(inputText);
+
+  HTML.top.checkboxes.appendChild(selectToText);
+
   for (const key in data) {
     if (!(repeated % REPEAT) && Boolean(repeated)) {
       HTML.top.checkboxes.appendChild(document.createElement("br"));
