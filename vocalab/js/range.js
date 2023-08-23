@@ -1,5 +1,5 @@
 const isTrusted = isTrustLocalRanges();
-const wordIndices = new Array();
+let wordIndices = new Array();
 
 /** Array for saving ranges */
 const ranges = isTrusted ? localRanges: Array.from({length: wordMap.size}, () => false);

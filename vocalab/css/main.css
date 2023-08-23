@@ -286,7 +286,8 @@ main #main-range .common-btn-40px img {
 }
 
 main #main-read #read-index,
-main #main-read #read-index-in-selected {
+main #main-read #read-index-in-selected,
+main #main-read #read-day-index {
     text-align: center;
     margin: 10px;
     position: relative;
@@ -302,6 +303,10 @@ main #main-read #read-index {
 }
 
 main #main-read #read-index-in-selected {
+    width: 100px;
+}
+
+main #main-read #read-day-index {
     width: 100px;
 }
 

@@ -1,4 +1,5 @@
 const readEls = {
+    dayIndex: document.getElementById("read-day-index"),
     index: document.getElementById("read-index"),
     indexInSelected: document.getElementById("read-index-in-selected"),
     word: document.getElementById("read-word"),
@@ -7,6 +8,7 @@ const readEls = {
 
 function showWord(idx) {
     const wordObj = wordMap.get(wordIndices[idx][0]).get(wordIndices[idx][1]);
+    readEls.dayIndex.innerText = `Day ${wordObj.day}`;
     readEls.index.innerText = `No. ${wordObj.id}`;
     readEls.indexInSelected.innerText = `${idx + 1} / ${wordIndices.length}`;
     readEls.word.innerText = wordObj.word;
@@ -74,6 +76,14 @@ skipToPreviousEl.addEventListener("click", () => {
 skipToNextEl.addEventListener("click", () => {
     skipToNext();
 })
+
+const setShuffleEl = document.getElementById("read-set-shuffle");
+const setShuffleImgEl = document.querySelector("#read-set-shuffle img");
+
+setShuffleEl.addEventListener("click", () => {
+    toggleShuffleIndices();
+})
+
 
 // document.addEventListener("keypress", (e) => {
 //     if (e.ctrlKey && e.shiftKey && e.code == "keyH" && nowScreen == "read") {
