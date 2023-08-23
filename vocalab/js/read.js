@@ -96,15 +96,6 @@ readEls.indexInSelected.addEventListener("mouseleave", () => {
     readEls.indexInSelectedChange.value = (idxofWords + 1).toString();
 });
 
-document.addEventListener("keydown", (e) => {
-    if (nowScreen == "read" && document.activeElement == readEls.indexInSelectedChange) {
-        if (e.code == "Enter") {
-            readEls.indexInSelectedChange.blur();
-            readEls.indexInSelectedChange.style.transform = "translate(-2.7px, 30px)";
-        }
-    }
-})
-
 readEls.indexInSelectedChange.addEventListener("input", () => {
     const inputValue = (readEls.indexInSelectedChange.value).replaceAll(" ", "");
     const numValue = parseInt(inputValue);
