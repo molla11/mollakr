@@ -53,17 +53,21 @@ document.addEventListener("keydown", (e) => {
 });
 
 function skipToNext() {
-    if (idxofWords < wordIndices.length - 1) {
-        showWord(++idxofWords);
-    } else {
-        notice("뒤로 더 넘길 수 없습니다.");
+    if (nowScreen == "read") {
+        if (idxofWords < wordIndices.length - 1) {
+            showWord(++idxofWords);
+        } else {
+            notice("뒤로 더 넘길 수 없습니다.");
+        }
     }
 }
 
 function skipToPrevious() {
-    if (idxofWords > 0) {
-        showWord(--idxofWords);
-    } else {
-        notice("앞으로 더 넘길 수 없습니다.");
+    if (nowScreen == "read") {
+        if (idxofWords > 0) {
+            showWord(--idxofWords);
+        } else {
+            notice("앞으로 더 넘길 수 없습니다.");
+        }
     }
 }
