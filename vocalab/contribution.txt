@@ -1,0 +1,7 @@
+find bug (data)
+
+    김승한
+    205. cadidate -> candidate
+    424. adolscent -> adolescent
+    439. fideliry -> fidelity 
+    494. questionaire -> questionnaire

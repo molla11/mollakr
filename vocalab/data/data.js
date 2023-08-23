@@ -3341,7 +3341,7 @@ const words = [
       {
         "day": 6,
         "id": 205,
-        "word": "cadidate",
+        "word": "candidate",
         "meanings": [
           {
             "speechPart": "noun",
@@ -6811,7 +6811,7 @@ const words = [
       {
         "day": 11,
         "id": 424,
-        "word": "adolscent",
+        "word": "adolescent",
         "meanings": [
           {
             "speechPart": "noun",
@@ -7046,7 +7046,7 @@ const words = [
       {
         "day": 11,
         "id": 439,
-        "word": "fideliry",
+        "word": "fidelity",
         "meanings": [
           {
             "speechPart": "noun",
@@ -7967,7 +7967,7 @@ const words = [
       {
         "day": 13,
         "id": 494,
-        "word": "questionaire",
+        "word": "questionnaire",
         "meanings": [
           {
             "speechPart": "noun",
