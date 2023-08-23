@@ -2,6 +2,8 @@ const readEls = {
     dayIndex: document.getElementById("read-day-index"),
     index: document.getElementById("read-index"),
     indexInSelected: document.getElementById("read-index-in-selected"),
+    indexInSelectedText: document.getElementById("read-index-in-selected-text"),
+    indexInSelectedChange: document.getElementById("read-index-in-selected-change"),
     word: document.getElementById("read-word"),
     means: document.getElementById("read-means")
 }
@@ -10,7 +12,8 @@ function showWord(idx) {
     const wordObj = wordMap.get(wordIndices[idx][0]).get(wordIndices[idx][1]);
     readEls.dayIndex.innerText = `Day ${wordObj.day}`;
     readEls.index.innerText = `No. ${wordObj.id}`;
-    readEls.indexInSelected.innerText = `${idx + 1} / ${wordIndices.length}`;
+    readEls.indexInSelectedText.innerText = `${idx + 1} / ${wordIndices.length}`;
+    readEls.indexInSelectedChange.value = (idx + 1).toString();
     readEls.word.innerText = wordObj.word;
     remove_child(readEls.means);
     if (set.read.displayMeans) {
@@ -84,6 +87,40 @@ setShuffleEl.addEventListener("click", () => {
     toggleShuffleIndices();
 })
 
+readEls.indexInSelected.addEventListener("mouseenter", () => {
+    setTimeout(() => {readEls.indexInSelectedChange.focus()}, 201);
+})
+
+readEls.indexInSelected.addEventListener("mouseleave", () => {
+    readEls.indexInSelectedChange.blur();
+    readEls.indexInSelectedChange.value = (idxofWords + 1).toString();
+});
+
+document.addEventListener("keydown", (e) => {
+    if (nowScreen == "read" && document.activeElement == readEls.indexInSelectedChange) {
+        if (e.code == "Enter") {
+            readEls.indexInSelectedChange.blur();
+            readEls.indexInSelectedChange.style.transform = "translate(-2.7px, 30px)";
+        }
+    }
+})
+
+readEls.indexInSelectedChange.addEventListener("input", () => {
+    const inputValue = (readEls.indexInSelectedChange.value).replaceAll(" ", "");
+    const numValue = parseInt(inputValue);
+    if (inputValue == "" || inputValue == null || inputValue == undefined) {
+        notice("값을 입력하세요.");
+    } else if (isNaN(numValue)) {
+        notice(`${inputValue}은(는) 뭔가 잘못된 값입니다...`);
+    } else if (numValue < 1) {
+        notice(`${inputValue}은(는) 너무 작습니다...`);
+    } else if (numValue > wordIndices.length) {
+        notice(`${inputValue}은(는) 너무 큽니다...`);
+    } else {
+        idxofWords = numValue - 1;
+        showWord(idxofWords);
+    }
+})
 
 // document.addEventListener("keypress", (e) => {
 //     if (e.ctrlKey && e.shiftKey && e.code == "keyH" && nowScreen == "read") {

@@ -298,16 +298,49 @@ main #main-read #read-day-index {
     border-radius: 15px;
 }
 
+main #main-read #read-day-index {
+    width: 100px;
+}
+
 main #main-read #read-index {
     width: 100px;
 }
 
 main #main-read #read-index-in-selected {
     width: 100px;
+    vertical-align: top;
+    overflow: hidden;
 }
 
-main #main-read #read-day-index {
+main #main-read #read-index-in-selected-text {
+    top: 2px;
+}
+
+main #main-read #read-index-in-selected-change {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transform: translate(-2.7px, 30px);
+    line-height: 24px;
+    outline: none;
+    border: 3px solid var(--main-color);
     width: 100px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #151315;
+    text-align: left;
+    overflow: hidden;
+    display: block;
+    font-size: medium;
+    text-align: center;
+    z-index: 3;
+    transition: .2s;
+}
+
+main #main-read #read-index-in-selected:hover >
+#read-index-in-selected-change,
+main #main-read #read-index-in-selected-change:focus {
+    transform: translate(-2.7px, -2.7px);
 }
 
 main #main-read #read-info-container {

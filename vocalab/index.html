@@ -53,14 +53,16 @@
 
     <main>
         <div id="main-read">
-            <!-- todo: make btn to show next, previous word. -->
             <h2>&raquo; Read &laquo;</h2>
 
             <span id="read-container">
                 <div id="read-info">
                     <span id="read-day-index">Day 0</span>
                     <span id="read-index">No. 0</span>
-                    <span id="read-index-in-selected">0 / 0</span>
+                    <span id="read-index-in-selected">
+                        <span id="read-index-in-selected-text">0 / 0</span>
+                        <input id="read-index-in-selected-change" type="number" placeholder="move to ..." maxlength="10">
+                    </span>
                 </div>
                 <div id="read-info-container">
                     <div id="read-word">

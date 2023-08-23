@@ -43,3 +43,19 @@ input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
+::placeholder {
+    color: var(--main-color);
+    opacity: 1;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: var(--main-color);
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: var(--main-color);
+}
