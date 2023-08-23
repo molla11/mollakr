@@ -1,0 +1,454 @@
+main {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 55px);
+    top: 50px;
+}
+
+main #main-test h2,
+main #main-settings h2,
+main #main-range h2,
+main #main-read h2,
+main #main-search h2 {
+    margin: 20px 0px;
+    position: inherit;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+main #main-test,
+main #main-settings,
+main #main-range,
+main #main-read,
+main #main-search {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    border: 5px solid var(--main-color);
+    left: 50%;
+    transform: translateX(-50%);
+    overflow-y: auto;
+}
+
+@media screen and (orientation: portrait) {
+    main #main-test,
+    main #main-settings,
+    main #main-range,
+    main #main-read,
+    main #main-search {
+        border-radius: 6px;
+        top: 60px;
+        width: 90%;
+        height: 80%;
+        max-height: 80%;
+        min-height: none;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    main #main-test,
+    main #main-settings,
+    main #main-range,
+    main #main-read,
+    main #main-search {
+        border-radius: 9px;
+        top: 60px;
+        width: 500px;
+        height: 80%;
+        overflow-y: auto;
+    }
+}
+
+main #main-test {
+    padding: 10px;
+    display: none;
+}
+
+main .word-test-box {
+    margin-top: 15px;
+    height: 30px;
+    display: inline-block;
+    width: 100%;
+}
+
+main .word-test-index {
+    width: 40px;
+    display: inline-block;
+    text-align: left;
+    height: 30px;
+    line-height: 30px;
+}
+
+main .word-test-text {
+    width: calc(50% - 30px);
+    display: inline-block;
+    font-size: large;
+    line-height: 30px;
+    height: 30px;
+}
+
+main .word-test-input {
+    border: none;
+    border-bottom: 1px solid var(--main-color);
+    background-color: none;
+    background: none;
+    outline: none;
+    width: calc(50% - 30px);
+    height: 30px;
+    font-size: 18px;
+    line-height: 100%;
+    display: inline-block;
+    text-align: center;
+    font-family: 'Noto Sans KR', 'Do Hyeon', sans-serif;
+    font-weight: bold;
+    vertical-align: center;
+}
+
+main #word-test-submit {
+    width: 100px;
+    height: 30px;
+    font-size: large;
+    background-color: #2d2b55;
+    margin-top: 10px;
+    outline: none;
+    transition: .1s;
+    border: 0px solid var(--main-color);
+    border-radius: 10px;
+    transition: border .1s, width .2s, height .1s;
+    cursor: pointer;
+}
+
+main #word-test-submit:hover {
+    width: 120px;
+    height: 35px;
+    border: 3px solid var(--main-color);
+    border-radius: 10px;
+    transition: border .1s, width .2s, height .1s;
+}
+
+@media screen and (orientation: portrait) {
+    main #main-settings li {
+        list-style: none;
+        text-align: left;
+        margin-left: 20px;
+        margin-top: 2px;
+    }
+
+    main #main-settings input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 1.2em;
+        height: 1.2em;
+        border: 2px solid var(--main-color);
+        transition: .3s;
+        border-radius: 3px;
+    }
+
+    main #main-settings input[type="checkbox"]:checked {
+        background-color: var(--main-color);
+    }
+}
+
+@media screen and (orientation: landscape) {
+    main #main-settings li {
+        list-style: none;
+        text-align: left;
+        margin-left: 20px;
+        margin-top: 2px;
+    }
+
+    main #main-settings input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 1.2em;
+        height: 1.2em;
+        border: 2px solid var(--main-color);
+        transition: .3s;
+        border-radius: 3px;
+    }
+
+    main #main-settings input[type="checkbox"]:checked {
+        background-color: var(--main-color);
+    }
+}
+
+main #main-settings {
+    display: none;
+}
+
+main #main-range {
+    display: none;
+}
+
+main #main-range #show-selected {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    margin: 10px;
+}
+
+main #main-range hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+main #main-range #range-checkbox-container input[type=checkbox] {
+    display: none;
+}
+
+main #main-range label {
+    font-size: 13px;
+    line-height: 25px;
+    margin: 5px;
+    outline: none;
+    border: 2px solid var(--main-color);
+    width: 80px;
+    height: 30px;
+    border-radius: 11px;
+    background-color: #1c1b36;
+    text-align: left;
+    padding-left: 5px;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    font-weight: bold;
+}
+
+main #main-range .range-x-mark, 
+main #main-range .range-check-mark {
+    user-select: none;
+    transition: .2s;
+    height: 27px;
+    line-height: 24px;
+    right: 3px;
+    position: absolute;
+}
+
+main #main-range .range-check-mark::after {
+    content: "✔️";
+}
+
+main #main-range .range-x-mark::after {
+    content: "✖️";
+}
+
+main #main-range .range-check-mark {
+    top: -27px;
+}
+
+main #main-range .range-x-mark {
+    top: 0%;
+}
+
+main #main-range input[type="checkbox"]:checked + label {
+    background-color: var(--main-color);
+    color:#1c1b36;
+    transition: .2s;
+}
+
+main #main-range input[type="checkbox"]:checked + label .range-check-mark {
+    transform: translateY(27px);
+}
+
+main #main-range label:hover .range-x-mark,
+main #main-range input[type="checkbox"]:checked + label .range-x-mark {
+    transform: translateY(27px);
+}
+
+main #main-range .common-btn-40px {
+    width: 40px;
+    height: 40px;
+    background-color: var(--main-color);
+    position: absolute;
+    border-radius: 10px;
+    top: 5px;
+    transition: .3s;
+}
+
+main #main-range #range-clear {
+    right: 5px;
+}
+
+main #main-range #range-select-all {
+    right: calc(40px + 5px + 5px);
+}
+
+main #main-range .common-btn-40px:hover {
+    background-color: #514d96;
+}
+
+main #main-range .common-btn-40px img {
+    width: 32px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+main #main-read #read-index,
+main #main-read #read-index-in-selected {
+    text-align: center;
+    margin: 10px;
+    position: relative;
+    display: inline-block;
+    height: 30px;
+    line-height: 24px;
+    border: 3px solid var(--main-color);
+    border-radius: 15px;
+}
+
+main #main-read #read-index {
+    width: 100px;
+}
+
+main #main-read #read-index-in-selected {
+    width: 100px;
+}
+
+main #main-read #read-info-container {
+    text-align: left;
+    padding: 5px 15px;
+    z-index: 1;
+}
+
+main #main-read #read-word {
+    height: 40px;
+    font-size: x-large;
+    color: #1c1b36;
+    background-color: var(--main-color);
+    width: auto;
+    display: inline-block;
+    border-radius: 10px;
+    line-height: 30px;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+
+main #main-read #read-means .read-means-container {
+    margin: 13px 0px;
+}
+
+main #main-read .read-part-of-speech {
+    border: 3px solid var(--main-color);
+    width: 38px;
+    display: inline-block;
+    overflow-x: hidden;
+    height: 38px;
+    line-height: 28px;
+    transition: .5s;
+    cursor: pointer;
+    overflow-y: hidden;
+    border-radius: 19px;
+    margin-right: 10px;
+}
+
+main #main-read .read-part-of-speech:hover {
+    width: 130px;
+}
+
+main #main-read .read-part-text {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    font-size: large;
+    font-weight: bold;
+    padding: 0px 3px;
+}
+
+main #main-read .read-mean {
+    border: 3px solid var(--main-color);
+    display: inline-block;
+    overflow-x: hidden;
+    height: 38px;
+    line-height: 32px;
+    cursor: pointer;
+    padding: 0px 7px;
+    margin: 0px 3px;
+    overflow-y: hidden;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size:large;
+}
+
+main #main-read #read-skipping-container .read-skipping-btn {
+    font-weight: bold;
+    width: calc(50% - 15px);
+    display: inline-block;
+    height: 30px;
+    border-radius: 7px;
+    border: 3px solid var(--main-color);
+    position: absolute;
+    bottom: 60px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+main #main-read #read-skipping-container .read-skipping-btn:hover {
+    background-color: #2d2b55;
+}
+
+main #main-read #read-skipping-container #read-skipping-previous {
+    left: 10px;
+}
+
+main #main-read #read-skipping-container #read-skipping-next {
+    right: 10px;
+}
+
+main #main-read #read-set-shuffle,
+main #main-read #read-set-hide-means {
+    position: absolute;
+    margin: 10px;
+    bottom: 0px;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--main-color);
+    transition: .2s;
+}
+
+main #main-read #read-set-shuffle img,
+main #main-read #read-set-hide-means img {
+    width: 32px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+main #main-read #read-set-shuffle {
+    right: 0px;
+}
+
+main #main-read #read-set-hide-means {
+    right: 50px;
+}
+
+main #main-read {
+    display: none;
+}
+
+main #main-read {
+    display: inline-block;
+}
+
+main #main-search {
+    display: none;
+}
+
+#main-notice {
+    position: absolute;
+    border-radius: 10px;
+    background-color: #1c1b36;
+    color: var(--main-color);
+    line-height: 25px;
+    padding: 2.5px 5px;
+    z-index: -1;
+    opacity: 0;
+    transition: .3s;
+    text-align: center;
+    border: 3px solid var(--main-color);
+    left: 50%;
+    top: 60%;
+    width: 300px;
+    transform: translate(-50%, -50%);
+}

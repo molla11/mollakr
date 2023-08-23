@@ -12,6 +12,12 @@
     user-select: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 #temp-index {
     position: absolute;
     top: 10px;
@@ -19,7 +25,7 @@
 
 .temp-index {
     position: absolute;
-    left: 290px;
+    left: 120px;
     height: 25px;
     line-height: 25px;
     vertical-align: auto;
@@ -158,20 +164,21 @@ img {
 
 #word {
     margin: 0px;
-    height: 30px;
+    margin-top: 40px;
+    height: 40px;
     background-color: rgb(178, 95, 159);
     color: white;
     padding: 0px 5px;
     margin-left: 10px;
-    font-size: large;
-    line-height: 30px;
+    font-size: 30px;
+    line-height: 40px;
     font-weight: bolder;
     border-radius: 5px;
 }
 
 #index {
     position: absolute;
-    left: 200px;
+    left: 20px;
     height: 25px;
     vertical-align: auto;
     line-height: 25px;
@@ -305,9 +312,11 @@ img {
 }
 
 .parts-of-speech {
-    height: 25px;
+    height: 28px;
     display: inline-block;
-    width: 23px;
+    width: 32px;
+    font-size: 20px;
+    line-height: 28px;
     text-align: left;
     padding-left: 3px;
     padding-right: 3px;
@@ -321,13 +330,13 @@ img {
 
 .parts-of-speech:hover {
     text-align: center;
-    width: 100px;
+    width: 150px;
     transition: .5s;
 }
 
 .mean {
-    height: 25px;
-    line-height: 25px;
+    height: 28px;
+    line-height: 28px;
     margin: 0;
     display: inline-block;
     border-radius: 5px;
@@ -336,4 +345,5 @@ img {
     padding-right: 5px;
     overflow: hidden;
     margin-left: 8px;
+    font-size: 20px;
 }

@@ -1,0 +1,115 @@
+@media screen and (orientation: landscape) {
+    #search-container {
+        margin-left: 2px;
+        margin-top: 2px;
+        float: left;
+    }
+
+    .btn-search:hover~.input-search {
+        width: 300px;
+    }
+
+    .input-search:hover,
+    .input-search:focus {
+        width: 300px;
+    }
+
+    .btn-search {
+        transform: translateX(-25px);
+    }
+
+    #search-container:hover .fa,
+    .input-search:focus + .btn-search i.fa {
+        color: var(--main-color);
+    }
+
+    .btn-search:hover~.input-search {
+        border-radius: 0px;
+        background-color: transparent;
+        border-bottom: 1px solid var(--main-color);
+        transition: all 500ms cubic-bezier(0, 0.110, 0.35);
+    }
+
+    .input-search:hover,
+    .input-search:focus {
+        border-radius: 0px;
+        background-color: transparent;
+        border-bottom: 1px solid var(--main-color);
+        transition: all 500ms cubic-bezier(0, 0.110, 0.35);
+    }
+}
+
+.search-box {
+    font-family: 'Lato';
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+}
+
+.input-search {
+    height: 50px;
+    width: 50px;
+    border-style: none;
+    padding: 10px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    outline: none;
+    border-radius: 25px;
+    transition: all .5s ease-in-out;
+    background-color: #a297d2;
+    padding-right: 40px;
+    color: #fff;
+}
+
+.fa {
+    color: #141326;
+    transition: .5s ease-in-out;
+}
+
+.input-search::placeholder {
+    color: rgba(255, 255, 255, .5);
+    font-size: 18px;
+    letter-spacing: 2px;
+    font-weight: 100;
+}
+
+.btn-search {
+    width: 50px;
+    height: 50px;
+    border-style: none;
+    font-size: 20px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    color: #141326;
+    background-color: transparent;
+    pointer-events: painted;
+}
+
+@media screen and (orientation: portrait) {
+    #search-container {
+        margin-left: 2px;
+        margin-top: 2px;
+        position: absolute;
+        top: -50px;
+    }
+
+    .input-search {
+        width: calc(100% - 2px);
+    }
+
+    .fa,
+    .btn-search i.fa {
+        color: var(--main-color);
+    }
+    
+    .input-search {
+        border-radius: 0px;
+        background-color: transparent;
+        border-bottom: 1px solid var(--main-color);
+        transition: all 500ms cubic-bezier(0, 0.110, 0.35);
+    }
+}

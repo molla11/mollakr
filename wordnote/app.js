@@ -8,14 +8,7 @@ const HTML = {
   },
   main: document.getElementById("main"),
   meaning: {
-    wrap: document.getElementById("meaning"),
-    // noun: document.getElementById("noun"),
-    // verb: document.getElementById("verb"),
-    // adjective: document.getElementById("adjective"),
-    // adverb: document.getElementById("adverb"),
-    // preposition: document.getElementById("preposition"),
-    // conjunction: document.getElementById("conjunction"),
-    // interjection: document.getElementById("interjection")
+    wrap: document.getElementById("meaning")
   },
   bottom: document.getElementById("bottom")
 }
@@ -24,7 +17,7 @@ showCheckBoxes();
 hideWord();
 hideHelp("help1");
 
-const values = Array.from({ length: Object.keys(data).length }, () => false);
+const checkboxValues = Array.from({ length: Object.keys(data).length }, () => false);
 let indexes = new Array();
 let isShuffle = false;
 let isShowWordOnly = false;
@@ -45,8 +38,8 @@ function initIndex() {
 
 function getWordIndexes() {
   const list = [];
-  for (const dayIndex in values) {
-    if (values[dayIndex]) {
+  for (const dayIndex in checkboxValues) {
+    if (checkboxValues[dayIndex]) {
       for (const wordIndex in data["day" + (parseInt(dayIndex) + 1)]) {
         list.push([parseInt(dayIndex) + 1, parseInt(wordIndex)]);
       }
@@ -105,13 +98,14 @@ function arrange(array) { // method: Quicksort
   }
 }
 
+/*
 function compareFunction(a, b) {
   if (a[0] === b[0]) {
     return (a[1] < b[1]) ? -1 : 1;
   } else {
     return (a[0] < b[0]) ? -1 : 1;
   }
-}
+}*/
 
 try {
   let isHoverForder = false;
@@ -160,7 +154,6 @@ try {
   document.getElementById("hide").addEventListener("click", () => toggleDisplaying());
 
   function toggleDisplaying() {
-    console.log(1);
     if (isShowWordOnly) {
       isShowWordOnly = false;
       document.getElementById("img-hide").src = "./img/icon/show.png";
@@ -251,12 +244,34 @@ function showCheckBoxes() {
   selectToText.id = "select-to-text";
   
   const inputText = document.createElement("input");
-  inputText.type = "number";
-  inputText.id = "input-text";
+  inputText.id = "select-to-text-input";
 
   selectToText.appendChild(inputText);
 
   HTML.top.checkboxes.appendChild(selectToText);
+
+  const inputTextElement = document.getElementById("select-to-text-input");
+
+  inputTextElement.addEventListener("input", () => {
+    for (const i in checkboxValues) {
+      checkboxValues[i] = false;
+      document.querySelector(`#checkbox-${parseInt(i) + 1} input`).checked = false;
+    }
+
+    for (indexString of ((inputTextElement.value).split(","))) {
+      const index = parseInt(indexString);
+      if (isNaN(index)) {
+        if (!(indexString.replaceAll(" ", "") === "")) {
+          say(`"${indexString}" 은(는) 일반적인 숫자가 아닙니다. 올바른 index를 입력해 주세요.`);
+        }
+      } else if (checkboxValues.length < index || index < 1) {
+        continue;
+      } else {
+        checkboxValues[index - 1] = true;
+        document.querySelector(`#checkbox-${index} input`).checked = true;
+      }
+    }
+  });
 
   for (const key in data) {
     if (!(repeated % REPEAT) && Boolean(repeated)) {
@@ -274,7 +289,7 @@ function showCheckBoxes() {
     checkbox.type = "checkbox";
     checkbox.className = "day-checkbox";
     checkbox.onchange = (e) => {
-      values[parseInt(keyIndex) - 1] = e.target.checked;
+      checkboxValues[parseInt(keyIndex) - 1] = e.target.checked;
       console.log(isShuffle);
       indexes = isShuffle ? shuffle(getWordIndexes()): getWordIndexes();
       initIndex();
@@ -358,7 +373,6 @@ function hideHelp(helpIndex) {
   helpElement.style.zIndex = -1;
   helpElement.style.opacity = 0;
 }
-
 
 let saveTimeout;
 function say(ment) {
