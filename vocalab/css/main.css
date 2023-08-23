@@ -313,14 +313,14 @@ main #main-read #read-index-in-selected {
 }
 
 main #main-read #read-index-in-selected-text {
-    top: 2px;
+    top: 4px;
 }
 
 main #main-read #read-index-in-selected-change {
     position: absolute;
     top: 0px;
     left: 0px;
-    transform: translate(-3px, 30px);
+    transform: translate(-2.7px, 30px);
     line-height: 24px;
     outline: none;
     border: 3px solid var(--main-color);
@@ -340,7 +340,7 @@ main #main-read #read-index-in-selected-change {
 main #main-read #read-index-in-selected:hover >
 #read-index-in-selected-change,
 main #main-read #read-index-in-selected-change:focus {
-    transform: translate(-3px, -3px);
+    transform: translate(-2.7px, -2.7px);
 }
 
 main #main-read #read-info-container {
