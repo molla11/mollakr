@@ -362,6 +362,11 @@ main #main-read #read-word {
     font-weight: bold;
 }
 
+main #main-read #read-word a {
+    text-decoration: none;
+    color: #1c1b36;
+}
+
 main #main-read #read-means .read-means-container {
     margin: 13px 0px;
 }
@@ -406,6 +411,11 @@ main #main-read .read-mean {
     border-radius: 5px;
     font-weight: bold;
     font-size:large;
+}
+
+main #main-read .read-mean a {
+    text-decoration: none;
+    color: var(--main-color);
 }
 
 main #main-read #read-skipping-container .read-skipping-btn {

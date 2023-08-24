@@ -14,7 +14,14 @@ function showWord(idx) {
     readEls.index.innerText = `No. ${wordObj.id}`;
     readEls.indexInSelectedText.innerText = `${idx + 1} / ${wordIndices.length}`;
     readEls.indexInSelectedChange.value = (idx + 1).toString();
-    readEls.word.innerText = wordObj.word;
+
+    remove_child(readEls.word);
+    const wordLink = document.createElement("a");
+    wordLink.href = `https://en.dict.naver.com/#/search?query=${wordObj.word}`;
+    wordLink.innerText = wordObj.word;
+    wordLink.target = "_blank";
+    readEls.word.appendChild(wordLink);
+    
     remove_child(readEls.means);
     if (set.read.displayMeans) {
         for (const meaningsObj of wordObj.meanings) {
@@ -36,7 +43,13 @@ function showWord(idx) {
                 const meanEl = document.createElement("span");
                 meanEl.id = `read-${meaningsObj.definitions[meaningIdx]}-mean${parseInt(meaningIdx) + 1}`;
                 meanEl.className = `read-mean`;
-                meanEl.innerText = meaningsObj.definitions[meaningIdx]; 
+
+                const meanLink = document.createElement("a");
+                meanLink.href = `https://ko.dict.naver.com/#/search?query=${meaningsObj.definitions[meaningIdx]}`;
+                meanLink.target = "_blank";
+                meanLink.innerText = meaningsObj.definitions[meaningIdx];
+                
+                meanEl.appendChild(meanLink);
                 partofMeaningEl.appendChild(meanEl);
             }
 
