@@ -5316,7 +5316,7 @@ const words = [
           {
             "speechPart": "verb",
             "definitions": [
-              "눈살을 지푸리다",
+              "눈살을 찌푸리다",
               "찡그리다"
             ]
           }
