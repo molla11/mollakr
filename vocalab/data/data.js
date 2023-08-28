@@ -1811,7 +1811,7 @@ const words = [
             "speechPart": "verb",
             "definitions": [
               "조정하다",
-              "알멪가 하다",
+              "알맞게 하다",
               "절제하다"
             ]
           },
