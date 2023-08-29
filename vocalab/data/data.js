@@ -5947,7 +5947,7 @@ const words = [
             "speechPart": "adjective",
             "definitions": [
               "의존하는",
-              "~에 결정하는",
+              "~에 결정되는",
               "좌우되는"
             ]
           }
