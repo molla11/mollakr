@@ -29008,7 +29008,7 @@ const words = [
       {
         "day": 46,
         "id": 1824,
-        "word": "책야미",
+        "word": "cordial",
         "meanings": [
           {
             "speechPart": "adjective",
