@@ -1918,7 +1918,7 @@ const words = [
             "speechPart": "noun",
             "definitions": [
               "변화",
-              "변환",
+              "전환",
               "변이",
               "전이"
             ]
