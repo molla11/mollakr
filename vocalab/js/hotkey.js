@@ -111,7 +111,7 @@ function sortIndices(array) {
         if (array.length <= 1) {
             return array;
         } else {
-            const criterion = array[Math.random() * array.length];
+            const criterion = array[Math.floor(Math.random() * array.length)];
             let left = new Array();
             let right = new Array();
             for (let i = 1; i < array.length; i++) {
