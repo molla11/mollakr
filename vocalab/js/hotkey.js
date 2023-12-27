@@ -127,9 +127,7 @@ function sortIndices(array) {
                     right.push(array[i]);
                 }
             }
-            left = sortIndices(left);
-            right = sortIndices(right);
-            return [...left, criterion, ...right];
+            return [...sortIndices(left), criterion, ...sortIndices(right)];
         }
     } catch (err) {
         alert("sortIndices(): 배열을 정렬하는 중 오류가 발생하였습니다.\n" + err);
