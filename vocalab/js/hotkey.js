@@ -107,29 +107,27 @@ function shuffleIndices(array) { // method: Fisher-Yates Shuffle
 }
 
 function sortIndices(array) {
-    try {
-        if (array.length <= 1) {
-            return array;
-        } else {
-            const criterion = array[Math.floor(Math.random() * array.length)];
-            let left = new Array();
-            let right = new Array();
-            for (let i = 1; i < array.length; i++) {
-                if (array[i][0] === criterion[0]) {
-                    if (array[i][1] < criterion[1]) {
-                        left.push(array[i]);
-                    } else {
-                        right.push(array[i]);
-                    }
-                } else if (array[i][0] < criterion[0]) {
-                    left.push(array[i]);
-                } else {
-                    right.push(array[i]);
-                }
-            }
-            return [...sortIndices(left), criterion, ...sortIndices(right)];
-        }
-    } catch (err) {
-        alert("sortIndices(): 배열을 정렬하는 중 오류가 발생하였습니다.\n" + err);
+    if (array.length <= 1) {
+        return array;
     }
+
+    const middle = Math.floor(array.length / 2);
+    const left = array.slice(0, middle);
+    const right = array.slice(middle);
+
+    return merge(sortIndices(left), sortIndices(right));
+}
+
+function merge(left, right) {
+    let sortedArr = [];
+
+    while (left.length && right.length) {
+        if (left[0][0] < right[0][0] || (left[0][0] === right[0][0] && left[0][1] < right[0][1])) {
+            sortedArr.push(left.shift());
+        } else {
+            sortedArr.push(right.shift());
+        }
+    }
+
+    return [...sortedArr, ...left, ...right];
 }
