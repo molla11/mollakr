@@ -94,9 +94,7 @@ function shuffleIndices(array) { // method: Fisher-Yates Shuffle
             const shuffled = new Array();
             while (array.length !== 0) {
                 const random = Math.floor(Math.random() * array.length);
-                const temp = array[random];
-                array[random] = array[array.length - 1];
-                array[array.length - 1] = temp;
+                [array[random], array[array.length - 1]] = [array[array.length - 1], array[random]]; // swap
                 shuffled.push(array.pop());
             }
             return shuffled;
