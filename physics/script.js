@@ -27,7 +27,7 @@ function createWalls() {
 function launchProjectile() {
 	const launchSpeed = parseFloat(document.getElementById('launch-speed').value);
 	const launchAngle = parseFloat(document.getElementById('launch-angle').value) * Math.PI / 180;
-	const mass = parseFloat(document.getElementById('launch-weight').value);
+	const mass = parseFloat(document.getElementById('mass').value);
 
 	const projectile = Bodies.circle(100, window.innerHeight - 50, Math.cbrt(mass * 800), { 
 		mass: mass, 
