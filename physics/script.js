@@ -42,8 +42,11 @@ function launchProjectile() {
 
 	const projectile = Bodies.circle(25, window.innerHeight - 25, Math.cbrt(mass * 800), { 
 		mass: mass, 
-		restitution: 0.8,
-		friction: 0,
+		restitution: 0.95,
+		friction: 0.05,
+		frictionAir: 0,
+		frictionStatic: 7,
+		//inertia: 1000,
 	});
 	World.add(engine.world, projectile);
 
