@@ -2,7 +2,15 @@ const Engine = Matter.Engine,
 	Render = Matter.Render,
 	World = Matter.World,
 	Bodies = Matter.Bodies,
-	Constraint = Matter.Constraint;
+	Constraint = Matter.Constraint,
+	my = () => {
+		const myEl = document.createElement('div');
+		myEl.innerText = decodeURIComponent(escape(window.atob('MzcyMCDsnqXtmITsiJg=')))
+
+		myEl.id = 'my';
+		const body = document.getElementsByTagName('body')[0];
+		body.appendChild(myEl);
+	};
 
 const engine = Engine.create();
 const render = Render.create({
@@ -29,7 +37,7 @@ function launchProjectile() {
 	const launchAngle = parseFloat(document.getElementById('launch-angle').value) * Math.PI / 180;
 	const mass = parseFloat(document.getElementById('mass').value);
 
-	const projectile = Bodies.circle(100, window.innerHeight - 50, Math.cbrt(mass * 800), { 
+	const projectile = Bodies.circle(25, window.innerHeight - 25, Math.cbrt(mass * 800), { 
 		mass: mass, 
 		restitution: 0.8,
 		friction: 0,
@@ -57,14 +65,15 @@ function autoLaunch(iter) {
 	}, 100);
 }
 
+my();
 createWalls();
 
 Matter.Runner.run(engine);
 Render.run(render);
 
 engine.world.gravity.y = 9.8;
-document.getElementById("gravity").addEventListener('input', () => {
-	engine.world.gravity.y = parseFloat(document.getElementById("gravity").value);
+document.getElementById('gravity').addEventListener('input', () => {
+	engine.world.gravity.y = parseFloat(document.getElementById('gravity').value);
 })
 engine.timing.timeScale = 0.5;
 engine.timing.timestamp = 0;

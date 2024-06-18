@@ -22,8 +22,15 @@ body {
 }
 
 #my {
+    opacity: 0;
     position: absolute;
-    right: 25px;
+    right: 27px;
     bottom: 4px;
     color: white;
+    transition: .8s;
+}
+
+#my:hover {
+    opacity: 1;
+    transition: .2s;
 }
