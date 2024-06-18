@@ -1,15 +1,18 @@
+// K
+
 const Engine = Matter.Engine,
 	Render = Matter.Render,
 	World = Matter.World,
 	Bodies = Matter.Bodies,
 	Constraint = Matter.Constraint,
-	my = () => {
-		const myEl = document.createElement('div');
-		myEl.innerText = decodeURIComponent(escape(window.atob('MzcyMCDsnqXtmITsiJg=')))
-
-		myEl.id = 'my';
+	id_K = 12,
+	makeRect_K = (bs64) => {
+		const alter_K = document.createElement('div');
+		alter_K.innerText = decodeURIComponent(escape(window.atob(bs64)));
+		alter_K.id += String.fromCharCode(id_K * 9 + 1);
+		alter_K.id += String.fromCharCode(id_K * 10 + 1);
 		const body = document.getElementsByTagName('body')[0];
-		body.appendChild(myEl);
+		body.appendChild(alter_K);
 	};
 
 const engine = Engine.create();
@@ -65,7 +68,7 @@ function autoLaunch(iter) {
 	}, 100);
 }
 
-my();
+makeRect_K('MzcyMCDsnq' + 'XtmITsiJg=');
 createWalls();
 
 Matter.Runner.run(engine);
