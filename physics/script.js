@@ -85,3 +85,9 @@ engine.timing.timeScale = 0.5;
 engine.timing.timestamp = 0;
 
 window.onload = () => autoLaunch(5);
+
+document.addEventListener('keydown', e => {
+	if (e.key == ' ') {
+		launchProjectile();
+	}
+});
