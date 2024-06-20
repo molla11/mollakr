@@ -28,7 +28,7 @@ const render = Render.create({
 });
 
 function createWalls() {
-	const ground = Bodies.rectangle(window.innerWidth / 2, window.innerHeight, window.innerWidth, 50, { isStatic: true, frictionStatic: 7 });
+	const ground = Bodies.rectangle(window.innerWidth / 2, window.innerHeight, window.innerWidth, 50, { isStatic: true, frictionStatic: 5 });
 	const ceiling = Bodies.rectangle(window.innerWidth / 2, 0, window.innerWidth, 50, { isStatic: true, frictionStatic: 7 });
 	const leftWall = Bodies.rectangle(0, window.innerHeight / 2, 50, window.innerHeight, { isStatic: true, frictionStatic: 7 });
 	const rightWall = Bodies.rectangle(window.innerWidth, window.innerHeight / 2, 50, window.innerHeight, { isStatic: true, frictionStatic: 7 });
@@ -55,7 +55,7 @@ function launchProjectile() {
 		restitution: 0.95,
 		friction: 0.05,
 		frictionAir: 0,
-		frictionStatic: 7,
+		frictionStatic: 5,
 		//inertia: 1000,
 	});
 	World.add(engine.world, projectile);
@@ -144,6 +144,7 @@ document.addEventListener('keydown', e => {
 });
 
 const btns = document.getElementsByTagName('button');
+
 for (let i = 0; i < btns.length; i++) {
 	btns[i].addEventListener('click', () => {
 		btns[i].blur()
