@@ -1,0 +1,15 @@
+.dialog {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#LogUploadDialog {
+  top: 33%;
+}
+
+#FileInput {
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+}
