@@ -55,14 +55,8 @@ function ready() {
     } else if (constants.length > Math.ceil(constants.size + 1 / 2)) {
       alert("Your greed is too much.\nThis page will be refrashed.");
       location.reload();
-    } else if (
-      constants.delay <= 0 ||
-      constants.size > 100 ||
-      constants.length < 2
-    ) {
-      alert(
-        "One or more property of the constants are strange.\nThis page will be refrashed."
-      );
+    } else if (constants.delay <= 0 || constants.size > 100 || constants.length < 2) {
+      alert("One or more property of the constants are strange.\nThis page will be refrashed.");
       location.reload();
     } else {
       if (isStarted === false) {
@@ -212,27 +206,19 @@ function ready() {
           return pos.i === 0 || !(board[pos.i - 1][pos.j] === worm.length - 1);
 
         case Direction.Down:
-          return (
-            pos.i === constants.size - 1 ||
-            !(board[pos.i + 1][pos.j] === worm.length - 1)
-          );
+          return pos.i === constants.size - 1 || !(board[pos.i + 1][pos.j] === worm.length - 1);
 
         case Direction.Left:
           return pos.j === 0 || !(board[pos.i][pos.j - 1] === worm.length - 1);
 
         case Direction.Right:
-          return (
-            pos.j === constants.size - 1 ||
-            !(board[pos.i][pos.j + 1] === worm.length - 1)
-          );
+          return pos.j === constants.size - 1 || !(board[pos.i][pos.j + 1] === worm.length - 1);
       }
     }
 
     function togglePause() {
       if (!isEnd && !Mobile()) {
-        const helpPause = document.getElementById(
-          "help-pause"
-        ) as HTMLDivElement;
+        const helpPause = document.getElementById("help-pause") as HTMLDivElement;
         let word: "Pause" | "Restart" = "Pause";
         if (isPlaying) {
           word = "Restart";
@@ -259,9 +245,7 @@ function ready() {
     }
 
     function deleteReadyScreen() {
-      (document.querySelector("body") as HTMLBodyElement).removeChild(
-        document.querySelector(".wrap") as HTMLDivElement
-      );
+      (document.querySelector("body") as HTMLBodyElement).removeChild(document.querySelector(".wrap") as HTMLDivElement);
     }
 
     function createTable(size: number) {
@@ -271,9 +255,7 @@ function ready() {
       const table = document.createElement("table");
       table.id = "table";
       const TD_WIDTH = 17;
-      table.style.width = `${
-        (TD_WIDTH + 2) * constants.size + 2 * (constants.size + 1)
-      }`;
+      table.style.width = `${(TD_WIDTH + 2) * constants.size + 2 * (constants.size + 1)}`;
       const caption = document.createElement("div");
       caption.innerHTML = "Worm Game";
       caption.className = "ingame-title";
@@ -355,9 +337,7 @@ function ready() {
           childElement.id = "touchpad-" + dir;
           childElement.className = "touchpad";
           childElement.innerHTML = dir;
-          (
-            document.getElementById("wrap-touchpad") as HTMLDivElement
-          ).appendChild(childElement);
+          (document.getElementById("wrap-touchpad") as HTMLDivElement).appendChild(childElement);
         }
 
         const touchpad = {
@@ -412,11 +392,7 @@ function ready() {
     }
 
     function render() {
-      type SeqUnion<
-        End extends number,
-        Arr extends Array<never> = [never],
-        Result extends number = 1
-      > = Arr["length"] extends End
+      type SeqUnion<End extends number, Arr extends Array<never> = [never], Result extends number = 1> = Arr["length"] extends End
         ? 0 | Result | Arr["length"]
         : SeqUnion<End, [...Arr, never], Result | Arr["length"]>;
 
@@ -482,12 +458,7 @@ function ready() {
         } else {
           const i = pos.i + x;
           const j = pos.j + y;
-          if (
-            i < 0 ||
-            i > constants.size - 1 ||
-            j < 0 ||
-            j > constants.size - 1
-          ) {
+          if (i < 0 || i > constants.size - 1 || j < 0 || j > constants.size - 1) {
             gameOver();
           } else {
             const raw = board[i][j];
@@ -517,20 +488,16 @@ function ready() {
         }
 
         function success() {
-          (
-            document.querySelector(".scoreboard") as HTMLSpanElement
-          ).innerHTML = `${
-            (document.querySelector(".scoreboard") as HTMLSpanElement).innerHTML
-          } | Success. (${(new Date().getTime() - startTime) / 1000}s)`;
+          (document.querySelector(".scoreboard") as HTMLSpanElement).innerHTML = `${(document.querySelector(".scoreboard") as HTMLSpanElement).innerHTML} | Success. (${
+            (new Date().getTime() - startTime) / 1000
+          }s)`;
           end();
         }
 
         function gameOver() {
-          (
-            document.querySelector(".scoreboard") as HTMLSpanElement
-          ).innerHTML = `${
-            (document.querySelector(".scoreboard") as HTMLSpanElement).innerHTML
-          } | Game Over. (${(new Date().getTime() - startTime) / 1000}s)`;
+          (document.querySelector(".scoreboard") as HTMLSpanElement).innerHTML = `${(document.querySelector(".scoreboard") as HTMLSpanElement).innerHTML} | Game Over. (${
+            (new Date().getTime() - startTime) / 1000
+          }s)`;
           end();
         }
 
@@ -539,22 +506,16 @@ function ready() {
           isPlaying = false;
           stopGame();
           unBoost();
-          const helpPause = document.getElementById(
-            "help-pause"
-          ) as HTMLDivElement;
+          const helpPause = document.getElementById("help-pause") as HTMLDivElement;
           helpPause.innerHTML = "Refresh this page to retry";
-          const helpBoost = document.getElementById(
-            "help-boost"
-          ) as HTMLDivElement;
+          const helpBoost = document.getElementById("help-boost") as HTMLDivElement;
           helpBoost.innerHTML = "";
         }
       }
 
       function eatFeed(i: number, j: number) {
         score++;
-        (
-          document.querySelector(".scoreboard") as HTMLSpanElement
-        ).innerHTML = `Score | ${score}`;
+        (document.querySelector(".scoreboard") as HTMLSpanElement).innerHTML = `Score | ${score}`;
         board[i][j] = ++worm.length;
         replaceHead(worm.direction);
         placeFeed();
@@ -660,7 +621,5 @@ function ready() {
 }
 
 function Mobile() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  );
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
