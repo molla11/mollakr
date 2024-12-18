@@ -1,5 +1,6 @@
 const LogUploadBtn = document.getElementById("LogUploadBtn");
 const LogUploadDialog = document.getElementById("LogUploadDialog");
+let parsed = false;
 
 LogUploadBtn.addEventListener("click", () => {
   LogUploadDialog.style.display = "block";
@@ -25,6 +26,8 @@ ShowLobbyChatBtn.addEventListener("click", () => {
 
 const LogConfirmBtn = document.getElementById("LogConfirmBtn");
 LogConfirmBtn.addEventListener("click", () => {
+  if (parsed) location.reload();
+
   const FileInput = document.getElementById("FileInput");
   const file = FileInput.files[0];
   const roomListTitle = document.querySelector(".RoomListTitle");
@@ -44,6 +47,7 @@ LogConfirmBtn.addEventListener("click", () => {
 
     setTimeout(() => {
       parseLog();
+      parsed = true;
     }, 100);
   } else {
     alert("파일을 선택하세요.");
