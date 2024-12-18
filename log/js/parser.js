@@ -28,7 +28,7 @@ function parseLog() {
 
         case "talk":
           if (!users.has(parsed.userId)) {
-            makeUser(parsed.userId);
+            makeUser(parsed.userId, parsed.ip);
           }
 
           saveChatToUser(users.get(parsed.userId).chat, "relay" in parsed.content ? "relay" : "talk", parsed.roomNum, parsed.content.value, parsed.time);
@@ -65,9 +65,10 @@ function parseLog() {
   loadUserList();
 }
 
-function makeUser(userId) {
+function makeUser(userId, ip) {
   users.set(userId, {
     userId,
+    ip,
     chat: [],
   });
 }

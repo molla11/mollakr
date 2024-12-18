@@ -50,14 +50,14 @@ function loadUserList() {
     userElement.innerHTML = `<div class="users-name ellipse">${userId}</div>`;
 
     userElement.addEventListener("click", () => {
-      loadChatFromUser(userId, user.chat);
+      loadChatFromUser(userId, user.chat, user.ip);
     });
 
     userList.appendChild(userElement);
   }
 }
 
-function loadChatFromRoom(roomNum, chat) {
+function loadChatFromRoom(roomNum, chat, ip) {
   clearChatList();
 
   const chatTitleEl = document.querySelector(".ChatBox h5 span");
@@ -97,11 +97,11 @@ function loadChatFromRoom(roomNum, chat) {
   }
 }
 
-function loadChatFromUser(userId, chat) {
+function loadChatFromUser(userId, chat, ip) {
   clearChatList();
 
   const chatTitleEl = document.querySelector(".ChatBox h5 span");
-  chatTitleEl.innerHTML = `<i class="fa-solid fa-comment"></i><span style="user-select: none;">Log | 채팅: #</span>${userId}`;
+  chatTitleEl.innerHTML = `<i class="fa-solid fa-comment"></i><span style="user-select: none;">Log | 채팅: #</span>${userId}    [${ip}]`;
 
   for (let i = 0; i < chat.length; i++) {
     const [chatType, roomNum, content, time] = chat[i];
