@@ -20,7 +20,7 @@ Array.from(closeBtns).forEach((btn) => {
 
 const ShowLobbyChatBtn = document.getElementById("ShowLobbyChatBtn");
 ShowLobbyChatBtn.addEventListener("click", () => {
-  loadChat("로비", lobbyChat);
+  loadChatFromRoom("로비", lobbyChat);
 });
 
 const LogConfirmBtn = document.getElementById("LogConfirmBtn");

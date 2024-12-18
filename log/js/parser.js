@@ -4,6 +4,7 @@ const regexForMsg = /\[([\d\.]+)\] Room @(.*?) Msg #(.*?): ({.*})/;
 const rooms = new Map();
 let waitingRoom = [];
 let lobbyChat = [];
+let users = new Map();
 
 function parseLog() {
   const data = getLogContent();
@@ -26,14 +27,20 @@ function parseLog() {
           break;
 
         case "talk":
+          if (!users.has(parsed.userId)) {
+            makeUser(parsed.userId);
+          }
+
+          saveChatToUser(users.get(parsed.userId).chat, "relay" in parsed.content ? "relay" : "talk", parsed.roomNum, parsed.content.value, parsed.time);
+
           if (parsed.roomNum == "로비") {
             // 로비 채팅
-            saveChat(lobbyChat, "talk", parsed.userId, parsed.content.value, parsed.time);
+            saveChatToRoom(lobbyChat, "talk", parsed.userId, parsed.content.value, parsed.time);
           } else {
             if (!rooms.has(parsed.roomNum)) makeRoom(null, null, parsed.roomNum, parsed.userId, false);
             if (!rooms.get(parsed.roomNum).members.has(parsed.userId)) enterRoom(parsed.roomNum, parsed.userId);
 
-            saveChat(rooms.get(parsed.roomNum).chat, "relay" in parsed.content ? "relay" : "talk", parsed.userId, parsed.content.value, parsed.time);
+            saveChatToRoom(rooms.get(parsed.roomNum).chat, "relay" in parsed.content ? "relay" : "talk", parsed.userId, parsed.content.value, parsed.time);
           }
 
         default:
@@ -54,11 +61,23 @@ function parseLog() {
   }
 
   loadRoomList();
-  loadChat("로비", lobbyChat);
+  loadChatFromRoom("로비", lobbyChat);
+  loadUserList();
 }
 
-function saveChat(chat, chatType, userId, value, time) {
+function makeUser(userId) {
+  users.set(userId, {
+    userId,
+    chat: [],
+  });
+}
+
+function saveChatToRoom(chat, chatType, userId, value, time) {
   chat.push([chatType, userId, value, time]);
+}
+
+function saveChatToUser(chat, chatType, roomNum, value, time) {
+  chat.push([chatType, roomNum, value, time]);
 }
 
 function parse(line) {
@@ -113,7 +132,6 @@ function parseNotMsg(match) {
 }
 
 function enterRoom(roomNum, userId) {
-  console.log(roomNum, userId);
   if (!rooms.has(roomNum)) {
     makeRoom(null, null, roomNum, userId, false);
     return;
@@ -124,7 +142,6 @@ function enterRoom(roomNum, userId) {
 }
 
 function makeRoom(time, roomTitle, roomNum, userId, logExist) {
-  console.log(roomTitle, userId, roomNum, logExist);
   const creator = logExist ? userId : null;
   rooms.set(roomNum, {
     created: time,
