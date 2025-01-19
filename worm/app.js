@@ -225,7 +225,7 @@ function ready() {
             credit.innerHTML = 'made by molla.';
             credit.className = 'credit';
             const credit2 = document.createElement('div');
-            credit2.innerHTML = 'supported by 김승한. << 아무것도 안함';
+            credit2.innerHTML = 'made by 잌';
             credit2.className = 'credit2';
             const miniWrap = document.createElement('div');
             miniWrap.className = 'mini-wrap';
