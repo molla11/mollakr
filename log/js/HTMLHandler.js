@@ -16,14 +16,28 @@ function loadRoomList() {
 
     roomElement.innerHTML = `
         <div class="rooms-channel"></div>
-        <div class="rooms-number" style="user-select: none">${value.roomNum}</div>
+        <div class="rooms-number" style="user-select: none">${
+          value.roomNum
+        }</div>
         <div class="rooms-title ellipse">
-          <div style="max-width: unset; overflow-x: hidden">${value.roomTitle ? value.roomTitle : '<span style="color: red;">알 수 없음</span>'}</div>
+          <div style="max-width: unset; overflow-x: hidden">${
+            value.roomTitle
+              ? value.roomTitle
+              : '<span style="color: red;">알 수 없음</span>'
+          }</div>
         </div>
         <div class="rooms-limit">${value.members.size}명</div>
         <div style="width: 270px">
-        <div class="rooms-time"><span style="user-select: none">생성 시각: </span>${value.created ? value.created : '<span style="color: red;">알 수 없음</span>'}</div>
-        <div class="rooms-creator"><span style="user-select: none">생성자: </span>${value.creator ? value.creator : '<span style="color: red;">알 수 없음</span>'}</div>
+        <div class="rooms-time"><span style="user-select: none">생성 시각: </span>${
+          value.created
+            ? value.created
+            : '<span style="color: red;">알 수 없음</span>'
+        }</div>
+        <div class="rooms-creator"><span style="user-select: none">생성자: </span>${
+          value.creator
+            ? value.creator
+            : '<span style="color: red;">알 수 없음</span>'
+        }</div>
         </div>
     `;
 
@@ -71,11 +85,13 @@ function loadChatFromRoom(roomNum, chat, ip) {
     chatElement.innerHTML = `
       <div class="chat-head ellipse" style="color: black; user-select: none;">${userId}</div>
       <div class="chat-body" style="color: black;">${content}</div>
-      <div class="chat-stamp" style="user-select: none;">${chatType} | ${time.substring(11)}</div>
+      <div class="chat-stamp" style="user-select: none;">${chatType} | ${time.substring(
+      11
+    )}</div>
     `;
 
     switch (chatType) {
-      case "relay":
+      case "on-turn":
         chatElement.style.backgroundColor = "#adb";
         break;
 
@@ -111,11 +127,13 @@ function loadChatFromUser(userId, chat, ip) {
     chatElement.innerHTML = `
       <div class="chat-head ellipse" style="color: black; user-select: none;">@${roomNum}</div>
       <div class="chat-body" style="color: black;">${content}</div>
-      <div class="chat-stamp" style="user-select: none;">${chatType} | ${time.substring(11)}</div>
+      <div class="chat-stamp" style="user-select: none;">${chatType} | ${time.substring(
+      11
+    )}</div>
     `;
 
     switch (chatType) {
-      case "relay":
+      case "on-turn":
         chatElement.style.backgroundColor = "#adb";
         break;
 
@@ -153,7 +171,10 @@ function toggleUserIdChat(element) {
   const userIdBox = element.childNodes[1];
   const chatBox = element.childNodes[3];
 
-  [userIdBox.innerText, chatBox.innerText] = [chatBox.innerText, userIdBox.innerText];
+  [userIdBox.innerText, chatBox.innerText] = [
+    chatBox.innerText,
+    userIdBox.innerText,
+  ];
 
   if (chatBox.style.color == "black") {
     chatBox.style.color = "blue";

@@ -2,7 +2,10 @@
   <head>
     <title>끄투리오 로그 파서</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <meta property="og:image" content="img/logo.png" />
     <link rel="stylesheet" href="css/fontawesome.min.css" />
     <link rel="stylesheet" href="css/solid.min.css" />
@@ -16,15 +19,32 @@
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand-sub" href="#"
-              ><img src="img/bi_vertical_white.png" alt="끄투리오 채팅 로그" height="35px" style="vertical-align: middle" />&nbsp;LogParser&nbsp;&nbsp;v0.2</a
+              ><img
+                src="img/bi_vertical_white.png"
+                alt="끄투리오 채팅 로그"
+                height="35px"
+                style="vertical-align: middle"
+              />&nbsp;LogParser&nbsp;&nbsp;v0.3</a
             >
           </div>
           <span style="font-size: small; color: #ccc">
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-              <img alt="Creative Commons License" style="border-width: 0" src="img/cc-by.png" />
+              <img
+                alt="Creative Commons License"
+                style="border-width: 0"
+                src="img/cc-by.png"
+              />
             </a>
-            원본 끄투2의 디자인은 "<a target="_blank" href="https://daldal.so/w/JJoriping">JJoriping</a>"이 제작했습니다. <br />
-            "끄투리오"의 디자인권 및 상표권은 "<a target="_blank" href="https://support.kkutu.io">끄투리오운영</a>"에 있습니다.
+            원본 끄투2의 디자인은 "<a
+              target="_blank"
+              href="https://daldal.so/w/JJoriping"
+              >JJoriping</a
+            >"이 제작했습니다. <br />
+            그 외 "끄투리오"의 디자인권 및 상표권은 "<a
+              target="_blank"
+              href="https://support.kkutu.io"
+              >주식회사 큐브시티</a
+            >"에 있습니다.
           </span>
         </div>
       </nav>
@@ -36,38 +56,101 @@
       <link rel="stylesheet" href="css/in_kkutu.css" />
 
       <div class="kkutu-menu" style="z-index: 5">
-        <button class="tiny-menu for-lobby for-master for-normal for-gaming" id="HelpBtn" style="background-color: #bbbbbb">
+        <button
+          class="tiny-menu for-lobby for-master for-normal for-gaming"
+          id="HelpBtn"
+          style="background-color: #bbbbbb"
+        >
           <i class="fa-solid fa-question-circle"></i>
         </button>
-        <button class="tiny-menu for-lobby for-master for-normal for-gaming" id="SettingBtn" style="background-color: #cccccc">
+        <button
+          class="tiny-menu for-lobby for-master for-normal for-gaming"
+          id="SettingBtn"
+          style="background-color: #cccccc"
+        >
           <i class="fa-solid fa-wrench"></i>
         </button>
-        <button class="tiny-menu for-lobby for-master for-normal for-gaming" id="CommunityBtn" style="background-color: #daa9ff">
+        <button
+          class="tiny-menu for-lobby for-master for-normal for-gaming"
+          id="CommunityBtn"
+          style="background-color: #daa9ff"
+        >
           <i class="fa-solid fa-user-friends"></i>
         </button>
-        <button class="tiny-menu for-lobby for-master for-normal for-gaming" id="LeaderboardBtn" style="background-color: #ffadd3">
+        <button
+          class="tiny-menu for-lobby for-master for-normal for-gaming"
+          id="LeaderboardBtn"
+          style="background-color: #ffadd3"
+        >
           <i class="fa-solid fa-trophy"></i>
         </button>
-        <button class="for-master for-normal" id="ShowLobbyChatBtn" style="background-color: #d19dff"><i class="fa-solid fa-eye"></i>&nbsp;로비 채팅 보기</button>
-        <button class="for-lobby" id="LogUploadBtn" style="background-color: #8ec0f3"><i class="fa-solid fa-plus"></i>&nbsp;로그 업로드</button>
-        <button class="for-lobby" id="QuickRoomBtn" style="background-color: #b0d2f3"><i class="fa-solid fa-bolt"></i>&nbsp;빠른 입장</button>
-        <button class="for-lobby" id="ShopBtn" style="background-color: #b3e7b7"><i class="fa-solid fa-shopping-bag"></i>&nbsp;상점</button>
-        <button class="for-lobby for-master for-normal for-gaming" id="DictionaryBtn" style="background-color: #73d07a"><i class="fa-solid fa-book"></i>&nbsp;사전</button>
-        <button class="for-master" id="InviteBtn" style="background-color: #9fe669"><i class="fa-solid fa-envelope"></i>&nbsp;초대</button>
-        <button class="for-master for-normal" id="PracticeBtn" style="background-color: #fcf5a9"><i class="fa-solid fa-plane"></i>&nbsp;연습</button>
+        <button
+          class="for-master for-normal"
+          id="ShowLobbyChatBtn"
+          style="background-color: #d19dff"
+        >
+          <i class="fa-solid fa-eye"></i>&nbsp;로비 채팅 보기
+        </button>
+        <button
+          class="for-lobby"
+          id="LogUploadBtn"
+          style="background-color: #8ec0f3"
+        >
+          <i class="fa-solid fa-plus"></i>&nbsp;로그 업로드
+        </button>
+        <button
+          class="for-lobby"
+          id="QuickRoomBtn"
+          style="background-color: #b0d2f3"
+        >
+          <i class="fa-solid fa-bolt"></i>&nbsp;빠른 입장
+        </button>
+        <button
+          class="for-lobby"
+          id="ShopBtn"
+          style="background-color: #b3e7b7"
+        >
+          <i class="fa-solid fa-shopping-bag"></i>&nbsp;상점
+        </button>
+        <button
+          class="for-lobby for-master for-normal for-gaming"
+          id="DictionaryBtn"
+          style="background-color: #73d07a"
+        >
+          <i class="fa-solid fa-book"></i>&nbsp;사전
+        </button>
+        <button
+          class="for-master"
+          id="InviteBtn"
+          style="background-color: #9fe669"
+        >
+          <i class="fa-solid fa-envelope"></i>&nbsp;초대
+        </button>
+        <button
+          class="for-master for-normal"
+          id="PracticeBtn"
+          style="background-color: #fcf5a9"
+        >
+          <i class="fa-solid fa-plane"></i>&nbsp;연습
+        </button>
       </div>
 
-      <div class="dialog" id="LogUploadDialog" style="width: 300px; height: 170px">
+      <div
+        class="dialog"
+        id="LogUploadDialog"
+        style="width: 300px; height: 170px"
+      >
         <div class="dialog-head">
           <div class="dialog-title" style="width: 280px">로그 업로드</div>
           <div class="closeBtn"></div>
         </div>
         <div class="dialog-body" style="font-size: 13px">
           <div class="msg-style" id="log-select-content" style="height: 65px">
-            압축 해제한 로그 파일을 선택하세요. <br />끄투리오 로그 파서의 전체 페이지는 <br />오프라인으로 동작합니다.
+            <b>압축된(.log.gz)</b> 로그 파일을 선택하세요. <br />끄투리오 로그
+            파서의 전체 페이지는 <br />오프라인으로 동작합니다. <br />
           </div>
 
-          <input type="file" id="FileInput" accept=".log" />
+          <input type="file" id="FileInput" accept=".gz" />
           <div class="dialog-bar tail-button">
             <button id="LogConfirmBtn">확인</button>
           </div>
@@ -78,35 +161,59 @@
           <div class="dialog-title" style="width: 280px"><b>userId</b></div>
           <div class="closeBtn"></div>
         </div>
-        <div class="dialog-body" id="UserIdDialogContent" style="font-size: 13px">유저 아이디</div>
+        <div
+          class="dialog-body"
+          id="UserIdDialogContent"
+          style="font-size: 13px"
+        >
+          유저 아이디
+        </div>
       </div>
 
       <div class="UserListBox Product" style="display: block">
         <h5 class="product-title">
-          <i class="UserListTitle" style="font-style: unset; font-weight: bold">Log&nbsp;|&nbsp;유저&nbsp;목록</i>
+          <i class="UserListTitle" style="font-style: unset; font-weight: bold"
+            >Log&nbsp;|&nbsp;유저&nbsp;목록</i
+          >
         </h5>
         <div class="product-body" id="user-list"><!-- push in here --></div>
       </div>
 
       <div class="RoomListBox Product" style="display: block">
         <h5 class="product-title">
-          <i class="RoomListTitle" style="font-style: unset; font-weight: bold">Log | 방 목록</i>
+          <i class="RoomListTitle" style="font-style: unset; font-weight: bold"
+            >Log | 방 목록</i
+          >
         </h5>
         <div class="product-body" id="room-list"></div>
       </div>
 
       <div class="ChatBox Product" style="min-height: 170px">
         <h5 class="product-title">
-          <span style="display: block; font-weight: bold"><i class="fa-solid fa-comment"></i>Log | 채팅: </span>
+          <span style="display: block; font-weight: bold"
+            ><i class="fa-solid fa-comment"></i>Log | 채팅:
+          </span>
         </h5>
-        <div class="chat-tooltip" style="display: flex; float: right; margin-top: -22px"></div>
+        <div
+          class="chat-tooltip"
+          style="display: flex; float: right; margin-top: -22px"
+        ></div>
         <div class="product-body">
           <div id="Chat"></div>
-          <input class="chat-input" id="Talk" maxlength="180" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+          <input
+            class="chat-input"
+            id="Talk"
+            maxlength="180"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+          />
         </div>
       </div>
     </div>
   </body>
+  <script src="js/pako.min.js"></script>
   <script src="js/button.js"></script>
   <script src="js/parser.js"></script>
   <script src="js/logModule.js"></script>

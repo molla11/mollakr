@@ -36,12 +36,19 @@ LogConfirmBtn.addEventListener("click", () => {
   if (file) {
     const reader = new FileReader();
 
-    reader.onload = (event) => {
-      const logContent = event.target.result;
-      setLogContent(logContent);
+    reader.onload = async (event) => {
+      try {
+        const uint8Array = new Uint8Array(event.target.result);
+        const decompressed = pako.inflate(uint8Array, { to: "string" });
+        setLogContent(decompressed);
+      } catch (err) {
+        console.error("An error occurred while unpacking:", err);
+        alert("An error occurred while unpacking");
+        return;
+      }
     };
 
-    reader.readAsText(file);
+    reader.readAsArrayBuffer(file); // ArrayBuffer로 읽기
 
     closeClosestDialog(LogConfirmBtn);
 

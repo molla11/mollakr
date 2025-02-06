@@ -1,4 +1,5 @@
-const regex = /\[(.*?)\]\[([\w가-힣]+(?:\(손님\))?)-(MASTER|SLAVE-\d{1,2})\/(.*?)\]: (.*)/;
+const regex =
+  /\[(.*?)\]\[([\w가-힣]+(?:\(손님\))?)-(MASTER|SLAVE-\d{1,2})\/(.*?)\]: (.*)/;
 const regexForMsg = /\[([\d\.]+)\] Room @(.*?) Msg #(.*?): ({.*})/;
 
 const rooms = new Map();
@@ -17,13 +18,27 @@ function parseLog() {
     if (parsed.isMsg) {
       switch (parsed.content.type) {
         case "enter":
+          if (!users.has(parsed.userId)) {
+            makeUser(parsed.userId, parsed.ip);
+          }
+
           if (parsed.content.hasOwnProperty("id")) {
             // id 속성 있음: 방 입장 기록 (생성 x)
-            enterRoom(parsed.content.id.toString(), parsed.userId);
+            enterRoom(parsed.content.id.toString(), parsed.userId, parsed.time);
+            logEnter(parsed.content.id.toString(), parsed.userId, parsed.time);
           } else {
             // else: 방 생성 기록
             waitMatchingRoom(parsed.userId, parsed.content.title, parsed.time);
           }
+          break;
+
+        case "leave":
+          if (!users.has(parsed.userId)) {
+            makeUser(parsed.userId, parsed.ip);
+          }
+
+          // leave에는 id가 없음
+          logLeave(parsed.roomNum, parsed.userId, parsed.time);
           break;
 
         case "talk":
@@ -31,17 +46,38 @@ function parseLog() {
             makeUser(parsed.userId, parsed.ip);
           }
 
-          saveChatToUser(users.get(parsed.userId).chat, "relay" in parsed.content ? "relay" : "talk", parsed.roomNum, parsed.content.value, parsed.time);
+          saveChatToUser(
+            users.get(parsed.userId).chat,
+            "relay" in parsed.content ? "on-turn" : "talk",
+            parsed.roomNum,
+            parsed.content.value,
+            parsed.time
+          );
 
           if (parsed.roomNum == "로비") {
             // 로비 채팅
-            saveChatToRoom(lobbyChat, "talk", parsed.userId, parsed.content.value, parsed.time);
+            saveChatToRoom(
+              lobbyChat,
+              "talk",
+              parsed.userId,
+              parsed.content.value,
+              parsed.time
+            );
           } else {
-            if (!rooms.has(parsed.roomNum)) makeRoom(null, null, parsed.roomNum, parsed.userId, false);
-            if (!rooms.get(parsed.roomNum).members.has(parsed.userId)) enterRoom(parsed.roomNum, parsed.userId);
+            if (!rooms.has(parsed.roomNum))
+              makeRoom(null, null, parsed.roomNum, parsed.userId, false);
+            if (!rooms.get(parsed.roomNum).members.has(parsed.userId))
+              enterRoom(parsed.roomNum, parsed.userId, parsed.time);
 
-            saveChatToRoom(rooms.get(parsed.roomNum).chat, "relay" in parsed.content ? "relay" : "talk", parsed.userId, parsed.content.value, parsed.time);
+            saveChatToRoom(
+              rooms.get(parsed.roomNum).chat,
+              "relay" in parsed.content ? "on-turn" : "talk",
+              parsed.userId,
+              parsed.content.value,
+              parsed.time
+            );
           }
+          break;
 
         default:
           break;
@@ -115,7 +151,9 @@ function parseNotMsg(match) {
 
   // 방 입장 로그
   if (remains.slice(-10, remains.length) == "방에 입장했습니다.") {
-    const enterMatch = remains.match(/.*?\((.*?)\) 님이 (\d{1,3})번 방에 입장했습니다./);
+    const enterMatch = remains.match(
+      /.*?\((.*?)\) 님이 (\d{1,3})번 방에 입장했습니다./
+    );
     return {
       isMsg: false,
       time,
@@ -132,7 +170,7 @@ function parseNotMsg(match) {
   }
 }
 
-function enterRoom(roomNum, userId) {
+function enterRoom(roomNum, userId, time) {
   if (!rooms.has(roomNum)) {
     makeRoom(null, null, roomNum, userId, false);
     return;
@@ -140,6 +178,26 @@ function enterRoom(roomNum, userId) {
 
   const room = rooms.get(roomNum);
   room.members.add(userId);
+}
+
+function logEnter(roomNum, userId, time) {
+  const room = rooms.get(roomNum);
+
+  saveChatToRoom(
+    room.chat,
+    "enter",
+    "#enter",
+    `${userId} 님이 ${roomNum}번 방에 입장했습니다. (또는 방 설정 변경/관전했습니다.)`,
+    time
+  );
+
+  saveChatToUser(
+    users.get(userId).chat,
+    "enter",
+    "enter",
+    `${userId} 님이 ${roomNum}번 방에 입장했습니다. (또는 방 설정 변경/관전했습니다.)`,
+    time
+  );
 }
 
 function makeRoom(time, roomTitle, roomNum, userId, logExist) {
@@ -172,4 +230,26 @@ function matchRoom(userId, roomNum) {
   }
 
   return false;
+}
+
+function logLeave(roomNum, userId, time) {
+  if (isNaN(parseInt(roomNum))) return;
+
+  const room = rooms.get(roomNum);
+
+  saveChatToRoom(
+    room.chat,
+    "leave",
+    "#leave",
+    `${userId} 님이 ${roomNum}번 방에서 퇴장했습니다.`,
+    time
+  );
+
+  saveChatToUser(
+    users.get(userId).chat,
+    "leave",
+    "leave",
+    `${userId} 님이 ${roomNum}번 방에서 퇴장했습니다.`,
+    time
+  );
 }
