@@ -57,7 +57,16 @@
     <li>username/password 입력 후 설치 완료</li>
   </ul>
 
-  <h2>3. 터미널 및 vim 설정</h2>
+  <h2>3. 필수 패키지 설치</h2>
+  <pre>
+sudo apt update
+sudo apt install gcc g++ vim build-essential gdb -y
+sudo apt update
+whereis gdb gcc g++
+  </pre>
+  <p><strong>※ 경로가 안 나오면 문제 있음</strong></p>
+
+  <h2>4. 터미널 및 vim 설정</h2>
   <ul>
     <li>Ubuntu 터미널 설정:
       <ul>
@@ -75,15 +84,6 @@ set tabstop=4
 set shiftwidth=4
 colo desert
   </pre>
-
-  <h2>4. 필수 패키지 설치</h2>
-  <pre>
-sudo apt update
-sudo apt install gcc g++ vim build-essential gdb -y
-sudo apt update
-whereis gdb gcc g++
-  </pre>
-  <p><strong>※ 경로가 안 나오면 문제 있음</strong></p>
 
   <h2>5. VS Code 설치 및 설정</h2>
   <ul>
@@ -153,7 +153,6 @@ int main() {
   <ul>
     <li>CPH(Competitive Programming Helper) 정상 작동 확인</li>
     <li>필요 시 <strong>Korean Language Pack</strong> 확장 설치</li>
-    <li>Chrome Extension에도 CPH 설치 가능</li>
     <li>vscode 설정에서 Enable Preview 설정 해제: 항상 새 탭으로 파일 열림</li>
   </ul>
 </body>
