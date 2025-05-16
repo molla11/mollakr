@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>개발 환경 설정 가이드</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    ul {
+      list-style-type: square;
+    }
+  </style>
+</head>
+<body>
+  <h1>개발 환경 설정 가이드</h1>
+
+  <h2>1. Windows 기능 설정</h2>
+  <ul>
+    <li>Windows 기능 켜기/끄기에서 다음 항목 선택:
+      <ul>
+        <li>Linux용 Windows 하위 시스템</li>
+        <li>Hyper-V</li>
+        <li>Virtual Machine Platform</li>
+        <li>Windows 하이퍼바이저 플랫폼</li>
+      </ul>
+    </li>
+    <li>컴퓨터 재시작</li>
+  </ul>
+
+  <h2>2. Ubuntu 설치</h2>
+  <ul>
+    <li>Microsoft Store에서 <strong>Ubuntu 24.04.1 LTS</strong> 설치</li>
+    <li>에러 <code>WslRegisterDistribution failed with error: 0x800701bc</code> 발생 시
+      <ul>
+        <li><a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" target="_blank">wsl_update_x64.msi</a> 설치</li>
+      </ul>
+    </li>
+    <li>username/password 입력 후 설치 완료</li>
+  </ul>
+
+  <h2>3. 터미널 및 vim 설정</h2>
+  <ul>
+    <li>Ubuntu 터미널 설정:
+      <ul>
+        <li>기본값 설정</li>
+        <li>커서 모양: 빈티지</li>
+        <li>커서 높이: 20</li>
+      </ul>
+    </li>
+    <li><code>~/.vimrc</code>에 다음 내용 입력:</li>
+  </ul>
+  <pre>
+set nu
+set cindent
+set tabstop=4
+set shiftwidth=4
+colo desert
+  </pre>
+
+  <h2>4. 필수 패키지 설치</h2>
+  <pre>
+sudo apt update
+sudo apt install gcc g++ vim build-essential gdb -y
+sudo apt update
+whereis gdb gcc g++
+  </pre>
+  <p><strong>※ 경로가 안 나오면 문제 있음</strong></p>
+
+  <h2>5. VS Code 설치 및 설정</h2>
+  <ul>
+    <li>x86-64용 설치 파일 사용</li>
+    <li>Copilot 사용 안 함</li>
+    <li>WSL 터미널에서 폴더 생성 후 <code>cd</code>로 이동, <code>code .</code> 실행</li>
+    <li>테마 설정:
+      <ul>
+        <li><code>Ctrl + K T</code> → <strong>Shades of Purple (Super dark)</strong> 설치</li>
+      </ul>
+    </li>
+    <li>확장 프로그램 설치: <code>Ctrl + Shift + X</code>
+      <ul>
+        <li>C/C++, C/C++ Extension Pack, C/C++ Themes</li>
+        <li>Python, Python Debugger, Pylance</li>
+        <li>Remote Development (WSL 포함)</li>
+        <li>Competitive Programming Helper (CPH)</li>
+      </ul>
+    </li>
+    <li>기본 터미널을 WSL로 설정: <code>Ctrl + Shift + P</code> → <code>Reload Window</code></li>
+  </ul>
+
+  <h2>6. C++ 테스트 설정</h2>
+  <ul>
+    <li><code>hello.cpp</code> 파일 생성, 다음 코드 입력:</li>
+  </ul>
+  <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cin.tie(0);
+    ios::sync_with_stdio(0);
+
+    cout &lt;&lt; "Hello world\n";
+}
+  </pre>
+  <ul>
+    <li>IntelliSense 자동완성, 오류 감지 확인</li>
+    <li><code>F5</code>로 컴파일/실행
+      <ul>
+        <li>처음 컴파일 시 g++ build 선택 (C일 경우 gcc build)</li>
+        <li>잘못 선택했다면 <code>.vscode</code> 폴더 삭제 후 다시</li>
+      </ul>
+    </li>
+    <li>터미널 출력 확인: <code>[1] + Done ...</code> 메시지는 제거 불가</li>
+    <li><code>.vscode/tasks.json</code>의 <code>-o</code> 설정 변경:
+      <pre>"${fileDirname}/program/${fileBasenameNoExtension}"</pre>
+    </li>
+    <li><code>Ctrl + / -</code>로 글자 크기 조정</li>
+  </ul>
+
+  <h2>7. 코드 포매터 설정</h2>
+  <ul>
+    <li><code>Ctrl + ,</code>로 설정 열기</li>
+    <li><code>Clang_format_fallback Style</code>에 다음 값 입력:</li>
+  </ul>
+  <pre>
+{ BasedOnStyle: Google, UseTab: Never, IndentWidth: 4, TabWidth: 4, ColumnLimit: 0 }
+  </pre>
+  <ul>
+    <li>Format On Save 설정 체크</li>
+    <li><code>hello.cpp</code> 코드 스타일 망가뜨리고 저장 시 복원되는지 테스트</li>
+  </ul>
+
+  <h2>8. 기타</h2>
+  <ul>
+    <li>CPH(Competitive Programming Helper) 정상 작동 확인</li>
+    <li>필요 시 <strong>Korean Language Pack</strong> 확장 설치</li>
+    <li>Chrome Extension에도 CPH 설치 가능</li>
+  </ul>
+</body>
+</html>
