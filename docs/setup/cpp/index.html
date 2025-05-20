@@ -68,13 +68,13 @@
     </li>
   </ul>
   
-  <h2>4. 필수 패키지 설치</h2>
+  <h2>4. 필수 패키지 설치 (WSL에서 한 줄씩 실행)</h2>
   <pre>
 sudo apt update
 sudo apt install gcc g++ vim build-essential gdb -y
 sudo apt update
 whereis gdb gcc g++</pre>
-  <p><strong>※ gdb, gcc, g++ 각각 경로가 나와야 함! 안 나오면 문제 있음</strong></p>
+  <p><strong>* gdb, gcc, g++ 각각 경로가 나와야 함! 안 나오면 문제 있음</strong></p>
 
   <h2>4. vim 환경 설정 (vscode가 문제 생길 경우를 대비</h2>
   <ul>
@@ -88,10 +88,13 @@ set shiftwidth=4
 colo desert</pre>
 
   <h2>6. VS Code 설치 및 설정</h2>
+  <h3>WSL 터미널에서 적당한 위치에 폴더 생성 후 <code>cd 폴더명</code> 명령어로 이동</h3>
+  <h3><code>code .</code>으로 현재 디렉토리에서 vscode 실행</h3>
+  <p><strong>* 위와 같이 wsl에서 vscode를 실행해야 함!! 그렇지 않으면 컴파일이 안될 수 있음.</strong></p>
+  
   <ul>
     <li>x86-64용 설치 파일 사용</li>
     <li>Copilot 사용 안 함</li>
-    <li>WSL 터미널에서 폴더 생성 후 <code>cd</code>로 이동, <code>code .</code> 실행</li>
     <li>테마 설정:
       <ul>
         <li><code>Ctrl + K T</code> → <strong>Shades of Purple (Super dark)</strong> 설치</li>
@@ -157,7 +160,7 @@ int main() {
     <li>CPH(Competitive Programming Helper) 정상 작동 확인: a + b 프로그램 작성해보고 테스트</li>
     <li>필요 시 <strong>Korean Language Pack</strong> 확장 설치(공식 한국어 확장)</li>
     <li>vscode 설정에서 Enable Preview 설정 해제: 항상 새 탭으로 파일 열림</li>
-    <li><code>hello.c</code> 코드, <code>hello</code> 실행 파일 제거</li>
+    <li><code>hello.cpp</code>(또는 <code>hello.c</code>) 코드, <code>hello</code> 실행 파일 제거 (</li>
   </ul>
 </body>
 </html>
