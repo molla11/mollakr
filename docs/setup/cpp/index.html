@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>개발 환경 설정 가이드</title>
+  <title>C/C++ 알고리즘 문제해결 환경 설정</title>
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
@@ -31,7 +31,7 @@
   </style>
 </head>
 <body>
-  <h1>개발 환경 설정 가이드</h1>
+  <h1>C/C++ 알고리즘 문제해결 환경 설정</h1>
 
   <h2>1. Windows 기능 설정</h2>
   <ul>
@@ -76,7 +76,7 @@ sudo apt update
 whereis gdb gcc g++</pre>
   <p><strong>※ gdb, gcc, g++ 각각 경로가 나와야 함! 안 나오면 문제 있음</strong></p>
 
-  <h2>4. vim 환경 설정 (vscode가 문제 생길 경우 vim 활용)</h2>
+  <h2>4. vim 환경 설정 (vscode가 문제 생길 경우를 대비</h2>
   <ul>
     <li>홈 디렉토리 <code>~</code>에서 <code>.vimrc</code>에 다음 내용 입력:</li>
   </ul>
@@ -100,18 +100,17 @@ colo desert</pre>
     <li>확장 프로그램 설치: <code>Ctrl + Shift + X</code>
       <ul>
         <li>C/C++, C/C++ Extension Pack, C/C++ Themes</li>
-        <li>Python, Python Debugger, Pylance</li>
-        <li>Remote Development (WSL 포함)</li>
-        <li>Competitive Programming Helper (CPH)</li>
+        <li>Remote Development (이 확장에 WSL이 포함됨)</li>
+        <li>Competitive Programming Helper (CPH): 예제를 쉽고 빠르게 돌릴 수 있는 확장. (optional)</li>
       </ul>
     </li>
-    <li>기본 터미널을 WSL로 설정 (Ctrl + `로 터미널 열기 -> set default profile)</li>
+    <li>기본 터미널을 WSL로 설정 (Ctrl + `로 터미널 열기 -> 오른쪽 위에 <code>v</code> 아이콘 클릭 -> Select Default Profile -> WSL 선택)</li>
     <li><code>Ctrl + Shift + P</code> → <code>Reload Window</code></li>
   </ul>
 
-  <h2>7. C++ 테스트 설정</h2>
+  <h2>7. C++ 테스트 설정(C의 경우에는 Hello world\n 출력하는 코드 작성)</h2>
   <ul>
-    <li>코드 작성하며 체크할 것: IntelliSense 자동완성, 오류 감지 확인</li>
+    <li>코드 작성하며 체크할 것: IntelliSense 자동완성, 자동 오류 감지 확인</li>
     <li><code>hello.cpp</code> 파일 생성, 다음 코드 입력:</li>
   </ul>
   <pre>
@@ -132,13 +131,13 @@ int main() {
       </ul>
     </li>
     <li>터미널 출력 확인: <code>[1] + Done ...</code> 메시지는 제거 불가</li>
-    <li><code>.vscode/tasks.json</code>의 <code>-o</code> 설정 변경:
+    <li><code>.vscode/tasks.json</code>의 <code>-o</code> 설정 변경: (optional)
       <pre>"${fileDirname}/${fileBasenameNoExtension}"</pre>
       =>
       <pre>"${fileDirname}/program/${fileBasenameNoExtension}"</pre>
     </li>
-    <li>앞으로 실행 파일은 <code>program/</code>에 저장됨</li>
-    <li><code>Ctrl + / -</code>로 글자 크기 조정</li>
+    <li>이렇게 바꾸면 실행 파일이 <code>program/</code>에 저장됨</li>
+    <li><code>Ctrl +/-</code>로 글자 크기 조정</li>
   </ul>
 
   <h2>8. 코드 포매터 설정</h2>
