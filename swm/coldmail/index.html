@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>🔐 Tyquill 잠금 페이지</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body style="font-family: sans-serif; text-align: center; padding: 3rem;">
+  <h2>🔐 비밀번호를 입력하세요</h2>
+  <input type="password" id="password" placeholder="비밀번호" style="padding: 0.5rem; font-size: 1rem;" />
+  <button onclick="decrypt()" style="padding: 0.5rem 1rem; font-size: 1rem; margin-left: 1rem;">열기</button>
+  <p id="error" style="color: red; margin-top: 1rem;"></p>
+
+  <script>
+    const encrypted = `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`;
+    const textIV = "iv-1234567890123";
+
+    let lendered = false;
+
+    document.getElementById("password").addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && !lendered) {
+            decrypt();  // 복호화 함수 호출
+            lendered = true;
+        }
+    });
+
+    function decrypt() {
+      const pw = document.getElementById("password").value;
+      const key = CryptoJS.enc.Utf8.parse(pw.padEnd(16, '0'));
+      const iv = CryptoJS.enc.Utf8.parse(textIV);
+
+      try {
+        const decrypted = CryptoJS.AES.decrypt(encrypted, key, {
+          iv: iv,
+          mode: CryptoJS.mode.CBC,
+          padding: CryptoJS.pad.Pkcs7
+        });
+        const plaintext = decrypted.toString(CryptoJS.enc.Utf8);
+        if (!plaintext) throw new Error("복호화 실패");
+
+        document.open();
+        document.write(plaintext);
+        document.close();
+      } catch (e) {
+        document.getElementById("error").innerText = "❌ 비밀번호가 틀렸습니다.";
+      }
+    }
+  </script>
+</body>
+</html>
