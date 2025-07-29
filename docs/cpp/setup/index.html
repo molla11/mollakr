@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>C/C++ 알고리즘 문제해결 환경 설정</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    ul {
+      list-style-type: square;
+    }
+  </style>
+</head>
+<body>
+  <h1>C/C++ 알고리즘 문제해결 환경 설정</h1>
+
+  <h2>1. Windows 기능 설정</h2>
+  <ul>
+    <li>Windows 기능 켜기/끄기에서 다음 항목 선택 :
+      <ul>
+        <li>Linux용 Windows 하위 시스템</li>
+        <li>Hyper-V(없을 수 있음)</li>
+        <li>Virtual Machine Platform (또는 가상 머신 플랫폼)</li>
+        <li>Windows 하이퍼바이저 플랫폼</li>
+      </ul>
+    </li>
+    <li>컴퓨터 재시작</li>
+  </ul>
+
+  <h2>2. Ubuntu 설치</h2>
+  <ul>
+    <li>Microsoft Store에서 <strong>Ubuntu 24.04.1 LTS</strong> 설치</li>
+    <li>에러 <code>WslRegisterDistribution failed with error: 0x800701bc</code> 발생 시
+      <ul>
+        <li><a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" target="_blank">wsl_update_x64.msi</a> 설치</li>
+      </ul>
+    </li>
+    <li>username/password 입력 후 설치 완료 (password는 원래 입력해도 안보임)</li>
+  </ul>
+
+    <h2>3. 터미널 설정</h2>
+  <ul>
+    <li>Ubuntu 터미널 설정:
+      <ul>
+        <li>기본값 설정</li>
+        <li>커서 모양: 빈티지</li>
+        <li>커서 높이: 20</li>
+      </ul>
+    </li>
+  </ul>
+  
+  <h2>4. 필수 패키지 설치 (WSL에서 한 줄씩 실행)</h2>
+  <pre>
+sudo apt update
+sudo apt install gcc g++ vim build-essential gdb -y
+sudo apt update
+whereis gdb gcc g++</pre>
+  <p><strong>* gdb, gcc, g++ 각각 경로가 나와야 함! 안 나오면 문제 있음</strong></p>
+
+  <h2>4. vim 환경 설정 (vscode가 문제 생길 경우를 대비</h2>
+  <ul>
+    <li>홈 디렉토리 <code>~</code>에서 <code>.vimrc</code>에 다음 내용 입력:</li>
+  </ul>
+  <pre>
+set nu
+set cindent
+set tabstop=4
+set shiftwidth=4
+colo desert</pre>
+
+  <h2>6. VS Code 설치 및 설정</h2>
+  <h3>WSL 터미널에서 적당한 위치에 폴더 생성 후 <code>cd 폴더명</code> 명령어로 이동</h3>
+  <h3><code>code .</code>으로 현재 디렉토리에서 vscode 실행</h3>
+  <p><strong>* 위와 같이 wsl에서 vscode를 실행해야 함!! 그렇지 않으면 컴파일이 안될 수 있음.</strong></p>
+  
+  <ul>
+    <li>x86-64용 설치 파일 사용</li>
+    <li>Copilot 사용 안 함</li>
+    <li>테마 설정:
+      <ul>
+        <li><code>Ctrl + K T</code> → <strong>Shades of Purple (Super dark)</strong> 설치</li>
+      </ul>
+    </li>
+    <li>확장 프로그램 설치: <code>Ctrl + Shift + X</code>
+      <p><strong>* 확장 프로그램 설치도 wsl에서 <code>code .</code> 명령어로 연 vscode에서 해야 함.
+      <br>windows에서 실행하는 vscode와 확장 프로그램이 독립적으로 설치됨</strong></p>
+      <ul>
+        <li>C/C++, C/C++ Extension Pack, C/C++ Themes</li>
+        <li>Remote Development (이 확장에 WSL이 포함됨)</li>
+        <li>Competitive Programming Helper (CPH): 예제를 쉽고 빠르게 돌릴 수 있는 확장. (optional)</li>
+      </ul>
+    </li>
+    <li>기본 터미널을 WSL로 설정 (Ctrl + `로 터미널 열기 -> 오른쪽 위에 <code>v</code> 아이콘 클릭 -> Select Default Profile -> WSL 선택)</li>
+    <li><code>Ctrl + Shift + P</code> → <code>Reload Window</code></li>
+  </ul>
+
+  <h2>7. C++ 테스트 설정(C의 경우에는 Hello world\n 출력하는 코드 작성)</h2>
+  <ul>
+    <li>코드 작성하며 체크할 것: IntelliSense 자동완성, 자동 오류 감지 확인</li>
+    <li><code>hello.cpp</code> 파일 생성, 다음 코드 입력:</li>
+  </ul>
+  <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cin.tie(0);
+    ios::sync_with_stdio(0);
+
+    cout &lt;&lt; "Hello world\n";
+}</pre>
+  <ul>
+    <li><code>F5</code>로 컴파일/실행
+      <ul>
+        <li>처음 컴파일 시 g++ build 선택 (C일 경우 gcc build)</li>
+        <li>잘못 선택했다면 <code>.vscode</code> 폴더 삭제 후 다시 컴파일 실행 (F5)</li>
+      </ul>
+    </li>
+    <li>터미널 출력 확인: <code>[1] + Done ...</code> 메시지는 제거 불가</li>
+    <li><code>.vscode/tasks.json</code>의 <code>-o</code> 설정 변경: (optional)
+      <pre>"${fileDirname}/${fileBasenameNoExtension}"</pre>
+      =>
+      <pre>"${fileDirname}/program/${fileBasenameNoExtension}"</pre>
+    </li>
+    <li>이렇게 바꾸면 실행 파일이 <code>program/</code>에 저장됨</li>
+    <li><code>Ctrl +/-</code>로 글자 크기 조정</li>
+  </ul>
+
+  <h2>8. 코드 포매터 설정</h2>
+  <ul>
+    <li><code>Ctrl + ,</code>로 설정 열기</li>
+    <li><code>Clang_format_fallback Style</code>에 다음 값 입력:</li>
+  </ul>
+  <pre>
+{ BasedOnStyle: Google, UseTab: Never, IndentWidth: 4, TabWidth: 4, ColumnLimit: 0 }</pre>
+  <ul>
+    <li>Format On Save 설정 체크</li>
+    <li><code>hello.cpp</code> 코드 스타일 망가뜨리고 저장 시 복원되는지 테스트</li>
+  </ul>
+
+  <h2>9. 기타</h2>
+  <ul>
+    <li>CPH(Competitive Programming Helper) 정상 작동 확인: a + b 프로그램 작성해보고 테스트</li>
+    <li>필요 시 <strong>Korean Language Pack</strong> 확장 설치(공식 한국어 확장)</li>
+    <li>vscode 설정에서 Enable Preview 설정 해제: 항상 새 탭으로 파일 열림</li>
+    <li><code>hello.cpp</code>(또는 <code>hello.c</code>) 코드, <code>hello</code> 실행 파일 제거 (</li>
+  </ul>
+</body>
+</html>
