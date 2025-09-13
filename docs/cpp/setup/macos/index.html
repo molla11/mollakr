@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>macOS로 PS(Problem Solving) C/C++ 환경 구축 가이드</title>
+  <style>
+    :root {
+      --bg: #ffffff;        /* 배경 흰색 */
+      --card: #f8f9fa;      /* 카드/섹션 연한 회색 */
+      --text: #1a1a1a;      /* 본문 텍스트 진한 회색 */
+      --muted: #6c757d;     /* 보조 텍스트 회색 */
+      --accent: #2a7d4f;    /* 포인트 컬러 (녹색 톤 유지) */
+      --border: #d0d7de;    /* 경계선 밝은 회색 */
+      --code: #f1f3f5;      /* 코드 블록 배경 */
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Apple SD Gothic Neo, '맑은 고딕', Arial, 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 980px; margin: 40px auto; padding: 0 20px; }
+    header { margin-bottom: 28px; }
+    h1 { font-size: 32px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.3px; }
+    .sub { color: var(--muted); margin: 0 0 8px; }
+    .tag { display: inline-block; padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 12px; margin-right: 8px; }
+    section { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; margin: 18px 0; }
+    h2 { font-size: 22px; margin: 0 0 14px; }
+    h3 { font-size: 16px; margin: 18px 0 8px; color: var(--muted); }
+    p { line-height: 1.65; margin: 10px 0; }
+    ol, ul { margin: 10px 0 10px 22px; }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    pre { background: var(--code); border: 1px solid var(--border); padding: 14px; overflow-x: auto; border-radius: 12px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+    .kbd { display:inline-block; padding: 2px 6px; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 6px; font-size: 12px; background: #0c131b; }
+    .callout { border-left: 3px solid var(--accent); padding: 12px 14px; background: #0d1812; border-radius: 8px; }
+    .small { color: var(--muted); font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; }
+    .footer { color: var(--muted); font-size: 12px; margin-top: 28px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="tag">macOS · C/C++ · PS</div>
+      <div class="tag">VSCode · LLDB · Homebrew</div>
+      <h1>macOS로 PS(Problem Solving) 환경 구축하기</h1>
+      <p class="sub">다음 안내만 따라 하면 <b>F5</b> 한 번으로 C++17 코드의 <b>빌드 &amp; 디버그</b>가 가능합니다.</p>
+    </header>
+
+    <section>
+      <h2>0) 개요</h2>
+      <ol>
+        <li><b>에디터</b>: VSCode + 확장 설치 &amp; 설정</li>
+        <li><b>컴파일러</b>: Homebrew로 <code>g++-15</code> 설치/확인</li>
+        <li><b>VSCode</b>: <code>tasks.json</code>과 <code>launch.json</code> 구성</li>
+        <li><b>F5</b>로 빌드 &amp; 디버그</li>
+      </ol>
+      <p class="small">참고: macOS 기본 <code>clang++</code>도 사용 가능하지만, 본 가이드는 <b>GNU g++-15</b> 기준으로 작성했습니다.</p>
+    </section>
+
+    <section>
+      <h2>1) 에디터 환경 설정 (VSCode)</h2>
+      <ol>
+        <li>VSCode 설치</li>
+        <li>
+          <b>확장(Extensions) 설치</b> <span class="small">(단축키 <span class="kbd">⌘</span> + <span class="kbd">⇧</span> + <span class="kbd">X</span>)</span>
+          <ul>
+            <li><b>C/C++ Extension Pack</b> (Microsoft)</li>
+            <li><b>CodeLLDB</b> (lldb 디버거)</li>
+            <li><b>Ayu Theme</b> &rarr; <i>Ayu Mirage / Ayu Dark (Green)</i> (선택)</li>
+            <li><b>Competitive Programming Helper</b> (선택, 예제 테스트에 도움)</li>
+          </ul>
+        </li>
+        <li>
+          <b>기본 설정</b> <span class="small">(<span class="kbd">⌘</span> + <span class="kbd">,</span>)</span>
+          <ul>
+            <li><b>Terminal &gt; Integrated &gt; Default Profile: Osx</b> &rarr; <b>zsh</b></li>
+            <li><b>Editor: Format On Save</b> &rarr; <b>체크</b> (선택)</li>
+            <li><b>C_Cpp: Clang_format_fallback Style</b> &rarr;</li>
+          </ul>
+          <pre><code>{ BasedOnStyle: Google, UseTab: Never, IndentWidth: 4, TabWidth: 4 }</code></pre>
+        </li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>2) 컴파일 환경 설정 (Homebrew + GCC)</h2>
+      <h3>2-1. Xcode Command Line Tools</h3>
+      <pre><code>xcode-select --install</code></pre>
+      <p class="small">이미 설치되어 있다면 건너뛰세요.</p>
+
+      <h3>2-2. Homebrew 설치</h3>
+      <pre><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+      <p>설치 후 터미널 지시에 따라 <code>PATH</code>를 설정합니다. (Apple Silicon은 <code>/opt/homebrew</code>, Intel은 <code>/usr/local</code> 경로가 일반적)</p>
+
+      <h3>2-3. GCC 15 설치</h3>
+      <pre><code>brew install gcc@15</code></pre>
+      <p class="small">설치 완료 후, 아래로 버전/경로를 확인합니다.</p>
+      <pre><code>g++-15 --version
+which -a g++-15</code></pre>
+      <div class="callout">
+        <b>TIP</b>: <code>g++-15</code> 명령이 인식되지 않으면, <code>brew --prefix gcc@15</code>를 확인한 뒤 <code>PATH</code>에 <code>bin</code>을 추가하세요.
+      </div>
+    </section>
+
+    <section>
+      <h2>3) VSCode 작업 설정 (tasks.json)</h2>
+      <p>프로젝트 폴더에 <code>.vscode/tasks.json</code> 파일을 만들고 다음 내용을 붙여 넣습니다.</p>
+      <pre><code class="language-json">{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "cpp-build",
+      "command": "mkdir -p ${fileDirname}/programs && g++-15 -fdiagnostics-color=always -std=c++17 -g -O2 -Wall ${file} -o ${fileDirname}/programs/${fileBasenameNoExtension}",
+      "options": { "cwd": "${fileDirname}" },
+      "problemMatcher": ["$gcc"],
+      "group": { "kind": "build", "isDefault": true },
+      "detail": "Compiles using GCC with C++17 standard."
+    }
+  ]
+}</code></pre>
+
+      <div class="grid">
+        <div>
+          <h3>VSCode Variables</h3>
+          <table>
+            <tr><th>${file}</th><td>현재 활성 파일의 <b>전체 경로</b></td></tr>
+            <tr><th>${fileDirname}</th><td>현재 파일이 있는 <b>디렉터리 경로</b></td></tr>
+            <tr><th>${fileBasenameNoExtension}</th><td>확장자를 제외한 <b>파일명</b></td></tr>
+          </table>
+        </div>
+        <div>
+          <h3>빌드 커맨드 상세</h3>
+          <table>
+            <tr><th>mkdir -p</th><td>실행 파일을 둘 <code>programs</code> 폴더를 미리 생성 (있으면 그대로 유지)</td></tr>
+            <tr><th>g++-15</th><td>Homebrew로 설치한 GNU C++ 컴파일러</td></tr>
+            <tr><th>-fdiagnostics-color=always</th><td>진단(오류/경고) 메시지 컬러 출력</td></tr>
+            <tr><th>-std=c++17</th><td>C++17 표준 사용</td></tr>
+            <tr><th>-g</th><td>디버그 정보 포함 (LLDB 디버깅용)</td></tr>
+            <tr><th>-O2</th><td>일반 최적화 (PS에 적절한 수준)</td></tr>
+            <tr><th>-Wall</th><td>일반적인 경고 활성화</td></tr>
+            <tr><th>-o ...</th><td>출력 바이너리 경로 지정 (<code>programs/&lt;파일명&gt;</code>)</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <h3>problemMatcher / group / detail</h3>
+      <ul>
+        <li><b>problemMatcher: "$gcc"</b> — GCC 스타일 오류/경고를 파싱해 <b>문제 패널</b>에 표시</li>
+        <li><b>group.kind: "build"</b> — 이 작업을 <b>빌드</b> 그룹으로 분류</li>
+        <li><b>group.isDefault: true</b> — 기본 빌드 작업으로 지정 (<span class="kbd">⌘</span> + <span class="kbd">⇧</span> + <span class="kbd">B</span> 시 바로 실행)</li>
+        <li><b>detail</b> — 작업 설명 텍스트 (정보용)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4) 디버깅 설정 (launch.json)</h2>
+      <p><code>.vscode/launch.json</code>을 만들고 아래 내용을 넣습니다.</p>
+      <pre><code class="language-json">{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C++17 빌드 및 디버그",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${fileDirname}/programs/${fileBasenameNoExtension}",
+      "args": [],
+      "cwd": "${fileDirname}",
+      "preLaunchTask": "cpp-build"
+    }
+  ]
+}</code></pre>
+      <div class="callout">
+        <b>참고</b>: <b>CodeLLDB</b> 확장을 사용하며, 실행 전 자동으로 <code>cpp-build</code> 작업을 수행합니다.
+      </div>
+    </section>
+
+    <section>
+      <h2>5) 사용 방법</h2>
+      <ol>
+        <li><code>.cpp</code> 파일을 열고 수정</li>
+        <li><b>F5</b>를 눌러 <b>빌드 &amp; 디버그</b> 시작</li>
+        <li>브레이크포인트, 변수 보기, 스텝 인/오버/아웃 등 LLDB 기능 활용</li>
+      </ol>
+      <h3>예시: <code>hello.cpp</code></h3>
+      <pre><code>#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    cout &lt;&lt; "Hello, PS!\\n";
+    return 0;
+}</code></pre>
+    </section>
+
+    <section>
+      <h2>6) 자주 묻는 질문 &amp; 트러블슈팅</h2>
+      <ul>
+        <li><b><code>g++-15: command not found</code></b> → <code>brew install gcc@15</code> 후 <code>which -a g++-15</code>로 경로 확인, 필요 시 <code>PATH</code>에 추가</li>
+        <li><b>디버거가 실행되지 않음</b> → <b>CodeLLDB</b> 확장 설치 확인, macOS 권한 팝업(디버그 권한/개인정보 보호) 허용</li>
+        <li><b>출력 파일이 보이지 않음</b> → 해당 파일과 같은 폴더의 <code>programs</code> 디렉터리 내부에 생성됩니다.</li>
+        <li><b>다른 표준 사용</b> → <code>-std=c++20</code> 등으로 교체 가능. 컴파일러가 지원하는지 확인</li>
+        <li><b>경고를 더 강하게</b> → <code>-Wextra -Wshadow -Wconversion</code> 등 추가 가능</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>부록) 한 눈에 보는 설정 스니펫</h2>
+      <h3><code>.vscode/tasks.json</code></h3>
+      <pre><code class="language-json">{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "cpp-build",
+      "command": "mkdir -p ${fileDirname}/programs && g++-15 -fdiagnostics-color=always -std=c++17 -g -O2 -Wall ${file} -o ${fileDirname}/programs/${fileBasenameNoExtension}",
+      "options": { "cwd": "${fileDirname}" },
+      "problemMatcher": ["$gcc"],
+      "group": { "kind": "build", "isDefault": true },
+      "detail": "Compiles using GCC with C++17 standard."
+    }
+  ]
+}</code></pre>
+
+      <h3><code>.vscode/launch.json</code></h3>
+      <pre><code class="language-json">{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C++17 빌드 및 디버그",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${fileDirname}/programs/${fileBasenameNoExtension}",
+      "args": [],
+      "cwd": "${fileDirname}",
+      "preLaunchTask": "cpp-build"
+    }
+  ]
+}</code></pre>
+    </section>
+
+    <p class="footer">© 2025 PS Setup Guide — optimized for macOS + VSCode + GNU g++-15</p>
+  </div>
+</body>
+</html>
