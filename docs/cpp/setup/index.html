@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PS 환경 구축 가이드</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --card: #f8f9fa;
+      --text: #1a1a1a;
+      --muted: #6c757d;
+      --accent: #2a7d4f;
+      --border: #d0d7de;
+    }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    p.sub {
+      color: var(--muted);
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    a.card {
+      display: block;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 20px;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    a.card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    }
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      color: var(--accent);
+    }
+    .card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PS 환경 구축 가이드</h1>
+    <p class="sub">원하는 운영체제를 선택해 시작하세요.</p>
+
+    <div class="grid">
+      <a href="windows/index.html" class="card">
+        <h2>Windows</h2>
+        <p>MinGW, MSVC, WSL 등 Windows 기반 C++ 환경 설정</p>
+      </a>
+      <a href="macos/index.html" class="card">
+        <h2>macOS</h2>
+        <p>Homebrew + g++ + VSCode 기반 C++17 환경 설정</p>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
