@@ -8,9 +8,8 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: "Segoe UI", "Malgun Gothic", sans-serif;
-      line-height: 1.65;
+      line-height: 1.6;
       background-color: #f7f7f7;
       color: #222;
     }
@@ -30,19 +29,19 @@
     }
 
     h2 {
-      margin-top: 36px;
+      margin-top: 34px;
       padding-bottom: 6px;
       border-bottom: 1px solid #ddd;
       font-size: 22px;
     }
 
     h3 {
-      margin-top: 20px;
+      margin-top: 18px;
       font-size: 17px;
     }
 
     p {
-      margin: 10px 0;
+      margin: 8px 0;
     }
 
     ul {
@@ -75,13 +74,6 @@
       color: #0645ad;
     }
 
-    .memo {
-      margin: 12px 0;
-      padding: 10px 12px;
-      border-left: 4px solid #aaa;
-      background-color: #f3f3f3;
-    }
-
     kbd {
       padding: 2px 6px;
       border: 1px solid #aaa;
@@ -98,23 +90,23 @@
     <h1>C/C++ 알고리즘 문제해결 환경 설정</h1>
 
     <p>
-      Windows에서 WSL Ubuntu를 설치하고, VS Code에서 C/C++ 알고리즘 문제를 풀 수 있도록 환경을 맞추는 과정이다.
-      디버깅은 기본 GDB 대신 <code>CodeLLDB</code>를 사용한다.
+      Windows에서 WSL Ubuntu를 설치하고, VS Code에서 C/C++ 알고리즘 문제를 풀기 위한 환경 설정이다.
+      실행과 디버깅은 <code>CodeLLDB</code>와 <kbd>F5</kbd>를 사용한다.
     </p>
 
     <h2>1. Windows 기능 설정</h2>
 
     <ul>
       <li>Windows 검색창에서 <strong>Windows 기능 켜기/끄기</strong>를 실행한다.</li>
-      <li>아래 항목들을 체크한다.
+      <li>아래 항목을 체크한다.
         <ul>
           <li>Linux용 Windows 하위 시스템</li>
           <li>Virtual Machine Platform 또는 가상 머신 플랫폼</li>
           <li>Windows 하이퍼바이저 플랫폼</li>
-          <li>Hyper-V는 컴퓨터에 따라 없을 수 있음</li>
+          <li>Hyper-V는 없을 수 있음</li>
         </ul>
       </li>
-      <li>설정이 끝나면 컴퓨터를 재시작한다.</li>
+      <li>컴퓨터를 재시작한다.</li>
     </ul>
 
     <h2>2. Ubuntu 설치</h2>
@@ -122,12 +114,11 @@
     <ul>
       <li>Microsoft Store에서 <strong>Ubuntu 24.04.1 LTS</strong>를 설치한다.</li>
       <li>Ubuntu를 실행한 뒤 username과 password를 설정한다.</li>
-      <li>password는 입력해도 화면에 보이지 않는다. 그냥 입력하고 Enter를 누르면 된다.</li>
+      <li>password는 입력해도 화면에 보이지 않는다.</li>
     </ul>
 
     <p>
-      만약 설치 중에 <code>WslRegisterDistribution failed with error: 0x800701bc</code> 같은 오류가 나오면,
-      아래 파일을 설치한 뒤 다시 진행한다.
+      <code>WslRegisterDistribution failed with error: 0x800701bc</code> 오류가 나오면 아래 파일을 설치한다.
     </p>
 
     <ul>
@@ -142,13 +133,11 @@
 
     <ul>
       <li>Windows Terminal 또는 Ubuntu 터미널을 실행한다.</li>
-      <li>자주 쓸 거라면 Ubuntu 프로필을 기본값으로 설정해 둔다.</li>
-      <li>커서 모양, 글자 크기, 폰트는 편한 대로 바꾸면 된다.</li>
+      <li>Ubuntu 프로필을 기본값으로 설정한다.</li>
+      <li>커서, 글자 크기, 폰트는 원하는 대로 설정한다.</li>
     </ul>
 
     <h2>4. 필수 패키지 설치</h2>
-
-    <p>Ubuntu 터미널에서 아래 명령어를 한 줄씩 실행한다.</p>
 
     <pre>sudo apt update
 sudo apt install gcc g++ build-essential gdb lldb -y
@@ -158,15 +147,14 @@ whereis gdb
 whereis lldb</pre>
 
     <p>
-      <code>whereis</code> 명령어를 실행했을 때 각 프로그램의 경로가 나오면 설치된 것이다.
-      예를 들어 <code>/usr/bin/g++</code> 같은 경로가 보이면 된다.
+      <code>/usr/bin/g++</code>처럼 경로가 나오면 된다.
     </p>
 
-    <h2>5. VS Code 설치 및 WSL에서 실행</h2>
+    <h2>5. VS Code 설치 및 실행</h2>
 
     <ul>
       <li>Windows에 VS Code를 설치한다.</li>
-      <li>Ubuntu 터미널에서 알고리즘 문제를 저장할 폴더를 만든다.</li>
+      <li>Ubuntu 터미널에서 작업 폴더를 만든다.</li>
     </ul>
 
     <pre>mkdir -p ~/ps
@@ -174,19 +162,13 @@ cd ~/ps
 code .</pre>
 
     <p>
-      VS Code는 가능하면 Windows에서 직접 폴더를 여는 것보다,
-      WSL 터미널에서 <code>code .</code>로 여는 것이 좋다.
-    </p>
-
-    <p>
-      제대로 열렸다면 VS Code 왼쪽 아래에 <code>WSL: Ubuntu</code>가 보인다.
-      이 표시가 없으면 Windows 쪽 VS Code로 열린 것이므로 다시 WSL 터미널에서 <code>code .</code>를 실행한다.
+      VS Code 왼쪽 아래에 <code>WSL: Ubuntu</code>가 보이면 된다.
     </p>
 
     <h2>6. VS Code 확장 프로그램 설치</h2>
 
     <p>
-      VS Code가 <code>WSL: Ubuntu</code> 상태로 열린 것을 확인한 뒤 확장 프로그램을 설치한다.
+      <code>WSL: Ubuntu</code> 상태에서 확장 프로그램을 설치한다.
     </p>
 
     <ul>
@@ -196,56 +178,31 @@ code .</pre>
           <li><strong>C/C++</strong></li>
           <li><strong>CodeLLDB</strong></li>
           <li><strong>Remote Development</strong></li>
-          <li><strong>Competitive Programming Helper</strong> — 선택 사항</li>
-          <li><strong>Korean Language Pack</strong> — 선택 사항</li>
+          <li><strong>Competitive Programming Helper</strong> — 선택</li>
+          <li><strong>Korean Language Pack</strong> — 선택</li>
         </ul>
       </li>
     </ul>
 
     <p>
-      확장 프로그램은 Windows 로컬이 아니라 WSL 쪽에 설치되어야 한다.
-      확장 프로그램 버튼에 <strong>Install in WSL: Ubuntu</strong>처럼 표시되는지 확인한다.
+      확장 프로그램은 WSL 쪽에 설치한다.
     </p>
 
     <h2>7. 기본 터미널 설정</h2>
 
     <ul>
       <li><kbd>Ctrl</kbd> + <kbd>`</kbd>로 터미널을 연다.</li>
-      <li>터미널 오른쪽 위의 아래 화살표 버튼을 누른다.</li>
+      <li>터미널 오른쪽 위의 아래 화살표를 누른다.</li>
       <li><strong>Select Default Profile</strong>을 선택한다.</li>
-      <li><strong>Ubuntu</strong> 또는 <strong>WSL</strong>을 기본 터미널로 설정한다.</li>
-      <li><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>를 누르고 <code>Reload Window</code>를 실행한다.</li>
+      <li><strong>Ubuntu</strong> 또는 <strong>WSL</strong>을 선택한다.</li>
+      <li><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> → <code>Reload Window</code></li>
     </ul>
 
-    <h2>8. C++ 테스트 코드 작성</h2>
-
-    <p><code>hello.cpp</code> 파일을 만들고 아래 코드를 작성한다.</p>
-
-    <pre>#include &lt;iostream&gt;
-using namespace std;
-
-int main() {
-    cin.tie(0);
-    ios::sync_with_stdio(0);
-
-    cout &lt;&lt; "Hello world\n";
-    return 0;
-}</pre>
-
-    <p>터미널에서 직접 컴파일하고 실행해 본다.</p>
-
-    <pre>g++ -std=c++17 -g hello.cpp -o hello
-./hello</pre>
-
-    <p>정상적으로 설정됐다면 아래처럼 출력된다.</p>
-
-    <pre>Hello world</pre>
-
-    <h2>9. CodeLLDB 디버깅 설정</h2>
+    <h2>8. CodeLLDB 설정</h2>
 
     <p>
-      프로젝트 폴더 안에 <code>.vscode</code> 폴더를 만들고,
-      그 안에 <code>tasks.json</code>과 <code>launch.json</code>을 만든다.
+      프로젝트 폴더에 <code>.vscode</code> 폴더를 만들고,
+      <code>tasks.json</code>, <code>launch.json</code>을 작성한다.
     </p>
 
     <h3>.vscode/tasks.json</h3>
@@ -298,106 +255,68 @@ int main() {
 }</pre>
 
     <p>
-      여기서 <code>tasks.json</code>의 <code>label</code>과
-      <code>launch.json</code>의 <code>preLaunchTask</code> 이름이 같아야 한다.
+      <code>label</code>과 <code>preLaunchTask</code> 이름이 같아야 한다.
     </p>
 
-    <ul>
-      <li>코드 왼쪽 줄 번호 부분을 클릭하면 breakpoint를 찍을 수 있다.</li>
-      <li><kbd>F5</kbd>를 누르면 디버깅이 시작된다.</li>
-      <li>입력은 <strong>DEBUG CONSOLE</strong>이 아니라 <strong>TERMINAL</strong> 탭에 입력한다.</li>
-      <li>변수 값은 왼쪽의 <strong>VARIABLES</strong> 또는 <strong>WATCH</strong>에서 확인할 수 있다.</li>
-    </ul>
+    <h2>9. C++ 테스트</h2>
 
-    <h2>10. input.txt로 디버깅하기</h2>
+    <p><code>hello.cpp</code> 파일을 만들고 아래 코드를 작성한다.</p>
 
-    <p>
-      알고리즘 문제를 풀 때는 입력을 매번 직접 치기 귀찮으므로,
-      <code>input.txt</code>를 만들어 두고 사용하는 방법도 괜찮다.
-    </p>
+    <pre>#include &lt;iostream&gt;
+using namespace std;
 
-    <p>예를 들어 같은 폴더에 아래처럼 파일이 있다고 하자.</p>
+int main() {
+    cin.tie(0);
+    ios::sync_with_stdio(0);
 
-    <pre>main.cpp
-input.txt</pre>
-
-    <p>
-      이 경우 <code>launch.json</code>을 아래처럼 바꾸면
-      <code>input.txt</code>가 표준 입력으로 들어간다.
-    </p>
-
-    <pre>{
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "CodeLLDB: Debug active file with input.txt",
-            "type": "lldb",
-            "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": [],
-            "cwd": "${fileDirname}",
-            "terminal": "integrated",
-            "stdio": [
-                "input.txt",
-                null,
-                null
-            ],
-            "preLaunchTask": "C++ build active file"
-        }
-    ]
+    cout &lt;&lt; "Hello world\n";
+    return 0;
 }</pre>
 
-    <p>
-      <code>stdio</code>의 첫 번째 값이 입력 파일이다.
-      뒤의 <code>null</code> 두 개는 출력과 에러를 기본 터미널로 보내겠다는 뜻이다.
-    </p>
+    <ul>
+      <li><kbd>F5</kbd>를 누른다.</li>
+      <li>처음 실행 시 <strong>CodeLLDB: Debug active file</strong>을 선택한다.</li>
+      <li>터미널에 <code>Hello world</code>가 출력되면 된다.</li>
+    </ul>
 
-    <h2>11. 코드 포매팅 설정</h2>
+    <h2>10. 디버깅 방법</h2>
 
-    <p>
-      저장할 때마다 자동으로 코드가 정리되면 불편할 수 있으므로,
-      자동 포매팅은 꺼 두고 필요할 때만 수동으로 실행한다.
-    </p>
+    <ul>
+      <li>줄 번호 왼쪽을 클릭하면 breakpoint를 찍을 수 있다.</li>
+      <li><kbd>F5</kbd>를 누르면 실행 또는 디버깅이 시작된다.</li>
+      <li>입력은 <strong>TERMINAL</strong> 탭에 한다.</li>
+      <li>변수는 <strong>VARIABLES</strong>, <strong>WATCH</strong>에서 확인한다.</li>
+      <li><kbd>F10</kbd>: 한 줄 실행</li>
+      <li><kbd>F11</kbd>: 함수 안으로 들어가기</li>
+      <li><kbd>Shift</kbd> + <kbd>F11</kbd>: 함수 밖으로 나오기</li>
+      <li><kbd>Shift</kbd> + <kbd>F5</kbd>: 디버깅 종료</li>
+    </ul>
+
+    <h2>11. 코드 포매팅</h2>
 
     <ul>
       <li><kbd>Ctrl</kbd> + <kbd>,</kbd>로 설정을 연다.</li>
-      <li><strong>Format On Save</strong>를 검색한다.</li>
-      <li><strong>Format On Save</strong> 체크를 해제한다.</li>
       <li><strong>Clang_format_fallback Style</strong>에 아래 값을 입력한다.</li>
     </ul>
 
     <pre>{ BasedOnStyle: Google, UseTab: Never, IndentWidth: 4, TabWidth: 4, ColumnLimit: 0 }</pre>
 
     <p>
-      코드 정리가 필요할 때는 <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd>를 누르면 된다.
+      <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd>로 포매팅한다.
     </p>
 
-    <h2>12. 일반 실행</h2>
-
-    <p>
-      디버깅이 필요 없고 그냥 실행만 해 보고 싶다면 터미널에서 직접 실행하는 게 제일 단순하다.
-    </p>
-
-    <pre>g++ -std=c++17 -g main.cpp -o main
-./main</pre>
-
-    <p>
-      VS Code에서 빌드 작업을 쓰고 싶다면 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd>를 누르면 된다.
-      다만 알고리즘 문제를 풀 때는 터미널에서 직접 실행하는 방식이 가장 덜 꼬인다.
-    </p>
-
-    <h2>13. 기타</h2>
+    <h2>12. 기타</h2>
 
     <ul>
-      <li>VS Code 설정에서 <strong>Enable Preview</strong>를 끄면 파일이 항상 새 탭으로 열린다.</li>
-      <li>CPH를 설치했다면 A+B 문제로 예제 실행이 잘 되는지 확인해 본다.</li>
-      <li>필요 없는 실행 파일은 직접 삭제한다.</li>
+      <li><strong>Enable Preview</strong>를 끄면 파일이 항상 새 탭으로 열린다.</li>
+      <li>CPH를 설치했다면 A+B 문제로 테스트한다.</li>
+      <li>필요 없는 실행 파일은 삭제한다.</li>
     </ul>
 
     <pre>rm hello</pre>
 
     <p>
-      설정이 이상하게 꼬였을 때는 프로젝트 폴더의 <code>.vscode</code> 폴더를 삭제하고 다시 만들면 된다.
+      설정이 꼬이면 프로젝트 폴더의 <code>.vscode</code> 폴더를 삭제하고 다시 만든다.
     </p>
   </main>
 </body>
