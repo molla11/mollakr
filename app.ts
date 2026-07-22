@@ -53,6 +53,10 @@ function renderMarkdown(markdown) {
             flushParagraph();
             flushList();
 
+            if (section?.id === "introduction") {
+                fragment.appendChild(document.createElement("hr"));
+            }
+
             section = document.createElement("section");
             section.className = "paragraph";
             section.id = heading[3] || makeSlug(heading[2]);

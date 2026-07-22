@@ -45,7 +45,8 @@ h6,
     transition: 1.5s;
 }
 
-.paragraph li {
+#preference li,
+#result li {
     margin: 1em 0;
 }
 
@@ -73,15 +74,22 @@ h6,
     background-color: #BFB;
 }
 
-#trash {
+#awards:hover {
+    background-color: #DBF;
+}
+
+#trash,
+#secret {
     color: #FFF;
 }
 
-#trash:hover {
+#trash:hover,
+#secret:hover {
     background-color: #000;
 }
 
-#trash a {
+#trash a,
+#secret a {
     color: #FAF;
     text-decoration: none;
 }
@@ -90,7 +98,7 @@ hr {
     margin: 10px 0px;
 }
 
-hr .in-div {
+hr.in-div {
     background-color: black;
 }
 
