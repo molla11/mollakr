@@ -10,6 +10,11 @@ body::-webkit-scrollbar {
     margin: 10px 0px 0px 10px;
 }
 
+#loading,
+.error {
+    margin: 20px;
+}
+
 h1,
 h2,
 h3,
@@ -38,6 +43,10 @@ h6,
     overflow: hidden;
     padding: 10px;
     transition: 1.5s;
+}
+
+.paragraph li {
+    margin: 1em 0;
 }
 
 .paragraph:hover {
@@ -70,6 +79,11 @@ h6,
 
 #trash:hover {
     background-color: #000;
+}
+
+#trash a {
+    color: #FAF;
+    text-decoration: none;
 }
 
 hr {
