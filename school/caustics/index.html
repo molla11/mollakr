@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d1117">
+  <meta name="description" content="수면파와 빛의 굴절로 수영장 바닥의 카우스틱을 재현하고 수심, 각도, 진폭에 따른 빛의 집중을 비교하는 실험실">
+  <title>Caustica | 수중 카우스틱 실험실</title>
+  <link rel="icon" href="mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="optics.js"></script><script defer src="physics.js"></script><script defer src="colors.js"></script><script defer src="live.js"></script><script defer src="history.js"></script><script defer src="lab.js"></script>
+</head>
+<body>
+<header class="topbar"><div class="nav-inner">
+  <a class="brand" href="#lab" aria-label="Caustica 실험실"><img src="mark.svg" width="36" height="36" alt="">Caustica</a>
+  <span class="nav-divider"></span>
+  <nav aria-label="주 메뉴"><a id="nav-lab" class="active" href="#lab">시뮬레이션</a><a id="nav-compare" href="#experiments">비교 실험</a><button data-guide>물리 모델</button></nav>
+  <span class="engine"><i class="dot"></i>엔진 온라인</span>
+</div></header>
+<main id="lab" class="wrap">
+  <div class="intro"><div><h1>수중 카우스틱 실험실</h1><p>수조를 눌러 파동을 만들고, 빛의 입사각을 바꾸며 바닥 무늬를 관찰하세요.</p></div>
+  <button class="outline guide" data-guide><i data-icon="book"></i>모델 가이드</button></div>
+  <div class="workbench">
+    <section class="panel viewer" id="viewer" aria-label="수조 전체 관측">
+      <div class="panel-heading pane-head"><div class="view-title"><h2><i data-icon="scan"></i>수조 전체</h2><span class="frame-rate" title="최근 1초 동안 화면에 표시한 프레임 수"><span id="fps">—</span> FPS</span></div>
+        <div class="switcher" role="group" aria-label="수조 시각화"><button data-mode="floor" aria-pressed="true">바닥 밝기</button><button data-mode="surface" aria-pressed="false">수면 높이</button><button data-mode="jacobian" aria-pressed="false">야코비안</button></div>
+      </div>
+      <div class="tank-mat"><div class="stage" id="stage">
+        <canvas id="field" width="1206" height="630" role="button" tabindex="0" aria-label="수조 전체 바닥 밝기. 누른 곳의 수면에 파동을 추가합니다. Enter 키는 중앙에 파동을 추가합니다."></canvas>
+        <span id="ripple" class="click-ripple"></span>
+      </div></div>
+      <div class="pane-foot"><span id="map-key">수광면 · 상대 밝기 I/I₀</span><span class="plane-units"><span class="measure-bar"><i id="scale-line"></i>10 cm</span><span id="plane-size">120.6 × 63.0 cm</span></span></div>
+      <div class="transport"><button id="play" class="play" title="일시정지" aria-label="일시정지"><i data-icon="pause"></i></button>
+        <output id="clock" aria-label="시뮬레이션 시간"><span id="clock-value">0.00</span> <small>s</small></output><span class="tool-sep"></span>
+        <label class="speed"><select id="speed" aria-label="재생 속도"><option value=".25">0.25×</option><option value=".5">0.5×</option><option selected value="1">1×</option><option value="2">2×</option></select><i data-icon="chevron"></i></label>
+        <button type="button" id="burst" class="outline burst" title="중앙에서 단일 펄스 재생"><i data-icon="pulse"></i>펄스 한 번</button>
+        <button id="restart" class="outline wave-restore" title="처음의 간섭파로 수면 초기화"><i data-icon="rewind"></i>초기 간섭파</button>
+        <span class="transport-space"></span>
+        <button class="outline grid-toggle" id="grid" aria-pressed="false" title="수영장 바닥 타일 표시"><i data-icon="grid"></i>바닥 타일</button>
+        <button class="icon-btn" id="expand" aria-label="뷰포트 확대" title="뷰포트 확대"><i data-icon="expand"></i></button>
+      </div>
+    </section>
+    <section class="panel params" aria-labelledby="params-title"><div class="panel-heading"><h2 id="params-title"><i data-icon="sliders"></i>실험 매개변수</h2>
+      <div class="param-actions"><button class="icon-btn" id="restore" title="광원과 매개변수 기본값 복원" aria-label="광원과 매개변수 기본값 복원"><i data-icon="reset"></i></button>
+      <button class="record" id="record"><i data-icon="capture"></i>현재 조건 기록</button></div></div>
+      <div class="param-body">
+        <div class="source-row"><h3>광원 제어</h3>
+          <label class="source-choice"><i data-icon="sun"></i><select id="source-type" aria-label="광원 종류"><option value="parallel" selected>평행광</option><option value="point">점광원</option></select><i data-icon="chevron"></i></label>
+        </div>
+        <div class="source-options">
+        <div id="lamp-coordinates" class="coordinate-control" hidden><div class="control-title"><span>광원 위치</span><small>수면 위 40 cm</small></div>
+          <div class="pad-surround"><div class="lamp-pad" id="lamp-pad" aria-label="광원 위치 조절판">
+            <span class="pad-x" aria-hidden="true">+X</span><span class="pad-y" aria-hidden="true">+Y</span>
+            <button id="lamp" type="button" aria-label="점광원 이동" aria-describedby="lamp-help"><span><i data-icon="sun"></i></span></button>
+          </div></div>
+          <div class="coordinate-inputs"><label>X <input type="number" id="lamp-x" min="-60.3" max="60.3" step=".1" aria-label="광원 X 위치 (cm)"></label><label>Y <input type="number" id="lamp-y" min="-31.5" max="31.5" step=".1" aria-label="광원 Y 위치 (cm)"></label><span>cm</span></div><span id="lamp-help">조절판을 누르거나 광원을 드래그하세요.</span></div>
+        <div class="control" id="angle-control"><div><label for="angle">빛의 입사각</label><output for="angle" id="angle-value"></output></div><input type="range" id="angle" min="0" max="45" step="1" value="0"><div class="limits"><span>0°</span><span>45°</span></div><p class="angle-note">0°에서 빛은 수면에 수직으로 들어옵니다. 각도를 키우면 광선이 +X 방향으로 기울어집니다.</p></div>
+        </div>
+        <div class="control"><div><label for="depth">수심</label><output for="depth" id="depth-value"></output></div><input type="range" id="depth" min="10" max="50" step="1" value="25"><div class="limits"><span>10 cm</span><span>50 cm</span></div></div>
+        <div class="control"><div><label for="amplitude">파동 진폭</label><output for="amplitude" id="amplitude-value"></output></div><input type="range" id="amplitude" min="0" max="10" step=".5" value="5"><div class="limits"><span>0 mm</span><span>10 mm</span></div></div>
+        <div class="control"><div><label for="damping">감쇠 계수 <em>γ</em></label><output for="damping" id="damping-value"></output></div><input type="range" id="damping" min="0" max=".3" step=".01" value=".03"><div class="limits"><span>0 s⁻¹</span><span>0.30 s⁻¹</span></div></div>
+      </div>
+    </section>
+  </div>
+  <section class="analysis" aria-labelledby="analysis-title"><div class="section-heading"><h2 id="analysis-title"><i data-icon="activity"></i>실시간 분석</h2><span class="sample"><i></i>0.25 s 간격</span></div>
+    <div class="analysis-grid">
+      <article class="panel metric history-panel"><h3>밝기 변동계수 <span>C</span></h3><output id="contrast" class="metric-value">0.000</output><canvas class="plot" id="history-chart" width="720" height="170" aria-label="실험 시작부터 현재까지의 밝기 변동계수" aria-describedby="history-axis"></canvas><div class="chart-foot" id="history-axis"><span>0 s</span><span id="history-mid"></span><span id="history-end">0.00 s</span></div></article>
+      <article class="panel metric"><h3>바닥 밝기 분포 <span>I / I₀</span></h3><div class="hist-legend"><i></i>상대 밝기별 면적 비율</div><canvas class="plot" id="hist-chart" width="480" height="150" aria-label="상대 밝기의 면적 분포 히스토그램"></canvas><div class="chart-foot"><span>0</span><span>2</span><span>≥ 4</span></div></article>
+      <article class="panel optics"><h3>수면 중앙의 기준 굴절각 <span>θ₂</span></h3><div class="ray-content"><div><output id="ref-angle" class="metric-value">0.0°</output><div class="ray-key"><span><i></i>입사광</span><span><i></i>굴절광</span></div></div><canvas id="ray-chart" width="480" height="150" aria-label="수면 중앙을 지나는 수직 단면에서 평면 수면 기준 입사광과 굴절광의 경로"></canvas></div></article>
+    </div>
+  </section>
+  <section id="experiments" class="experiments" aria-labelledby="exp-title"><div class="section-heading"><h2 id="exp-title"><i data-icon="layers"></i>비교 실험</h2><button class="outline small" id="download" disabled><i data-icon="download"></i>CSV 저장</button></div>
+    <div class="panel experiment-panel"><div class="experiment-tools"><div><h3>동일 수면에서 조건 비교</h3><p>한 시점의 수면을 고정하고 선택한 변수만 바꿔 측정합니다.</p></div><div class="sweep-tools"><select id="variable" aria-label="비교할 독립변수"><option value="depth">수심</option><option value="angle">중앙 입사각</option><option value="lampX" hidden disabled>광원 X 위치</option><option value="amplitude">파동 진폭</option><option value="damping">감쇠 계수</option></select><button id="sweep" class="primary"><i data-icon="flask"></i>비교 실행</button></div></div>
+      <p class="exp-note" id="exp-note">수심 10, 25, 50 cm에서 바닥 밝기를 비교합니다.</p>
+      <div id="records" hidden><div class="table-scroll"><table><thead><tr><th>바닥 무늬</th><th>실험</th><th>시간 (s)</th><th>광원</th><th>X (cm)</th><th>Y (cm)</th><th>수심 (cm)</th><th>중앙 입사각 (°)</th><th>진폭 (mm)</th><th>감쇠 (s⁻¹)</th><th>변동계수 C</th><th>평균 I/I₀</th></tr></thead><tbody id="rows"></tbody></table></div><p id="interpretation"></p></div>
+    </div>
+  </section>
+  <footer><span class="brand-mini"><img src="mark.svg" width="21" height="21" alt="">Caustica</span><span>파동 광학 시뮬레이션</span></footer>
+</main>
+<dialog id="guide-dialog"><div class="dialog-head"><h2>물리 모델 가이드</h2><button class="icon-btn" id="close-guide" aria-label="닫기"><i data-icon="close"></i></button></div>
+<div class="guide-content">
+  <h3>수면파의 전파</h3><div class="formula">∂²h/∂t² + 2γ ∂h/∂t = c²∇²h</div><p>134 × 70 격자에서 2차 중앙차분으로 수면을 갱신합니다. 벽에서는 법선 방향 기울기를 0으로 두어 파동이 반사됩니다. 파속은 0.19 m/s, 격자 간격은 0.9 cm입니다. 처음 간섭파에서 진폭은 초기 수면 높이의 제곱평균제곱근(RMS)입니다. ‘펄스 한 번’을 누르면 잔잔한 수면 중앙에 진폭 설정에 비례하는 융기를 한 번 주고, 이후에는 파동 방정식으로 전파와 감쇠를 계산합니다.</p>
+  <h3>빛이 바닥에 도달하는 위치</h3><div class="formula">n₁ sin θ₁ = n₂ sin θ₂</div><p>점광원은 평균 수면 위 40 cm에 있습니다. 수면 지도 중앙이 좌표 원점이며 오른쪽이 +X, 위쪽이 +Y입니다. 각 지점에 도달하는 빛의 방향을 광원 위치에서 구하고, 거리 제곱에 반비례하는 세기와 입사 방향에 대한 투영 면적을 적용합니다. 평행광에서는 모든 입사 광선이 같은 방향입니다. 각 지점의 수면 법선으로 공기(n₁ = 1.0003)에서 물(n₂ = 1.333)로 들어가는 광선의 방향을 구합니다. 바닥과 만나는 지점에 광속을 분배하고 겹치는 광선의 기여를 더합니다. 옆벽에 먼저 도달한 광선은 바닥에 더하지 않습니다. 공기에서 물로 들어가는 빛에는 전반사가 일어나지 않습니다. 물에서 공기로 나갈 때는 법선과 이루는 입사각이 임계각 약 48.6°를 넘으면 전반사가 일어납니다. 이 모델은 수면에서의 프레넬 부분 반사, 옆벽의 반사, 물의 흡수를 생략합니다. 수심은 광선의 이동 거리에만 영향을 줍니다.</p>
+  <h3>면적 변화와 카우스틱</h3><div class="formula">J = det(∂(u, v)/∂(x, y))</div><p>야코비안 보기에서는 수면 위 각 점에서 출발한 이웃 광선들의 면적 변화를 표시합니다. 밝은 선은 |J|가 0에 가까운 곳입니다. 단일 광선 다발의 바닥 밝기는 입사 광속을 |J|로 나눈 값에 비례합니다. 바닥 밝기 보기에서는 유한한 픽셀 면적과 공간 필터로 집속선을 매끄럽게 계산합니다.</p>
+  <h3>밝기와 대비 읽기</h3><div class="formula">C = σ<sub>I</sub> / Ī</div><p>120.6 × 63.0 cm인 수조 바닥 전체를 1 mm 간격의 1206 × 630 픽셀로 검출합니다. 이 영역에서 밝기의 표준편차를 평균으로 나눕니다. C가 클수록 밝고 어두운 부분의 차이가 큽니다. 점광원의 기준 밝기 I₀는 수심 25 cm인 평평한 바닥의 광원 바로 아래 밝기입니다. 평행광의 I₀는 같은 각도의 평면 수면에서의 바닥 밝기입니다. 점광원의 C에는 거리와 입사각에 따른 조명 차이도 포함됩니다. 타일과 화면 색상은 측정값에서 제외합니다.</p>
+  <h3>야코비안 검산</h3><p id="jacobian-check"></p>
+  <p>수직 평행광에서 진폭을 0 mm로 설정하면 평평한 수면에서 J = 1, C ≈ 0인 기준 상태를 확인할 수 있습니다. 비스듬한 평행광에서는 입사 쪽 벽 근처에 그늘이 생깁니다. 점광원에서는 평평한 수면에서도 광원 바로 아래가 더 밝습니다. 일시정지 후 별도 조절판에서 광원을 옮기면 같은 수면에서 빛의 변화만 관찰할 수 있습니다. 방향키는 1 cm, Shift와 방향키는 5 cm씩 이동합니다.</p>
+  <a class="source" href="https://developer.nvidia.com/gpugems/gpugems/part-i-natural-effects/chapter-2-rendering-water-caustics" target="_blank" rel="noreferrer">참고 문헌 · GPU Gems, Rendering Water Caustics <i data-icon="external"></i></a>
+</div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+</body></html>
